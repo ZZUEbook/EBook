@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>eBookStore</title>
+		<link rel="stylesheet" href="/static/ebookstore/bootstrap/css/bootstrap.min.css">
+		<link href="/static/ebookstore/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="/static/ebookstore/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+		<link href="/static/ebookstore/assets/styles.css" rel="stylesheet" media="screen">
+		<script src="/static/ebookstore/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/ebookstore/bootstrap/css/bootstrap.min.css">
+		<script src="/static/ebookstore/jquery/jquery.min.js"></script>
+		<script src="/static/ebookstore/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/static/ebookstore/bootstrap/js/bootstrap.min.js"></script>
+		<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="/static/ebookstore/css/css(1).css" rel="stylesheet" />
+		<link href="/static/ebookstore/css/normalize.min.css" rel="stylesheet" />
+		<style>
+			.col-center-block {
+				float: none;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			body {
+				background-image: url('/static/ebookstore/img/背景.jpg');
+				background-size: cover;
+			}
+			
+			.carousel {
+				margin-bottom: 60px;
+			}
+		</style>
+
+		<style class="cp-pen-styles">
+			body {
+				font-family: 'Source Sans Pro', sans-serif;
+			}
+			
+			h1 {
+				padding-bottom: 0;
+				margin-bottom: 0;
+			}
+			
+			h3 {
+				margin-top: 0;
+				font-weight: 300;
+			}
+			
+			.container {
+				width: 40em;
+				margin: 10px auto;
+			}
+			
+			.ac-label {
+				font-weight: 700;
+				position: relative;
+				padding: .5em 1em;
+				margin-bottom: .5em;
+				display: block;
+				cursor: pointer;
+				background-color: whiteSmoke;
+				transition: background-color .15s ease-in-out;
+			}
+			
+			.ac-input:checked+label,
+			.ac-label:hover {
+				background-color: #999;
+			}
+			
+			.ac-label:after,
+			.ac-input:checked+.ac-label:after {
+				content: "+";
+				position: absolute;
+				display: block;
+				right: 0;
+				top: 0;
+				width: 2em;
+				height: 100%;
+				line-height: 2.25em;
+				text-align: center;
+				background-color: #e5e5e5;
+				transition: background-color .15s ease-in-out;
+			}
+			
+			.ac-label:hover:after,
+			.ac-input:checked+.ac-label:after {
+				background-color: #b5b5b5;
+			}
+			
+			.ac-input:checked+.ac-label:after {
+				content: "-";
+			}
+			
+			.ac-input {
+				display: none;
+			}
+			
+			.ac-text,
+			.ac-sub-text {
+				opacity: 0;
+				height: 0;
+				margin-bottom: .5em;
+				transition: opacity .5s ease-in-out;
+				overflow: hidden;
+			}
+			
+			.ac-input:checked~.ac-text,
+			.ac-sub .ac-input:checked~.ac-sub-text {
+				opacity: 1;
+				height: auto;
+			}
+			
+			.ac-sub .ac-label {
+				background: none;
+				font-weight: 600;
+				padding: .5em 2em;
+				margin-bottom: 0;
+			}
+			
+			.ac-sub .ac-label:checked {
+				background: none;
+				border-bottom: 1px solid whitesmoke;
+			}
+			
+			.ac-sub .ac-label:after,
+			.ac-sub .ac-input:checked+.ac-label:after {
+				left: 0;
+				background: none;
+			}
+			
+			.ac-sub .ac-input:checked+label,
+			.ac-sub .ac-label:hover {
+				background: none;
+			}
+			
+			.ac-sub-text {
+				padding: 0 1em 0 2em;
+			}
+			
+			#myCarousel {
+				position: absolute;
+				left: 50%;
+				margin-left: -350px;
+			}
+			
+			#myCarouselIcon {
+				width: 40px;
+				height: 30px;
+				position: absolute;
+				bottom: 100px;
+				left: 50%;
+				margin-left: -20px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<nav id="navbar-example" class="navbar navbar-inverse navbar navbar-fixed-top navbar-has-shadow" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+					<a class="navbar-brand" href="#">eBookStore</a>
+				</div>
+				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="#">主页</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle">书籍分类<b class="caret"></b>
+
+							</a>
+							<ul class="dropdown-menu" id="menu1">
+
+								<li>
+									<a href="#">计算机类</a>
+								</li>
+								<li>
+									<a href="#">英语类</a>
+								</li>
+
+							</ul>
+						</li>
+						<li>
+							<a href="#">新书上架</a>
+						</li>
+					</ul>
+					
+					<!--
+                    	作者：offline
+                    	时间：2018-09-05
+                    	描述：用户已登录
+                    -->
+					<ul class="nav pull-right">
+						<li class="dropdown">
+							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-user"></i> 用户 <i class="caret"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a tabindex="-1" href="#">我的信息</a>
+								</li>
+								<li>
+									<a tabindex="-1" href="#">我的订单</a>
+								</li>
+								<li>
+									<a tabindex="-1" href="#">购物车</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a tabindex="-1" href="login">退出登录</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<!--
+                    	时间：2018-09-05
+                    	描述：用户未登陆时代码
+                    	<ul class="nav pull-right">
+						<li class="dropdown">
+							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-user"></i> 游客 <i class="caret"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a tabindex="-1" href="login">注册</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+                    -->
+				</div>
+			</div>
+		</nav>
+
+		<div class="row">
+			<div class="col-xs-6 col-md-4">
+				<label class="ac-label">书店公告</label>
+				<MARQUEE style="background-color:ghostwhite;" ; this.stop() onmouseout=this.start() scrollAmount=1 scrollDelay=1 direction=up height=150>
+					<div id="showNotice"></div>
+				</MARQUEE>
+				<div class="ac" style="background-color:whitesmoke;border-radius:7px ;">
+					<input class="ac-input" id="ac-2" name="ac-2" type="checkbox">
+					<label class="ac-label" for="ac-2">销量排行榜</label>
+					<article class="ac-text">
+						<div class="ac-sub">
+							<input class="ac-input" id="ac-2-1" name="ac-2-1" type="checkbox">
+							<label class="ac-label" for="ac-2-1">英语类</label>
+							<article class="ac-sub-text">
+								<a href="" class="list-group-item ">1.英语类</a>
+								<a href="" class="list-group-item ">2.英语类</a>
+								<a href="" class="list-group-item ">3.英语类</a>
+								<a href="" class="list-group-item ">4.英语类</a>
+								<a href="" class="list-group-item ">5.英语类</a>
+								<a href="" class="list-group-item ">6.英语类</a>
+								<a href="" class="list-group-item ">7.英语类</a>
+								<a href="" class="list-group-item ">8.英语类</a>
+								<a href="" class="list-group-item ">9.英语类</a>
+								<a href="" class="list-group-item ">10.英语类</a>
+							</article>
+						</div>
+					</article>
+					<article class="ac-text">
+						<div class="ac-sub">
+							<input class="ac-input" id="ac-2-2" name="ac-2-2" type="checkbox">
+							<label class="ac-label" for="ac-2-2">计算机类</label>
+							<article class="ac-sub-text">
+								<a href="" class="list-group-item ">1.计算机类</a>
+								<a href="" class="list-group-item ">2.计算机类</a>
+								<a href="" class="list-group-item ">3.计算机类</a>
+								<a href="" class="list-group-item ">4.计算机类</a>
+								<a href="" class="list-group-item ">5.计算机类</a>
+								<a href="" class="list-group-item ">6.计算机类</a>
+								<a href="" class="list-group-item ">7.计算机类</a>
+								<a href="" class="list-group-item ">8.计算机类</a>
+								<a href="" class="list-group-item ">9.计算机类</a>
+								<a href="" class="list-group-item ">10.计算机类</a>
+							</article>
+						</div>
+					</article>
+					<article class="ac-text">
+						<div class="ac-sub">
+							<input class="ac-input" id="ac-2-3" name="ac-2-3" type="checkbox">
+							<label class="ac-label" for="ac-2-3">总榜</label>
+							<article class="ac-sub-text">
+								<a href="" class="list-group-item ">1.计算机类</a>
+								<a href="" class="list-group-item ">2.计算机类</a>
+								<a href="" class="list-group-item ">3.计算机类</a>
+								<a href="" class="list-group-item ">4.计算机类</a>
+								<a href="" class="list-group-item ">5.计算机类</a>
+								<a href="" class="list-group-item ">6.计算机类</a>
+								<a href="" class="list-group-item ">7.计算机类</a>
+								<a href="" class="list-group-item ">8.计算机类</a>
+								<a href="" class="list-group-item ">9.计算机类</a>
+								<a href="" class="list-group-item ">10.计算机类</a>
+							</article>
+						</div>
+					</article>
+				</div>
+			</div>
+
+			<!-- 右部内容 -->
+			<div class="col-xs-12 col-md-8">
+				<!-- 轮播 -->
+				<div id="myCarousel" class="carousel slide">
+
+					<!-- 轮播（Carousel）项目 -->
+					<div class="carousel-inner">
+						<div class="item active">
+							<img src="/static/ebookstore/img/轮播图1.jpg" alt="First slide">
+						</div>
+						<div class="item">
+							<img src="/static/ebookstore/img/轮播图2.jpg" alt="Second slide">
+						</div>
+						<div class="item">
+							<img src="/static/ebookstore/img/轮播图3.jpg" alt="Third slide">
+						</div>
+					</div>
+					<!-- 轮播（Carousel）指标 -->
+					<ol id="myCarouselIcon" class="carousel-indicators">
+						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#myCarousel" data-slide-to="1"></li>
+						<li data-target="#myCarousel" data-slide-to="2"></li>
+					</ol>
+				</div>
+				<div style="height: 300px;">
+				</div>
+				<hr />
+				<div style="height: 70px;">
+					<form action="#" class="navbar-right navbar-form">
+						<div class="form-group has-feedback">
+							<!--has-feedback样式/反馈控制/ form-control-feedback 增加这两个样式后，span代表的放大镜就可以放在搜索栏里面-->
+							<label for="search" class="sr-only">搜索关键字</label>
+							<input type="search" placeholder="请输入查找的书籍" id="search" class="form-control">
+							<span class="glyphicon glyphicon-search  form-control-feedback"></span>
+						</div>
+					</form>
+				</div>
+				
+				
+				<div>
+				<div class="col-xs-6 col-md-4" >
+					<a href="">
+					<img src="/static/ebookstore/img/书1.jpg" style="height:70% ; width:70%;">
+					</a>
+					<a href="">
+						<h3 style=" color: white;">书籍名称</h3>
+					</a>
+				</div>
+				<div class="col-xs-6 col-md-4" >
+					<a href="">
+					<img src="/static/ebookstore/img/书1.jpg" style="height:70% ; width:70%;">
+					</a>
+					<a href="">
+						<h3 style=" color: white;">书籍名称</h3>
+					</a>
+				</div>
+				<div class="col-xs-6 col-md-4" >
+					<a href="">
+					<img src="/static/ebookstore/img/书1.jpg" style="height:70% ; width:70%;">
+					</a>
+					<a href="">
+						<h3 style="color: white;">书籍名称</h3>
+					</a>
+				</div>
+				<div class="col-xs-6 col-md-4" >
+					<a href="">
+					<img src="/static/ebookstore/img/书1.jpg" style="height:70% ; width:70%;">
+					</a>
+					<a href="">
+						<h3 style=" color: white;">书籍名称</h3>
+					</a>
+				</div>
+				<div class="col-xs-6 col-md-4" >
+					<a href="">
+					<img src="/static/ebookstore/img/书1.jpg" style="height:70% ; width:70%;">
+					</a>
+					<a href="">
+						<h3 style=" color: white;">书籍名称</h3>
+					</a>
+				</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
