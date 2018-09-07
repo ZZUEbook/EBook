@@ -115,9 +115,10 @@
 							alert('登录失败');
 						},
 						success: function(data) {
-							if(data==1){
+							if(data!=0){
 								//location.href="index.html"
 								alert("success");
+								window.location.href="index";
 							}else{
 								alert("failure");
 							}
