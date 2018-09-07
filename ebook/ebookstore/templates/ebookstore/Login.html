@@ -38,12 +38,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-					<a class="navbar-brand" href="#">eBookStore</a>
+					<a class="navbar-brand" href="#">My-eBookStore</a>
 				</div>
 				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
 					<ul class="nav navbar-nav">
 						<li class="active">
-							<a href="index">主页</a>
+							<a href="#index.html">主页</a>
 						</li>
 
 					</ul>
@@ -59,24 +59,24 @@
 				<div class="control-group" align="left" style="margin-left: 115px;">
 					<label class="control-label" for="focusedInput">用户名</label>
 					<div class="controls">
-						<input class="input-xlarge focused" id="focusedInput" type="text" value="">
+						<input class="input-xlarge focused" id="focusedInput" name="username" type="text" value="">
 					</div>
 				</div>
 				<div class="control-group" align="left" style="margin-left: 115px;">
 					<label class="control-label" for="focusedInput">密码</label>
 					<div class="controls">
-						<input class="input-xlarge focused" id="focusedInput" type="text" value="">
+						<input class="input-xlarge focused" id="focusedInput" name="password" type="text" value="">
 					</div>
 				</div>
 				<div class="control-group" align="left" style="margin-left: 115px;">
 					<div class="controls">
 						<label>
-                  <input type="checkbox" id="optionsCheckbox2" value="option1">记住密码</label>
+                  <input type="checkbox" id="optionsCheckbox2" name="remember" value="option1">记住密码</label>
 					</div>
 				</div>
 				<div class="btn-group" role="group">
-					<button type="button" id="loginbutton" href="index" class="btn btn-success" style="width:100px;height:30px">登录</button>
-					<a class="btn btn-primary" href="register" role="button" style="width:100px;height:30px">注册</a>
+					<button id="loginbutton" class="btn btn-success" style="width:100px;height:30px">登录</button>
+					<a class="btn btn-primary" href="Register.html" role="button" style="width:100px;height:30px">注册</a>
 				</div>
 
 			</div>
@@ -97,6 +97,36 @@
 		<script type="text/javascript" src="/static/ebookstore/js/jquery.validate.min.js"></script>
 		<script src="/static/ebookstore/js/form-validation.js"></script>
 		<script src="/static/ebookstore/js/scripts.js"></script>
-		
+		<script type="text/javascript">
+			window.onload = function() {
+				var nameElement = document.querySelector("input[name='username']");
+				var passwordElement = document.querySelector("input[name='password']");
+				var rememberElement = document.querySelector("input[name='remember']");
+				var login = document.querySelector("#loginbutton");
+				login.onclick = function() {
+					$.ajax({
+                        url: "/ebookstore/login",
+						method: "post",
+						data: {
+							name: nameElement.value,
+							password: passwordElement.value
+						},
+						error: function() {
+							alert('登录失败');
+						},
+						success: function(data) {
+							if(data==1){
+								//location.href="index.html"
+								alert("success");
+							}else{
+								alert("failure");
+							}
+						}
+					});
+				}
+			}
+		</script>
+
 	</body>
+
 </html>
