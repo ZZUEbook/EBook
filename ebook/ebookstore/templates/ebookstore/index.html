@@ -2,6 +2,11 @@
 <html>
 
 	<head>
+		<!--
+        	作者：offline
+        	时间：2018-09-07
+        	描述：主页
+        -->
 		<meta charset="UTF-8">
 		<title>eBookStore</title>
 		<link rel="stylesheet" href="/static/ebookstore/bootstrap/css/bootstrap.min.css">
@@ -172,7 +177,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-					<a class="navbar-brand" href="#">eBookStore</a>
+					<a class="navbar-brand" href="#">My-eBookStore</a>
 				</div>
 				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
 					<ul class="nav navbar-nav">
@@ -198,17 +203,16 @@
 							<a href="#">新书上架</a>
 						</li>
 					</ul>
-
+					
 					<!--
                     	作者：offline
                     	时间：2018-09-05
                     	描述：用户已登录
                     -->
-                    <!--
-					<ul class="nav pull-right" id="vip">
+					<ul class="nav pull-right">
 						<li class="dropdown">
 							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-user"></i> 用户 <i class="caret"></i>
+								<i class="icon-user"></i> {{ name }} <i class="caret"></i>
 							</a>
 							<ul class="dropdown-menu">
 								<li>
@@ -221,30 +225,29 @@
 									<a tabindex="-1" href="#">购物车</a>
 								</li>
 								<li class="divider"></li>
+
 								<li>
-									<a tabindex="-1" href="login">退出登录</a>
+									<a tabindex="-1" href="logout">退出登录</a>
 								</li>
 							</ul>
 						</li>
 					</ul>
-					-->
+					<!--
                     	时间：2018-09-05
                     	描述：用户未登陆时代码
-                    <ul class="nav pull-right" id="tourist">
+                    	<ul class="nav pull-right">
 						<li class="dropdown">
 							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="icon-user"></i> 游客 <i class="caret"></i>
 							</a>
 							<ul class="dropdown-menu">
-							    <li>
-									<a tabindex="-1" href="login">登录</a>
-								</li>
 								<li>
-									<a tabindex="-1" href="register">注册</a>
+									<a tabindex="-1" href="login.html">注册</a>
 								</li>
 							</ul>
 						</li>
 					</ul>
+                    -->
 				</div>
 			</div>
 		</nav>

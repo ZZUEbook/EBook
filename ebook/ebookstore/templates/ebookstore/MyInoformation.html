@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<!--
+        	作者：offline
+        	时间：2018-09-07
+        	描述：我的信息页面
+        -->
+		<meta charset="UTF-8">
+		<title>我的信息</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="/static/ebookstore/js/bootstrap.min.js"></script>
+		<link href="/static/ebookstor/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="/static/ebookstor/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+		<link href="/static/ebookstor/css/styles.css" rel="stylesheet" media="screen">
+		<script src="/static/ebookstore/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+		<style>
+			body {
+				background-image: url('/static/ebookstore/img/背景.jpg');
+				background-size: cover;
+			}
+			
+			img {
+				width: 40px;
+				height: 25px;
+				position: absolute;
+				right: 0px;
+				margin: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<nav id="navbar-example" class="navbar navbar-inverse navbar navbar-fixed-top navbar-has-shadow" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+					<a class="navbar-brand" href="#">My-eBookStore</a>
+				</div>
+				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="#">主页</a>
+						</li>
+						<li class="dropdown">
+							<a href="#" data-toggle="dropdown" class="dropdown-toggle">书籍分类<b class="caret"></b>
+
+							</a>
+							<ul class="dropdown-menu" id="menu1">
+
+								<li>
+									<a href="#">计算机类</a>
+								</li>
+								<li>
+									<a href="#">英语类</a>
+								</li>
+
+							</ul>
+						</li>
+						<li>
+							<a href="#">新书上架</a>
+						</li>
+					</ul>
+
+					<ul class="nav pull-right">
+						<li class="dropdown">
+							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-user"></i> 用户 <i class="caret"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a tabindex="-1" href="#">我的信息</a>
+								</li>
+								<li>
+									<a tabindex="-1" href="#">我的订单</a>
+								</li>
+								<li>
+									<a tabindex="-1" href="#">购物车</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a tabindex="-1" href="login.html">退出登录</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="row-fluid" style="width: 70%; margin:0 auto ;">
+			<!-- block -->
+			<div class="block">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">我的信息</div>
+				</div>
+				<div class="block-content collapse in">
+					<div class="span12">
+						<form class="form-horizontal">
+							<div class="control-group">
+								<label class="control-label">用户名</label>
+								<div class="controls">
+									<span class="input-xlarge uneditable-input">此处为用户名</span>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label">电话</label>
+								<div class="controls">
+									<span class="input-xlarge uneditable-input">此处为电话</span>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="typeahead">地址 </label>
+								<div class="controls">
+									<input type="text" class="span6" id="" data-provide="typeahead" data-items="4">
+								</div>
+							</div>
+
+							<div class="control-group">
+								<label class="control-label" for="typeahead">密码 </label>
+								<div class="controls" id="psw_invisible1">
+									<input type="password"class="span6" id="input_invisible1" />
+									<img id="visible" onclick="showPsw()" src="img/关闭.jpg">
+								</div>
+								<!--明文密码输入框-->
+								<div class="controls" id="psw_visible1" style="display: none;">
+									<img id="invisible" onclick="hidePsw()" src="img/打开.jpg">
+									<input type="text" class="span6" id="input_visible1"  />
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="typeahead">确认密码 </label>
+								<div class="controls" id="psw_invisible2">
+									<input type="password"class="span6" id="input_invisible2" />
+								</div>
+								<!--明文密码输入框-->
+								<div class="controls" id="psw_visible2" style="display: none;">
+									<input type="text" class="span6" id="input_visible2"  />
+								</div>
+							</div>
+
+							<div class="form-actions">
+								<button type="submit" class="btn btn-primary">保存</button>
+								<a type="reset" class="btn" href="index.html">取消</a>
+							</div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+			<!-- /block -->
+		</div>
+		<script type="text/javascript">
+	// 这里使用最原始的js语法实现，可对应换成jquery语法进行逻辑控制
+	var visible1=document.getElementById('psw_visible1');//text block
+	var invisible1=document.getElementById('psw_invisible1');//password block
+	var inputVisible1 = document.getElementById('input_visible1');
+	var inputInVisible1 = document.getElementById('input_invisible1');
+	var visible2=document.getElementById('psw_visible2');//text block
+	var invisible2=document.getElementById('psw_invisible2');//password block
+	var inputVisible2 = document.getElementById('input_visible2');
+	var inputInVisible2 = document.getElementById('input_invisible2');
+    //隐藏text block，显示password block
+	function showPsw(){
+	 	var val1 = inputInVisible1.value;//将password的值传给text
+	 	inputVisible1.value = val1;
+	 	invisible1.style.display = "none";  
+	 	visible1.style.display = ""; 
+	 	var val2 = inputInVisible2.value;//将password的值传给text
+	 	inputVisible2.value = val2;
+	 	invisible2.style.display = "none";  
+	 	visible2.style.display = ""; 
+	}
+    //隐藏password，显示text  
+    function hidePsw(){
+   		var val1=inputVisible1.value;//将text的值传给password  
+		inputInVisible1.value = val1; 
+		invisible1.style.display = "";  
+	    visible1.style.display = "none";  
+	    
+	    var val2=inputVisible2.value;//将text的值传给password  
+		inputInVisible2.value = val2; 
+		invisible2.style.display = "";  
+	    visible2.style.display = "none";  
+	}
+</script>
+	</body>
+
+</html>

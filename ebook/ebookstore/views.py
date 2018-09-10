@@ -1,26 +1,32 @@
 from django.shortcuts import render
-from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.shortcuts import render,redirect
+from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.template import loader
-from django.shortcuts import render
 from ebookstore.models import User
 import json, socket
 
 # Create your views here.
 def index(request):
-    return render(request, template_name="ebookstore/index.html")
+    name = request.COOKIES.get('name')
+    if not name:
+        return render(request, "ebookstore/index.html")
+    return render(request, "ebookstore/index.html",context={'name':name})
 
 def login(request):
-    print(request.POST)
+    name = request.COOKIES.get('name')
+    if name:
+        return render(request,'ebookstore/index.html',context={'name':name})
     if request.method == "POST":
-        data = {'url': '', 'res': '0',}
         user = User.objects.filter(user_name=request.POST['name']).first()
-        print(user.user_password, user.user_password == request.POST['password'])
         if user.user_password == request.POST['password']:
-            data['res'] = 1
-            data['url'] = 'index/'
-        if user.user_status == -1:
-            data['res'] = -1
-        return HttpResponse(json.dumps(data), content_type='application/json')
+            if user.user_status == -1:
+                return HttpResponse(-1)
+            res = HttpResponse(1)
+            res.set_cookie('name', value=user.user_name)
+            return res
+        else:
+            return HttpResponse(0)
+        print(request.POST)
     return render(request, template_name="ebookstore/Login.html")
 
 def register(request):
@@ -31,3 +37,8 @@ def administrator(request):
 
 def administrator_Login(request):
     return render(request, template_name="ebookstore/Administrator-Login.html")
+
+def logout(request):
+    res = render(request, template_name="ebookstore/Login.html")
+    res.delete_cookie('name')
+    return res

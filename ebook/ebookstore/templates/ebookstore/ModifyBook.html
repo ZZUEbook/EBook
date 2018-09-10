@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+        	作者：offline
+        	时间：2018-09-07
+        	描述：修改书籍信息页面
+        -->
+		<meta charset="UTF-8">
+		<title>修改书籍</title>
+		<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+		<link href="/static/ebookstore/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="/static/ebookstore/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+		<link href="/static/ebookstore/assets/styles.css" rel="stylesheet" media="screen">
+		<script src="/static/ebookstore/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+		<link href="vendors/datepicker.css" rel="stylesheet" media="screen">
+		<script src="/static/ebookstore/jquery/jquery.min.js"></script>
+		<script src="/static/ebookstore/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/static/ebookstore/bootstrap/js/bootstrap.min.js"></script>
+		<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<script src="/static/ebookstore/vendors/bootstrap-datepicker.js"></script>
+		<script type="text/javascript" src="/static/ebookstore/vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+		<script src="/static/ebookstore/assets/form-validation.js"></script>
+		
+		<style>
+			body {
+				background-image: url('/static/ebookstore/img/背景.jpg');
+				background-size: cover;
+			}
+		</style>
+	</head>
+	<body>
+		<nav id="navbar-example" class="navbar navbar-inverse navbar navbar-fixed-top navbar-has-shadow" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+					<a class="navbar-brand" href="#">My-eBookStore</a>
+				</div>
+				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="#">图书管理</a>
+						</li>
+						<li>
+							<a href="#">用户管理</a>
+						</li>
+						<li>
+							<a href="#">订单管理</a>
+						</li>
+						<li>
+							<a href="#">公告管理</a>
+						</li>
+						<li>
+							<a href="#">账目管理</a>
+						</li>
+					</ul>
+					<ul class="nav pull-right">
+						<li class="dropdown">
+							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-user"></i> 管理员 <i class="caret"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a tabindex="-1" href="Administrator-Login.html">退出</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		
+		
+		 <div class="row-fluid" style="width: 70%; margin:0 auto ;">
+            <!-- block -->
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">修改书籍</div>
+                </div>
+                <div class="block-content collapse in">
+                    <div class="span12">
+                        <form class="form-horizontal">
+                            <div class="control-group">
+                              <label class="control-label">书名</label>
+                              <div class="controls">
+                                <span class="input-xlarge uneditable-input">此处为书名</span>
+                              </div>
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label">ISBN</label>
+                              <div class="controls">
+                                <span class="input-xlarge uneditable-input">此处为ISBN</span>
+                              </div>
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label" for="typeahead">作者 </label>
+                              <div class="controls">
+                                <input type="text" class="span6" id=""  data-provide="typeahead" data-items="4" >
+                              </div>
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label" for="typeahead">出版社 </label>
+                              <div class="controls">
+                                <input type="text" class="span6" id=""  data-provide="typeahead" data-items="4" >
+                              </div>
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label" for="date01">出版日期</label>
+                              <div class="controls">
+                                <input type="text" class="input-xlarge datepicker" id="date01" >                            
+                             </div>
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label" for="select01">类别</label>
+                              <div class="controls">
+                                <select id="select01" class="chzn-select">
+                                  <option>英语类</option>
+                                  <option>计算机类</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label" for="typeahead">库存 </label>
+                              <div class="controls">
+                                <input type="text" class="span6" id=""  data-provide="typeahead" data-items="4" >
+                              </div>
+                            </div>
+        					<div class="control-group">
+                              <label class="control-label" for="typeahead">售价 </label>
+                              <div class="controls">
+                                <input type="text" class="span6" id=""  data-provide="typeahead" data-items="4" >
+                              </div>
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label" for="typeahead">成本价 </label>
+                              <div class="controls">
+                                <input type="text" class="span6" id=""  data-provide="typeahead" data-items="4" >
+                              </div>
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label" for="fileInput">封面</label>
+                              <div class="controls">
+                                <input class="input-file uniform_on" id="fileInput" type="file">
+                              </div>
+                            </div>
+                            <div class="control-group">
+                              <label class="control-label" for="textarea2">简介</label>
+                              <div class="controls">
+                                <textarea class="input-xlarge textarea" placeholder="Enter text ..." style="width: 810px; height: 200px"></textarea>
+                              </div>
+                            </div>
+                            <div class="form-actions">
+                              <button type="submit" class="btn btn-primary">保存</button>
+                              <button type="reset" class="btn">取消</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /block -->
+        </div>	
+        <script type="text/javascript" src="/static/ebookstore/jquery.js"></script>
+        <script type="text/javascript" src="/static/ebookstore/bootstrap.min.js"></script>
+        <script>
+
+	jQuery(document).ready(function() {   
+	   FormValidation.init();
+	});
+	
+
+        $(function() {
+            $(".datepicker").datepicker();
+            $(".uniform_on").uniform();
+            $(".chzn-select").chosen();
+            $('.textarea').wysihtml5();
+
+            
+        });
+        </script>
+	</body>
+</html>
