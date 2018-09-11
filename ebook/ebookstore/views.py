@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.template import loader
-from ebookstore.models import User
+from ebookstore.models import User, Book, Notice, BookType
 import json, socket
 
 # Create your views here.
@@ -27,10 +27,28 @@ def login(request):
         else:
             return HttpResponse(0)
         print(request.POST)
+
     return render(request, template_name="ebookstore/Login.html")
 
 def register(request):
-    return render(request,template_name="ebookstore/Register.html")
+    if request.method == "POST":
+        print(request.POST)
+        if len(User.objects.filter(user_name=request.POST['name'])) > 0:
+            return HttpResponse(0)
+        else:
+            user = User(user_name=request.POST['name'],
+                        user_password=request.POST['password'],
+                        user_email=request.POST['mail'],
+                        user_address=request.POST['address'],
+                        user_phone=request.POST['telephone'])
+            try:
+                user.save()
+                return HttpResponse(1)
+            except Exception as e:
+                print(e)
+                return HttpResponse(-1)
+    else:
+        return render(request,template_name="ebookstore/Register.html")
 
 def administrator(request):
     return render(request, template_name="ebookstore/Administrator.html")
@@ -42,3 +60,53 @@ def logout(request):
     res = render(request, template_name="ebookstore/Login.html")
     res.delete_cookie('name')
     return res
+
+def getbook(request):
+    if request.method == "GET":
+        subject = request.GET.get('subject', '')
+        if subject:
+            data = []
+            booktype = BookType.objects.filter(booktype_name=subject).first()
+            booktype = booktype.booktype_id
+            books = Book.objects.filter(book_type_id=booktype)
+            for book in books:
+                data.append({"id": book.book_id, "url": book.book_photo, "name": book.book_name})
+            return HttpResponse(json.dumps(data))
+        else:
+            books = Book.objects.all()
+            data = []
+            for book in books:
+                data.append({"id": book.book_id, "url": book.book_photo, "name": book.book_name})
+            return HttpResponse(json.dumps(data))
+def getNotice(request):
+    if request.method == "GET":
+        notices = Notice.objects.filter(notice_status=1)
+        data = []
+        for notice in notices:
+            data.append({"time": str(notice.notice_time), "content":notice.notice_content})
+        return HttpResponse(json.dumps(data))
+
+def getRankList(request):
+    if request.method == "GET":
+        if request.GET['subject'] == "english":
+            books = Book.objects.filter(book_type_id=2).order_by("-book_sale_number")[0:10]
+        elif request.GET['subject'] == "computer":
+            books = Book.objects.filter(book_type_id=1).order_by("-book_sale_number")[0:10]
+        else:
+            books = Book.objects.all().order_by("-book_sale_number")[0:10]
+        items = []
+        for book in books:
+            items.append({"id": book.book_id, "name": book.book_name})
+
+        return HttpResponse(content=json.dumps(items))
+
+def myinfo(request):
+    name = 'yu'
+    template = loader.get_template('ebookstore/MyInoformation.html')
+    context = {
+        'name': name,
+    }
+    return HttpResponse(template.render(context, request))
+
+def adminLogin(request):
+    return render(request, template_name='ebookstore/Administrator-Login.html')

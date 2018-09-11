@@ -23,6 +23,7 @@ class Notice(models.Model):
     notice_content = models.CharField(max_length=800)
     notice_admin_id = models.ForeignKey(Admin, on_delete=models.DO_NOTHING)
     notice_time = models.DateTimeField()
+    notice_status = models.IntegerField(default=1)
 
 
 class BookType(models.Model):
@@ -40,7 +41,7 @@ class Book(models.Model):
     book_type_id = models.ForeignKey(BookType, models.DO_NOTHING)
     book_introduce = models.CharField(max_length=300, blank=True)
     book_price = models.DecimalField(max_digits=20, decimal_places=2)
-    book_photo = models.ImageField(blank=True)
+    book_photo = models.CharField(blank=True, max_length=200)
     book_left_number = models.IntegerField()
     book_sale_number = models.IntegerField(default=0)
     book_cost = models.IntegerField(blank=True)

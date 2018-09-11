@@ -56,48 +56,47 @@
 					<div class="muted pull-left">注册</div>
 				</div>
 				<form class="form-horizontal">
-				<fieldset>
-				<div class="control-group" align="left" style="margin: auto;">
-					<label class="control-label" for="focusedInput">姓名</label>
-					<div class="controls">
-						<input class="input-xlarge focused" id="focusedInput" type="text" value="">
-					</div>
-				</div>
-				<div class="control-group" align="left" style="margin: auto;">
-					<label class="control-label" for="focusedInput">邮箱</label>
-					<div class="controls">
-						<input class="input-xlarge focused" id="focusedInput" type="text" value="">
-					</div>
-				</div>
-				<div class="control-group" align="left" style="margin: auto;">
-					<label class="control-label" for="focusedInput">电话</label>
-					<div class="controls">
-						<input class="input-xlarge focused" id="focusedInput" type="text" value="">
-					</div>
-				</div>
-				<div class="control-group" align="left" style="margin: auto;">
-					<label class="control-label" for="focusedInput">地址</label>
-					<div class="controls">
-						<input class="input-xlarge focused" id="focusedInput" type="text" value="">
-					</div>
-				</div>
-				<div class="control-group" align="left" style="margin: auto;">
-					<label class="control-label" for="focusedInput">密码</label>
-					<div class="controls">
-						<input class="input-xlarge focused" id="focusedInput" type="text" value="">
-					</div>
-				</div>
-				<div class="control-group" align="left" style="margin: auto;">
-					<label class="control-label" for="focusedInput">确认密码</label>
-					<div class="controls">
-						<input class="input-xlarge focused" id="focusedInput" type="text" value="">
-					</div>
-				</div>
-				<div class="btn-group" role="group">
-					<a id="loginbutton" href="Login.html" class="btn btn-success" style="width:100px;height:30px">取消</a>
-					<a class="btn btn-primary" href="index.html" role="button" style="width:100px;height:30px">完成</a>
-				</div>
-				</fieldset>
+					<fieldset>
+						<div class="control-group" align="left" style="margin: auto;">
+							<label class="control-label" for="focusedInput">姓名</label>
+							<div class="controls">
+								<input class="input-xlarge focused" id="focusedInput" name="username" type="text" value="">
+							</div>
+						</div>
+						<div class="control-group" align="left" style="margin: auto;">
+							<label class="control-label" for="focusedInput">邮箱</label>
+							<div class="controls">
+								<input class="input-xlarge focused" id="focusedInput" name="mail" type="text" value="">
+							</div>
+						</div>
+						<div class="control-group" align="left" style="margin: auto;">
+							<label class="control-label" for="focusedInput">电话</label>
+							<div class="controls">
+								<input class="input-xlarge focused" id="focusedInput" name="telephone" type="text" value="">
+							</div>
+						</div>
+						<div class="control-group" align="left" style="margin: auto;">
+							<label class="control-label" for="focusedInput">地址</label>
+							<div class="controls">
+								<input class="input-xlarge focused" id="focusedInput" name="address" type="text" value="">
+							</div>
+						</div>
+						<div class="control-group" align="left" style="margin: auto;">
+							<label class="control-label" for="focusedInput">密码</label>
+							<div class="controls">
+								<input class="input-xlarge focused"  id="focusedInput" name="password" type="password" value="">
+							</div>
+						</div>
+						<div class="control-group" align="left" style="margin: auto;">
+							<label class="control-label" for="focusedInput">确认密码</label>
+							<div class="controls">
+								<input class="input-xlarge focused" id="focusedInput" name="password2" type="password" value="">
+							</div>
+						</div>
+						<div class="btn-group" role="group">
+							<button id="register" class="btn btn-primary" style="width:100px;height:30px">注册</button>
+						</div>
+					</fieldset>
 				</form>
 			</div>
 		</div>
@@ -117,5 +116,146 @@
 		<script type="text/javascript" src="/static/ebookstore/js/jquery.validate.min.js"></script>
 		<script src="/static/ebookstore/js/form-validation.js"></script>
 		<script src="/static/ebookstore/js/scripts.js"></script>
+    		<script type="text/javascript">
+			window.onload = function() {
+				var nameElement = document.querySelector("input[name='username']");
+				var passwordElement = document.querySelector("input[name='password']");
+				var /static/ebookstore/css = document.querySelector("input[name='remember']");
+				var login = document.querySelector("#loginbutton");
+				login.onclick = function() {
+					var name = nameElement.value,
+						password = passwordElement.value;
+					if(name.length == 0) {
+						alert("用户名不能为空");
+						console.log(name);
+						return;
+					}
+					if(password.length == 0) {
+						alert("密码不能为空");
+						return;
+					}
+
+					$.ajax({
+						url: "/ebookstore/register",
+						method: "post",
+						data: {
+							name: name,
+							password: password
+						},
+						error: function() {
+							alert('登录失败');
+						},
+						success: function(data) {
+							switch(Number(data)) {
+								case 1:
+								    /*
+									if(/static/ebookstore/css.value == true) {
+										document.cookie =
+											`name=${encodeURIComponent(name)};expires=${new Date(Date.now()+30*86400*1000)}`;
+										document.cookie =
+											`password=${encodeURIComponent(password)};expires=${new Date(Date.now()+30*86400*1000)}`;
+									}
+									*/
+									location.href = "./index";
+									break;
+								case 0:
+									alert("用户名或密码不正确！");
+									nameElement.value = "";
+									passwordElement.value = "";
+									nameElement.focus();
+									break;
+								case -1:
+									alert("你的帐户已被冻结！");
+									break;
+							}
+						}
+					});
+				}
+
+			}
+		</script>
+    <script type="text/javascript">
+			window.onload = function() {
+				var nameEle = document.querySelector("input[name='username']"),
+					mailEle = document.querySelector("input[name='mail']"),
+					telephoneEle = document.querySelector("input[name='telephone']"),
+					addressEle = document.querySelector("input[name='address']"),
+					passwordEle = document.querySelector("input[name='password']"),
+					password2Ele = document.querySelector("input[name='password2']"),
+					register = document.getElementById("register");
+				register.onclick = function(e) {
+					var e = e || window.event;
+					e.preventDefault();
+					var name = nameEle.value,
+						mail = mailEle.value,
+						telephone = telephoneEle.value,
+						address = addressEle.value,
+						password = passwordEle.value,
+						password2 = password2Ele.value;
+					if(name.length == 0) {
+						alert("用户名不能为空");
+						return;
+					}
+					if(mail.length == 0) {
+						alert("邮箱不能为空");
+						return;
+					}
+					if(telephone.length == 0) {
+						alert("电话不能为空");
+						return;
+					}
+					if(address.length == 0) {
+						alert("地址不能为空");
+						return;
+					}
+					if(password.length == 0) {
+						alert("密码不能为空");
+						return;
+					}
+					if(password2.length == 0) {
+						alert("密码确认不能为空");
+						return;
+					}
+					if(password !== password2) {
+						alert("两次密码输入不一致");
+						return;
+					}
+
+					$.ajax({
+						url: "/ebookstore/register",
+						method: "post",
+						data: {
+							name: name,
+							mail: mail,
+							telephone: telephone,
+							address: address,
+							password: password
+						},
+						error: function() {
+							alert('注册失败');
+						},
+						success: function(data) {
+							switch(Number(data)) {
+								case 1:
+									document.cookie =
+										`name=${encodeURIComponent(name)};expires=${new Date(Date.now()+30*86400*1000)}`;
+									document.cookie =
+										`password=${encodeURIComponent(password)};expires=${new Date(Date.now()+30*86400*1000)}`;
+									location.href = "./index";
+									break;
+								case 0:
+									alert("用户已存在！");
+									nameElement.value = "";
+									nameElement.focus();
+									break;
+                                case -1:
+                                    alert("Http 500");
+
+							}
+						}
+					});
+				}
+			}
+		</script>
 	</body>
 </html>
