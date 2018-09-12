@@ -15,4 +15,5 @@ urlpatterns = [
     path('getRankList',views.getRankList,name='getRankList'),
     path('myinfo/', views.myinfo, name='myinfo'),
     path('admin-login/', views.adminLogin, name='adminLogin'),
+    path('newBook/', views.newBook, name="newBook"),
 ]

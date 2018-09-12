@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404,HttpResponseRedirect
-from django.template import loader
+from django.template import loader, Context
 from ebookstore.models import User, Book, Notice, BookType
 import json, socket
 
@@ -65,6 +65,7 @@ def getbook(request):
     if request.method == "GET":
         subject = request.GET.get('subject', '')
         if subject:
+            print("para")
             data = []
             booktype = BookType.objects.filter(booktype_name=subject).first()
             booktype = booktype.booktype_id
@@ -73,6 +74,7 @@ def getbook(request):
                 data.append({"id": book.book_id, "url": book.book_photo, "name": book.book_name})
             return HttpResponse(json.dumps(data))
         else:
+            print('no para')
             books = Book.objects.all()
             data = []
             for book in books:
@@ -110,3 +112,11 @@ def myinfo(request):
 
 def adminLogin(request):
     return render(request, template_name='ebookstore/Administrator-Login.html')
+
+def newBook(request):
+    if request.method == "GET":
+        books = Book.objects.all().order_by("-book_id")[0:5]
+        items = []
+        for book in books:
+            items.append({"id": book.book_id, "name": book.book_name,"url":book.book_photo})
+        return HttpResponse(content=json.dumps(items))

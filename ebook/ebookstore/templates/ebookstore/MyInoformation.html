@@ -42,12 +42,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-					<a class="navbar-brand" href="#">My-eBookStore</a>
+					<a class="navbar-brand" href="#">eBookStore</a>
 				</div>
 				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
 					<ul class="nav navbar-nav">
-						<li>
-							<a href="#">主页</a>
+						<li class="active">
+							<a href="/ebookstore/index">主页</a>
 						</li>
 						<li class="dropdown">
 							<a href="#" data-toggle="dropdown" class="dropdown-toggle">书籍分类<b class="caret"></b>
@@ -55,28 +55,35 @@
 							</a>
 							<ul class="dropdown-menu" id="menu1">
 
-								<li>
+                                <li id="selectComputer">
 									<a href="#">计算机类</a>
 								</li>
-								<li>
+								<li id="selectEnglish">
 									<a href="#">英语类</a>
 								</li>
 
 							</ul>
 						</li>
 						<li>
-							<a href="#">新书上架</a>
+							<a id="newBook" href="javascript:void(0);">新书上架</a>
+
 						</li>
 					</ul>
+					<!--
+                    	作者：offline
+                    	时间：2018-09-05
+                    	描述：用户已登录
+                    -->
+                    {% if name %}
 
-					<ul class="nav pull-right">
+					<ul class="nav pull-right" id="vip">
 						<li class="dropdown">
 							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-user"></i> {{ name }} <i class="caret"></i>
+								<i class="icon-user"></i> {{name}} <i class="caret"></i>
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a tabindex="-1" href="#">我的信息</a>
+									<a tabindex="-1" href="/ebookstore/myinfo">我的信息</a>
 								</li>
 								<li>
 									<a tabindex="-1" href="#">我的订单</a>
@@ -86,15 +93,35 @@
 								</li>
 								<li class="divider"></li>
 								<li>
-									<a tabindex="-1" href="login.html">退出登录</a>
+									<a tabindex="-1" href="/ebookstore/logout">退出登录</a>
 								</li>
 							</ul>
 						</li>
 					</ul>
+                    {% else %}
+                    <!--
+                        时间：2018-09-05
+                    	描述：用户未登陆时代码
+                    -->
+                    <ul class="nav pull-right" id="tourist">
+						<li class="dropdown">
+							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-user"></i> 游客 <i class="caret"></i>
+							</a>
+							<ul class="dropdown-menu">
+							    <li>
+									<a tabindex="-1" href="/ebookstore/login">登录</a>
+								</li>
+								<li>
+									<a tabindex="-1" href="/ebookstore/register">注册</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+                    {% endif %}
 				</div>
 			</div>
 		</nav>
-
 		<div class="row-fluid" style="width: 70%; margin:0 auto ;">
 			<!-- block -->
 			<div class="block">

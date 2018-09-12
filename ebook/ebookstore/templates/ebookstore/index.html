@@ -161,7 +161,7 @@
             #showBook img {
 				width: 70%;
 				height: 70%;
-				box-shadow: 10px 10px 5px #222222;
+				box-shadow: 2px 5px 10px #222222;
 			}
 		</style>
 
@@ -200,7 +200,8 @@
 							</ul>
 						</li>
 						<li>
-							<a href="#">新书上架</a>
+							<a id="newBook" href="javascript:void(0);">新书上架</a>
+
 						</li>
 					</ul>
 					<!--
@@ -217,7 +218,7 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a tabindex="-1" href="/ebookstore/myinfo">我的信息</a>
+									<a tabindex="-1" href="/ebookstore/myinfo" id="myinfo">我的信息</a>
 								</li>
 								<li>
 									<a tabindex="-1" href="#">我的订单</a>
@@ -398,12 +399,57 @@
 		</div>
 
     <script type="text/javascript">
+        //我的信息
+        var myinfo = document.getElementById("myinfo");
+        myinfo.onclick=function () {
+            $.ajax({
+                url: "/ebookstore/myinfo/",
+                method: "post",
+                error: function () {
+                    alert("something wrong")
+                },
+                success: function (data) {
+                    alert("success")
+                }
+            });
+
+        };
+        //新书上架模块
+			var newBook = document.querySelector("#newBook");
+			newBook.onclick = function() {
+				$.ajax({
+					url: "/ebookstore/newBook",
+					method: "get",
+					error: function() {
+						alert('数据出错，请刷新');
+					},
+					success: function(data) {
+						var arr = JSON.parse(data),
+							len = arr.length,
+							showBookHTML = "";
+						for(var i = 0; i < len; i++) {
+							showBookHTML += `<div class="col-xs-6 col-md-4">
+						<a href="BookDetail.html?id=${arr[i].id}">
+							<img src="${arr[i].url}" >
+						</a>
+						<a href="BookDetail.html?id=${arr[i].id}">
+							<h3 style=" color: white;">${arr[i].name}</h3>
+						</a>
+					</div>`;
+						}
+						showBook.innerHTML = showBookHTML;
+					}
+				});
+			}
+
+
         var selectComputer = document.querySelector("#selectComputer"),
-				selectEnglish = document.querySelector("#selectEnglish");
+				selectEnglish = document.querySelector("#selectEnglish"),
+                showBook = document.querySelector("#showBook");
 
 			selectComputer.onclick = function() {
 				$.ajax({
-					url: "/ebookstore/getBook?suject=english",
+					url: "/ebookstore/getbook?subject=computer",
 					method: "get",
 					error: function() {
 						alert('数据出错，请刷新');
@@ -422,6 +468,7 @@
 								</a>
 							</div>`;
 						}
+
 						showBook.innerHTML = showBookHTML;
 					}
 				});
@@ -429,7 +476,7 @@
 
 			selectEnglish.onclick = function() {
 				$.ajax({
-					url: "/ebookstore/getbook?suject=english",
+					url: "/ebookstore/getbook?subject=english",
 					method: "get",
 					error: function() {
 						alert('数据出错，请刷新');
@@ -455,7 +502,7 @@
 
 
 
-			var showBook = document.querySelector("#showBook");
+
 			$.ajax({
 				url: "/ebookstore/getbook",
 				method: "get",
