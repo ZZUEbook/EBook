@@ -45,6 +45,7 @@ class Book(models.Model):
     book_left_number = models.IntegerField()
     book_sale_number = models.IntegerField(default=0)
     book_cost = models.IntegerField(blank=True)
+    book_press = models.CharField(max_length=100, blank=True)
 
 
 class Cart(models.Model):

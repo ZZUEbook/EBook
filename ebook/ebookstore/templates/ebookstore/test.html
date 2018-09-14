@@ -1,0 +1,94 @@
+{% extends "ebookstore/base.html" %}
+{% block title %}My-eBookStore-登录{% endblock %}
+{% block body %}
+    <div align="center">
+			<div class="block" style="width: 500px;">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">登录</div>
+				</div>
+				<div class="control-group" align="left" style="margin-left: 115px;">
+					<label class="control-label" for="focusedInput">用户名</label>
+					<div class="controls">
+						<input class="input-xlarge focused" id="focusedInput" name="username" type="text">
+					</div>
+				</div>
+				<div class="control-group" align="left" style="margin-left: 115px;">
+					<label class="control-label" for="focusedInput">密码</label>
+					<div class="controls">
+						<input class="input-xlarge focused" id="focusedInput" name="password" type="text">
+					</div>
+				</div>
+				<div class="control-group" align="left" style="margin-left: 115px;">
+					<div class="controls">
+						<label>
+                  <input type="checkbox" id="optionsCheckbox2" name="remember" value="option1">记住密码</label>
+					</div>
+				</div>
+				<div class="btn-group" role="group">
+					<button id="loginbutton" class="btn btn-success" style="width:100px;height:30px">登录</button>
+					<a class="btn btn-primary" href="Register.html" role="button" style="width:100px;height:30px">注册</a>
+				</div>
+
+			</div>
+		</div>
+{% endblock %}
+{% block js %}
+		<script type="text/javascript">
+			window.onload = function() {
+				var nameElement = document.querySelector("input[name='username']");
+				var passwordElement = document.querySelector("input[name='password']");
+				var rememberElement = document.querySelector("input[name='remember']");
+				var login = document.querySelector("#loginbutton");
+				login.onclick = function() {
+					var name = nameElement.value,
+						password = passwordElement.value;
+					if(name.length == 0) {
+						alert("用户名不能为空");
+						console.log(name);
+						return;
+					}
+					if(password.length == 0) {
+						alert("密码不能为空");
+						return;
+					}
+
+					$.ajax({
+						url: "/ebookstore/login",
+						method: "post",
+						data: {
+							name: name,
+							password: password
+						},
+						error: function() {
+							alert('登录失败');
+						},
+						success: function(data) {
+							switch(Number(data)) {
+								case 1:
+								    /*
+									if(rememberElement.value == true) {
+										document.cookie =
+											`name=${encodeURIComponent(name)};expires=${new Date(Date.now()+30*86400*1000)}`;
+										document.cookie =
+											`password=${encodeURIComponent(password)};expires=${new Date(Date.now()+30*86400*1000)}`;
+									}
+									*/
+									location.href = "/ebookstore/index";
+									break;
+								case 0:
+									alert("用户名或密码不正确！");
+									nameElement.value = "";
+									passwordElement.value = "";
+									nameElement.focus();
+									break;
+								case -1:
+									alert("你的帐户已被冻结！");
+									break;
+							}
+						}
+					});
+				}
+
+			}
+		</script>
+{% endblock %}

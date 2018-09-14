@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        {% block third %}{% endblock %}
+		<link rel="stylesheet" href="/static/ebookstore/bootstrap/css/bootstrap.min.css">
+		<link href="/static/ebookstore/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<link href="/static/ebookstore/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+		<link href="/static/ebookstore/assets/styles.css" rel="stylesheet" media="screen">
+		<script src="/static/ebookstore/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/ebookstore/bootstrap/css/bootstrap.min.css">
+		<script src="/static/ebookstore/jquery/jquery.min.js"></script>
+		<script src="/static/ebookstore/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/static/ebookstore/bootstrap/js/bootstrap.min.js"></script>
+		<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="/static/ebookstore/css/css(1).css" rel="stylesheet" />
+		<link href="/static/ebookstore/css/normalize.min.css" rel="stylesheet" />
+		<style>
+			.col-center-block {
+				float: none;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			body {
+				background-image: url('/static/ebookstore/img/背景.jpg');
+				background-size: cover;
+			}
+
+			.carousel {
+				margin-bottom: 60px;
+			}
+		</style>
+		<style class="cp-pen-styles">
+			body {
+				font-family: 'Source Sans Pro', sans-serif;
+			}
+
+			h1 {
+				padding-bottom: 0;
+				margin-bottom: 0;
+			}
+
+			h3 {
+				margin-top: 0;
+				font-weight: 300;
+			}
+
+			.container {
+				width: 40em;
+				margin: 10px auto;
+			}
+
+			.ac-label {
+				font-weight: 700;
+				position: relative;
+				padding: .5em 1em;
+				margin-bottom: .5em;
+				display: block;
+				cursor: pointer;
+				background-color: whiteSmoke;
+				transition: background-color .15s ease-in-out;
+			}
+
+			.ac-input:checked+label,
+			.ac-label:hover {
+				background-color: #999;
+			}
+
+			.ac-label:after,
+			.ac-input:checked+.ac-label:after {
+				content: "+";
+				position: absolute;
+				display: block;
+				right: 0;
+				top: 0;
+				width: 2em;
+				height: 100%;
+				line-height: 2.25em;
+				text-align: center;
+				background-color: #e5e5e5;
+				transition: background-color .15s ease-in-out;
+			}
+
+			.ac-label:hover:after,
+			.ac-input:checked+.ac-label:after {
+				background-color: #b5b5b5;
+			}
+
+			.ac-input:checked+.ac-label:after {
+				content: "-";
+			}
+
+			.ac-input {
+				display: none;
+			}
+
+			.ac-text,
+			.ac-sub-text {
+				opacity: 0;
+				height: 0;
+				margin-bottom: .5em;
+				transition: opacity .5s ease-in-out;
+				overflow: hidden;
+			}
+
+			.ac-input:checked~.ac-text,
+			.ac-sub .ac-input:checked~.ac-sub-text {
+				opacity: 1;
+				height: auto;
+			}
+
+			.ac-sub .ac-label {
+				background: none;
+				font-weight: 600;
+				padding: .5em 2em;
+				margin-bottom: 0;
+			}
+
+			.ac-sub .ac-label:checked {
+				background: none;
+				border-bottom: 1px solid whitesmoke;
+			}
+
+			.ac-sub .ac-label:after,
+			.ac-sub .ac-input:checked+.ac-label:after {
+				left: 0;
+				background: none;
+			}
+
+			.ac-sub .ac-input:checked+label,
+			.ac-sub .ac-label:hover {
+				background: none;
+			}
+
+			.ac-sub-text {
+				padding: 0 1em 0 2em;
+			}
+
+			#myCarousel {
+				position: absolute;
+				left: 50%;
+				margin-left: -350px;
+			}
+
+			#myCarouselIcon {
+				width: 40px;
+				height: 30px;
+				position: absolute;
+				bottom: 100px;
+				left: 50%;
+				margin-left: -20px;
+			}
+            #showBook img {
+				width: 70%;
+				height: 70%;
+				box-shadow: 2px 5px 10px #222222;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<nav id="navbar-example" class="navbar navbar-inverse navbar navbar-fixed-top navbar-has-shadow" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+					<a class="navbar-brand" href="/ebookstore/index">eBookStore</a>
+				</div>
+				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="/ebookstore/index">主页</a>
+						</li>
+                        {% block nav %}
+
+                        {% endblock %}
+					</ul>
+					<!--
+                    	作者：offline
+                    	时间：2018-09-05
+                    	描述：用户已登录
+                    -->
+                    {% if name %}
+
+					<ul class="nav pull-right" id="vip">
+						<li class="dropdown">
+							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-user"></i> {{name}} <i class="caret"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a tabindex="-1" href="/ebookstore/myinfo" id="myinfo">我的信息</a>
+								</li>
+								<li>
+									<a tabindex="-1" href="#">我的订单</a>
+								</li>
+								<li>
+									<a tabindex="-1" href="#">购物车</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a tabindex="-1" href="/ebookstore/logout">退出登录</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+                    {% else %}
+                    <!--
+                        时间：2018-09-05
+                    	描述：用户未登陆时代码
+                    -->
+                    <ul class="nav pull-right" id="tourist">
+						<li class="dropdown">
+							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-user"></i> 游客 <i class="caret"></i>
+							</a>
+							<ul class="dropdown-menu">
+							    <li>
+									<a tabindex="-1" href="/ebookstore/login">登录</a>
+								</li>
+								<li>
+									<a tabindex="-1" href="/ebookstore/register">注册</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+                    {% endif %}
+				</div>
+			</div>
+		</nav>
+    {% block body %}{% endblock %}
+     {% block js %}{% endblock %}
+
+    <script type="text/javascript">
+        //我的信息
+        var myinfo = document.getElementById("myinfo");
+        myinfo.onclick=function () {
+            $.ajax({
+                url: "/ebookstore/myinfo/",
+                method: "post",
+                error: function () {
+                    alert("something wrong")
+                },
+                success: function (data) {
+                    alert("success")
+                }
+            });
+
+        };
+
+		</script>
+	</body>
+
+</html>
