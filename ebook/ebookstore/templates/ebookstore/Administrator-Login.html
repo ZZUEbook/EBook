@@ -61,34 +61,28 @@
 					<div class="muted pull-left">管理员登录</div>
 				</div>
 				<div class="control-group" align="left" style="margin-left: 115px;">
-					<label class="control-label" for="focusedInput">管理员账户</label>
+					<label class="control-label" for="username">管理员账户</label>
 					<div class="controls">
-						<input class="input-xlarge focused" id="focusedInput" type="text" value="">
+						<input class="input-xlarge focused" id="username" type="text">
 					</div>
 				</div>
 				<div class="control-group" align="left" style="margin-left: 115px;">
-					<label class="control-label" for="focusedInput">密码</label>
+					<label class="control-label" for="password">密码</label>
 					<div class="controls">
-						<input class="input-xlarge focused" id="focusedInput" type="text" value="">
-					</div>
-				</div>
-				<div class="control-group" align="left" style="margin-left: 115px;">
-					<div class="controls">
-						<label>
-                  <input type="checkbox" id="optionsCheckbox2" value="option1">记住密码</label>
+						<input class="input-xlarge focused" id="password" type="password">
 					</div>
 				</div>
 				<div class="btn-group" role="group">
-					<a class="btn btn-primary" href="Administrator.html" role="button" style="width:100px;height:30px">登录</a>
+					<a class="btn btn-primary" role="button" style="width:100px;height:30px">登录</a>
 				</div>
 
 			</div>
 		</div>
-		<link href="/static/ebookstore/css/datepicker.css" rel="stylesheet" media="screen">
-		<link href="/static/ebookstore/css/uniform.default.css" rel="stylesheet" media="screen">
-		<link href="/static/ebookstore/css/chosen.min.css" rel="stylesheet" media="screen">
+		<link href="/static/eoookstore/css/datepicker.css" rel="stylesheet" media="screen">
+		<link href="/static/eoookstore/css/uniform.default.css" rel="stylesheet" media="screen">
+		<link href="/static/eoookstore/css/chosen.min.css" rel="stylesheet" media="screen">
 
-		<link href="/static/ebookstore/css/bootstrap-wysihtml5.css" rel="stylesheet" media="screen">
+		<link href="/static/eoookstore/css/bootstrap-wysihtml5.css" rel="stylesheet" media="screen">
 
 		<script src="/static/ebookstore/js/jquery-1.9.1.js"></script>
 		<script src="/static/ebookstore/js/jquery.uniform.min.js"></script>
@@ -100,6 +94,52 @@
 		<script type="text/javascript" src="/static/ebookstore/js/jquery.validate.min.js"></script>
 		<script src="/static/ebookstore/js/form-validation.js"></script>
 		<script src="/static/ebookstore/js/scripts.js"></script>
-		
+		<script type="text/javascript">
+			var usernameEle = document.querySelector("#username");
+			var passwordEle = document.querySelector("#password");
+			var login = document.querySelector("a[class='btn btn-primary']");
+			login.onclick = function() {
+				var name = usernameEle.value,
+					password = passwordEle.value;
+				if(name.length == 0) {
+					alert("用户名不能为空");
+					return;
+				}
+				if(password.length == 0) {
+					alert("密码不能为空");
+					return;
+				}
+
+				$.ajax({
+					url: "/ebookstore/admin-login",
+					method: "post",
+					data: {
+						name: name,
+						password: password
+					},
+					error: function() {
+						alert('登录失败');
+					},
+					success: function(data) {
+						switch(Number(data)) {
+							case 1:
+								location.href = "/ebookstore/admin";
+								break;
+							case 0:
+								alert("用户名或密码不正确！");
+								nameElement.value = "";
+								passwordElement.value = "";
+								nameElement.focus();
+								break;
+							case -1:
+								alert("你的帐户已被冻结！");
+								break;
+						}
+					}
+				});
+			}
+		</script>
+
 	</body>
+
 </html>

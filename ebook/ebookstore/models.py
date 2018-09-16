@@ -16,6 +16,7 @@ class Admin(models.Model):
     admin_id = models.AutoField(primary_key=True)
     admin_name = models.CharField(max_length=50)
     admin_password = models.CharField(max_length=30)
+    admin_status = models.IntegerField(default=0)
 
 
 class Notice(models.Model):

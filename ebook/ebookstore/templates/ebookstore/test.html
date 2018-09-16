@@ -1,152 +1,123 @@
 {% extends "ebookstore/base.html" %}
-{% block title %}书籍详情{% endblock %}
+{% block title %}我的信息{% endblock %}
 {% block thirt %}
+    	<style>
+			img {
+				width: 40px;
+				height: 25px;
+				position: absolute;
+				right: 0px;
+				margin: 15px;
+			}
+		</style>
 {% endblock %}
 {% block body %}
-		<div class="container">
-			<div style='width: 20px; border: 1px; float: left; height: 450px;'>
-				<!--这个div模拟一条白色的垂直分割线-->
+<div class="row-fluid" style="width: 70%; margin:0 auto ;">
+		<!-- block -->
+		<div class="block">
+			<div class="navbar navbar-inner block-header">
+				<div class="muted pull-left">我的信息</div>
 			</div>
-			<div id="second">
-				<div class="div-left" style="float: left; width: 166px;">
-					<div class="row" style="float: left; width: 1086px; margin: 0;">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h3 class="panel-title">
-								<p class="text-center">≡≡≡图书信息≡≡≡</p>
-							</h3>
-							</div>
-							<div class="panel-body">
-								<!-- 购物车的表格 -->
-								<div style="float: left; width: 200px; height: 300px;">
-									<img id="bookphoto" src="{{ book_photo_url }}" alt="">
-								</div>
-								<div style="margin-left: 27%">
-									<table>
-										<tr>
-											<th>书&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</th>
-											<td><b id="bookISBN" name="">{{ book_ISBN }}</b></td>
-										</tr>
-										<tr>
-											<th>书&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</th>
-											<td><b id="bookname">{{ book_name }}</b></td>
-										</tr>
-										<tr>
-											<th>出&nbsp;版&nbsp;&nbsp;社：</th>
-											<td><b id="publisher">{{ book_press }}</b></td>
-										</tr>
-										<tr>
-											<th>作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;者：</th>
-											<td><b id="authname">{{ book_auth_name }}</b></td>
-										</tr>
-										<tr>
-											<th>售&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</th>
-											<td><b id="bookprice">{{ book_price }}</b></td>
-										</tr>
-										<tr>
-											<th>出版日期：</th>
-											<td><b id="publishdate">{{ book_publish_date }}</b></td>
-										</tr>
-										<tr>
-											<th>图书简介：</th>
-											<td><b id="bookIntro">{{ book_info }}</b></td>
-										</tr>
-                                        <!--
-										<tr>
-											<th>图书剩余：</th>
-											<td><b id="booknumbersStock">{{ book_left_number }}</b></td>
-										</tr>
-										-->
-									</table>
-									<br>
-									<br>
-									<form class="form-horizontal" style="height: 100px;">
-										<div class="form-group" style="margin-left: 35%">
-											<p class="text-info" style="width: 50px">数量:</p>
-											<div class="row" style="margin-left: 0;">
-												<div class="col-sm-6">
-													<div class="input-group">
-														<span class="input-group-btn">
-														<button onclick="numDec()" class="form-control btn btn-primary" type="button">-</button>
-													</span> <input type="text" value="1" id="quantity" class="form-control" style="width: 200px; height: 33px; text-align: center;" /> <span class="input-group-btn">
-														<button onclick="numAdd()" class="btn btn-primary form-control" type="button">+</button>
-													</span>
-													</div>
-												</div>
-												<!-- col-sm-6 -->
-											</div>
-										</div>
-									</form>
-									<br>
-									<div class="btn-group" role="group" style="margin-left: 37%">
-										<a class="btn btn-primary" id="addCart" role="button">添加到购物车</a>
-									</div>
-								</div>
+			<div class="block-content collapse in">
+				<div class="span12">
+					<form class="form-horizontal">
+						<div class="control-group">
+							<label class="control-label">用户名</label>
+							<div class="controls">
+								<span id="user_name"  class="input-xlarge uneditable-input">{{ name }}</span>
 							</div>
 						</div>
-					</div>
+						<div class="control-group">
+							<label class="control-label">电话</label>
+							<div class="controls">
+								<span id="user_phone" class="input-xlarge uneditable-input">{{ phone }}</span>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="typeahead">地址 </label>
+							<div class="controls">
+								<input type="text" class="span6" id="user_address" data-provide="typeahead" data-items="4" value={{ address }}>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="typeahead">密码 </label>
+							<div class="controls" id="psw_invisible1">
+								<input type="password" class="span6" id="user_password" />
+								<img id="visible" onclick="showPsw()" src="/static/ebookstore/img/关闭.jpg">
+								<img id="invisible" onclick="hidePsw()" src="/static/ebookstore/img/打开.jpg">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="typeahead">确认密码 </label>
+							<div class="controls" id="psw_invisible2">
+								<input type="password" class="span6" id="user_password_sure"/>
+							</div>
+						</div>
+
+						<div class="form-actions">
+							<button class="btn btn-primary" onclick="modify()">保存</button>
+							<a type="reset" class="btn" href="index.html">取消</a>
+						</div>
+					</form>
+
 				</div>
 			</div>
 		</div>
-		<hr style="width: 70%; margin: 0 auto;"/>
-		<div class="row-fluid" style=" width: 1086px; margin: 0 auto;">
-                        <!-- block -->
-                        <div class="block">
-                            <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">书籍评价</div>
-                            </div>
-                            <div class="block-content collapse in">
-                                <div class="span12">
-  									<table class="table table-striped">
-						              <thead>
-						                <tr>
-						                  <th style="width: 10%;">评价</th>
-						                  <th style="width: 60%;">内容</th>
-						                  <th style="width: 15%;">用户名</th>
-						                  <th style="width: 15%;">时间</th>
-						                </tr>
-						              </thead>
-						              <tbody>
-						                <tr>
-						                  <td><span class="glyphicon glyphicon-thumbs-up"></span></td>
-						                  <td>书很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好</td>
-						                  <td>Otto</td>
-						                  <td>2018.11.30</td>
-						                </tr>
-						                <tr>
-						                  <td><span class="glyphicon glyphicon-thumbs-down"></td>
-						                  <td>书很差很差很差很差很差很差很差很差很差很差很差很差很差</td>
-						                  <td>Thornton</td>
-						                  <td>2018.12.31</td>
-						                </tr>
-						              </tbody>
-						            </table>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /block -->
-                    </div>
+		<!-- /block -->
+	</div>
 {% endblock %}
 {% block js %}
-<script>
-			/*商品数量+1*/
-			function numAdd() {
-				var num_add = parseInt($("#quantity").val()) + 1;
-				if($("#quantity").val() == "") {
-					num_add = 1;
-				}
-				$("#quantity").val(num_add);
-			}
+<script type="text/javascript">
+		//隐藏text block，显示password block
+		function showPsw() {
+			document.getElementById("user_password").type = "text";
+			document.getElementById("user_password_sure").type = "text";
+			document.getElementById("visible").style.display = "none";
+			document.getElementById("invisible").style.display = "";
+		}
+		//隐藏password，显示text
+		function hidePsw() {
+			document.getElementById("user_password").type = "password";
+			document.getElementById("user_password_sure").type = "password";
+			document.getElementById("visible").style.display = "";
+			document.getElementById("invisible").style.display = "none";
+		}
 
-			/*商品数量-1*/
-			function numDec() {
-				var num_dec = parseInt($("#quantity").val()) - 1;
-				if(num_dec < 1) {
-					//购买数量必须大于或等于1
-					alert("数量不可以小于1");
-				} else {
-					$("#quantity").val(num_dec);
+		function modify() {
+			var name = document.getElementById("user_name").value
+				address = document.getElementById("user_address").value
+				password = document.getElementById("user_password").value
+			$.ajax({
+				url: "/ebookstore/myinfo/",
+				method: "post",
+				data: {
+					"name": name,
+					"address" :address,
+					"password": password
+				},
+				error: function () {
+				},
+				success: function (data) {
+					switch (Number(data)) {
+						case 1:
+							alert('保存成功');
+							/*
+							if(rememberElement.value == true) {
+								document.cookie =
+									`name=${encodeURIComponent(name)};expires=${new Date(Date.now()+30*86400*1000)}`;
+								document.cookie =
+									`password=${encodeURIComponent(password)};expires=${new Date(Date.now()+30*86400*1000)}`;
+							}
+							*/
+							//location.href = "/ebookstore/myinfo";
+							break;
+						case -1:
+							alert("你的帐户已被冻结！");
+							break;
+					}
 				}
-			}
-		</script>
+			});
+		}
+	</script>
 {% endblock %}

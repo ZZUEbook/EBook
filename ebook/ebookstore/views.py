@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.template import loader, Context
-from ebookstore.models import User, Book, Notice, BookType
+from ebookstore.models import User, Book, Notice, BookType, Admin
 import json, socket
 
 # Create your views here.
@@ -43,15 +43,17 @@ def register(request):
                         user_phone=request.POST['telephone'])
             try:
                 user.save()
-                return HttpResponse(1)
+                res = HttpResponse(1)
+                res.set_cookie('name', value=request.POST['name'])
+                return res
             except Exception as e:
                 print(e)
                 return HttpResponse(-1)
     else:
         return render(request,template_name="ebookstore/Register.html")
 
-def administrator(request):
-    return render(request, template_name="ebookstore/Administrator.html")
+def book_manage(request):
+    return render(request, template_name="ebookstore/Book-manage.html")
 
 def administrator_Login(request):
     return render(request, template_name="ebookstore/Administrator-Login.html")
@@ -103,14 +105,46 @@ def getRankList(request):
         return HttpResponse(content=json.dumps(items))
 
 def myinfo(request):
-    name = 'yu'
-    template = loader.get_template('ebookstore/MyInoformation.html')
-    context = {
-        'name': name,
-    }
-    return HttpResponse(template.render(context, request))
+    name = request.COOKIES.get('name')
+    if request.method =="GET":
+        if not name:
+            render(request,template_name="ebookstore/Register.html")
+        else:
+            user = User.objects.filter(user_name=name).first()
+            context = {
+                "name":name,
+                "phone":user.user_phone,
+                "address":user.user_address,
+                "password":user.user_password
+            }
+            return render(request,template_name="ebookstore/MyInoformation.html",context=context)
+    elif request.method =="POST" :
+        if not name:
+            render(request,template_name="ebookstore/Register.html")
+        else:
+            user = User.objects.filter(user_name=name).first()
+            user.user_address = request.POST['address']
+            user.user_password = request.POST['password']
+            user.save()
+            return HttpResponse(1)
+    else:
+        return HttpResponse(1)
 
 def adminLogin(request):
+    if request.method == "POST":
+        try:
+            name = request.POST["name"]
+            password = request.POST["password"]
+            admin = Admin.objects.filter(admin_name=name).first()
+            if password == admin.admin_password:
+                if admin.admin_status != 0:
+                    return -1
+                return 1
+            else:
+                return 0
+        except Exception as err:
+            print(err)
+            return 0
     return render(request, template_name='ebookstore/Administrator-Login.html')
 
 def newBook(request):
@@ -147,7 +181,15 @@ def test(request):
     return render(request, 'ebookstore/test.html')
 
 def admin(request):
-    return render(request, 'ebookstore/Administrator.html')
+    return render(request, 'ebookstore/Book-manage.html')
 
 def addBook(request):
     return render(request, 'ebookstore/AddBook.html')
+def UserManage(request):
+    return render(request, 'ebookstore/user-manage.html')
+def OrderManage(request):
+    return render(request, 'ebookstore/OrderDetail.html')
+def NoticeManage(request):
+    return render(request, 'ebookstore/Notice-manage.html')
+def AccountManage(request):
+    return render(request, 'ebookstore/account-manage.html')
