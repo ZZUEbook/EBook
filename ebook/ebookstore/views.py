@@ -196,3 +196,5 @@ def AccountManage(request):
     return render(request, 'ebookstore/account-manage.html')
 def ConmentManage(request):
     return render(request, 'ebookstore/comment-manage.html')
+def manage_base(request):
+    return render(request, 'ebookstore/manage_base.html')

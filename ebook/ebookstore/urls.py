@@ -19,9 +19,11 @@ urlpatterns = [
     path('addBook/', views.addBook, name="addBook"),
     path('base/', views.base, name="base"),
     path('test/', views.test, name="test"),
+    path('BookManage/', views.admin, name="BookManage"),
     path('UserManage/', views.UserManage, name="UserManage"),
     path('OrderManage/', views.OrderManage, name="OrderManage"),
     path('NoticeManage/', views.NoticeManage, name="NotiveMange"),
     path('AccountManage/', views.AccountManage, name="AccountManage"),
     path('ConmentManage/', views.ConmentManage, name="Commentmange"),
+    path('manage_base/', views.manage_base, name="manage_base"),
 ]

@@ -1,89 +1,8 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<!--
-        	作者：offline
-        	时间：2018-09-07
-        	描述：公告管理页面
-        -->
-		<meta charset="utf-8" />
-		<title>公告管理</title>
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-		<script src="https://code.jquery.com/jquery.js"></script>
-		<link href="/static/ebookstore/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<link href="/static/ebookstore/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-		<link href="/static/ebookstore/css/styles.css" rel="stylesheet" media="screen">
-		<link href="/static/ebookstore/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
-		<script src="/static/ebookstore/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-		<script src="/static/ebookstore/vendors/jquery-1.9.1.js"></script>
-        <script src="/static/ebookstore/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/static/ebookstore/vendors/datatables/js/jquery.dataTables.min.js"></script>
-        <script src="/static/ebookstore/assets/scripts.js"></script>
-        <script src="/static/ebookstore/assets/DT_bootstrap.js"></script>
-		<style>
-			.col-center-block {
-				float: none;
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-			}
-		</style>
-		<style type="text/css">
-			body {
-				margin: 0 auto;
-				background-image: url(/static/ebookstore/img/背景.jpg);
-				background-size: cover;
-			}
-		</style>
-	</head>
-	<body>
-		<nav id="navbar-example" class="navbar navbar-inverse navbar navbar-fixed-top navbar-has-shadow" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-					<a class="navbar-brand" href="#">My-eBookStore</a>
-				</div>
-				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
-					<ul class="nav navbar-nav">
-						<li>
-							<a href="Book-manage.html">图书管理</a>
-						</li>
-						<li>
-							<a href="user-manage.html">用户管理</a>
-						</li>
-						<li>
-							<a href="order-manage.html">订单管理</a>
-						</li>
-						<li class="active">
-							<a href="Notice-manage.html">公告管理</a>
-						</li>
-						<li>
-							<a href="account-manage.html">账目管理</a>
-						</li>
-						<li>
-							<a href="comment-manage.html">评价管理</a>
-						</li>
-					</ul>
-					<ul class="nav pull-right">
-						<li class="dropdown">
-							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-user"></i> 管理员 <i class="caret"></i>
-							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<a tabindex="-1" href="Administrator-Login.html">Logout</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+{% extends "ebookstore/manage_base.html" %}
+{% block title %}公告管理{% endblock %}
+{% block thirt %}
+{% endblock %}
+{% block body %}
 		<div class="row-fluid">
             <!-- block -->
             <div class="block">
@@ -110,7 +29,7 @@
 			              <tbody>
 			                <tr id="tr1">
 			                  <td>1</td>
-			                  <td>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</td>
+			                  <td>哈哈哈哈哈哈哈哈哈哈哈哈哈</td>
 			                  <td>Otto</td>
 			                  <td>@mdo</td>
 			                  <td><div class="btn-group" role="group">
@@ -120,7 +39,7 @@
 			                </tr>
 			                <tr>
 			                  <td>2</td>
-			                  <td>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</td>
+			                  <td>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</td>
 			                  <td>Thornton</td>
 			                  <td>@fat</td>
 			                  <td><div class="btn-group" role="group">
@@ -163,5 +82,7 @@
                 <!-- /block -->
             </div>
         </div>
-	</body>
-</html>
+{% endblock %}
+{% block js %}
+
+{% endblock %}
