@@ -105,6 +105,7 @@ def getRankList(request):
         return HttpResponse(content=json.dumps(items))
 
 def myinfo(request):
+    
     name = request.COOKIES.get('name')
     if request.method =="GET":
         if not name:
