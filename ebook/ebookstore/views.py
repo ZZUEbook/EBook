@@ -145,3 +145,9 @@ def base(request):
 
 def test(request):
     return render(request, 'ebookstore/test.html')
+
+def admin(request):
+    return render(request, 'ebookstore/Administrator.html')
+
+def addBook(request):
+    return render(request, 'ebookstore/AddBook.html')
