@@ -43,7 +43,9 @@ def register(request):
                         user_phone=request.POST['telephone'])
             try:
                 user.save()
-                return HttpResponse(1)
+                res = HttpResponse(1)
+                res.set_cookie('name', value=request.POST['name'])
+                return res
             except Exception as e:
                 print(e)
                 return HttpResponse(-1)
@@ -103,12 +105,30 @@ def getRankList(request):
         return HttpResponse(content=json.dumps(items))
 
 def myinfo(request):
-    name = 'yu'
-    template = loader.get_template('ebookstore/MyInoformation.html')
-    context = {
-        'name': name,
-    }
-    return HttpResponse(template.render(context, request))
+    name = request.COOKIES.get('name')
+    if request.method =="GET":
+        if not name:
+            render(request,template_name="ebookstore/Register.html")
+        else:
+            user = User.objects.filter(user_name=name).first()
+            context = {
+                "name":name,
+                "phone":user.user_phone,
+                "address":user.user_address,
+                "password":user.user_password
+            }
+            return render(request,template_name="ebookstore/MyInoformation.html",context=context)
+    elif request.method =="POST" :
+        if not name:
+            render(request,template_name="ebookstore/Register.html")
+        else:
+            user = User.objects.filter(user_name=name).first()
+            user.user_address = request.POST['address']
+            user.user_password = request.POST['password']
+            user.save()
+            return HttpResponse(1)
+    else:
+        return HttpResponse(1)
 
 def adminLogin(request):
     return render(request, template_name='ebookstore/Administrator-Login.html')
