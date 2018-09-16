@@ -116,7 +116,7 @@
 		<script type="text/javascript" src="/static/ebookstore/js/jquery.validate.min.js"></script>
 		<script src="/static/ebookstore/js/form-validation.js"></script>
 		<script src="/static/ebookstore/js/scripts.js"></script>
-    		<script type="text/javascript">
+    <script type="text/javascript">
 			window.onload = function() {
 				var nameElement = document.querySelector("input[name='username']");
 				var passwordElement = document.querySelector("input[name='password']");
@@ -156,7 +156,7 @@
 											`password=${encodeURIComponent(password)};expires=${new Date(Date.now()+30*86400*1000)}`;
 									}
 									*/
-									location.href = "./index";
+									location.href = "/ebookstore/index";
 									break;
 								case 0:
 									alert("用户名或密码不正确！");

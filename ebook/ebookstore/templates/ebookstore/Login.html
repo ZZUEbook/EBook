@@ -1,57 +1,7 @@
-<!DOCTYPE html>
-<html>
-
-	<head>
-		<meta charset="utf-8" />
-		<title>My_eBookStore-登录</title>
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-		<script src="https://code.jquery.com/jquery.js"></script>
-		<script src="/static/ebookstore/js/bootstrap.min.js"></script>
-		<link href="/static/ebookstore/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<link href="/static/ebookstore/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-		<link href="/static/ebookstore/css/styles.css" rel="stylesheet" media="screen">
-		<script src="/static/ebookstore/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-		<style>
-			.col-center-block {
-				float: none;
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-			}
-		</style>
-		<style type="text/css">
-			body {
-				margin: 0 auto;
-				background-image: url(/static/ebookstore/img/背景.jpg);
-				background-size: cover;
-			}
-		</style>
-	</head>
-
-	<body>
-		<nav id="navbar-example" class="navbar navbar-inverse navbar navbar-fixed-top navbar-has-shadow" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-					<a class="navbar-brand" href="#">My-eBookStore</a>
-				</div>
-				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
-					<ul class="nav navbar-nav">
-						<li class="active">
-							<a href="index">主页</a>
-						</li>
-
-					</ul>
-
-				</div>
-			</div>
-		</nav>
-		<div align="center">
+{% extends "ebookstore/base.html" %}
+{% block title %}My-eBookStore-登录{% endblock %}
+{% block body %}
+    <div align="center">
 			<div class="block" style="width: 500px;">
 				<div class="navbar navbar-inner block-header">
 					<div class="muted pull-left">登录</div>
@@ -65,7 +15,7 @@
 				<div class="control-group" align="left" style="margin-left: 115px;">
 					<label class="control-label" for="focusedInput">密码</label>
 					<div class="controls">
-						<input class="input-xlarge focused" id="focusedInput" name="password" type="text">
+						<input class="input-xlarge focused" id="focusedInput" name="password" type="password">
 					</div>
 				</div>
 				<div class="control-group" align="left" style="margin-left: 115px;">
@@ -81,22 +31,8 @@
 
 			</div>
 		</div>
-		<link href="/static/ebookstore/css/datepicker.css" rel="stylesheet" media="screen">
-		<link href="/static/ebookstore/css/uniform.default.css" rel="stylesheet" media="screen">
-		<link href="/static/ebookstore/css/chosen.min.css" rel="stylesheet" media="screen">
-
-		<link href="/static/ebookstore/css/bootstrap-wysihtml5.css" rel="stylesheet" media="screen">
-
-		<script src="/static/ebookstore/js/jquery-1.9.1.js"></script>
-		<script src="/static/ebookstore/js/jquery.uniform.min.js"></script>
-		<script src="/static/ebookstore/js/chosen.jquery.min.js"></script>
-		<script src="/static/ebookstore/js/bootstrap-datepicker.js"></script>
-		<script src="/static/ebookstore/js/wysihtml5-0.3.0.js"></script>
-		<script src="/static/ebookstore/js/bootstrap-wysihtml5.js"></script>
-		<script src="/static/ebookstore/js/jquery.bootstrap.wizard.min.js"></script>
-		<script type="text/javascript" src="/static/ebookstore/js/jquery.validate.min.js"></script>
-		<script src="/static/ebookstore/js/form-validation.js"></script>
-		<script src="/static/ebookstore/js/scripts.js"></script>
+{% endblock %}
+{% block js %}
 		<script type="text/javascript">
 			window.onload = function() {
 				var nameElement = document.querySelector("input[name='username']");
@@ -155,7 +91,4 @@
 
 			}
 		</script>
-
-	</body>
-
-</html>
+{% endblock %}

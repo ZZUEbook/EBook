@@ -140,3 +140,28 @@ def newBook(request):
         for book in books:
             items.append({"id": book.book_id, "name": book.book_name,"url":book.book_photo})
         return HttpResponse(content=json.dumps(items))
+
+def book_detail(request):
+    id = request.GET.get('id', 0)
+    book = Book.objects.filter(book_id=id).first()
+    if not book:
+        return HttpResponse("are you a robot?")
+    context = {
+        "book_id": id,
+        "book_name": book.book_name,
+        "book_press": book.book_press,
+        "book_auth_name": book.book_auth_name,
+        "book_price": book.book_price,
+        "book_publish_date": book.book_publish_date,
+        "book_info": book.book_introduce,
+        "book_left_number": book.book_left_number,
+        "book_photo_url": book.book_photo,
+        "book_ISBN": book.book_ISBN,
+    }
+    return render(request, 'ebookstore/BookDetail.html', context)
+
+def base(request):
+    return render(request, 'ebookstore/base.html')
+
+def test(request):
+    return render(request, 'ebookstore/test.html')

@@ -6,7 +6,7 @@ class User(models.Model):
     user_id = models.AutoField(primary_key=True)
     user_name = models.CharField(max_length=30, unique=True)  # null=True, blank=True
     user_email = models.CharField(max_length=50, unique=True)
-    user_phone = models.IntegerField(unique=True)
+    user_phone = models.CharField(max_length=30, unique=True)
     user_password = models.CharField(max_length=30)
     user_status = models.IntegerField(default=0)  # 0=>normal user
     user_address = models.CharField(max_length=100, blank=True)
@@ -45,6 +45,7 @@ class Book(models.Model):
     book_left_number = models.IntegerField()
     book_sale_number = models.IntegerField(default=0)
     book_cost = models.IntegerField(blank=True)
+    book_press = models.CharField(max_length=100, blank=True)
 
 
 class Cart(models.Model):

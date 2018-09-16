@@ -9,7 +9,7 @@
         -->
 		<meta charset="UTF-8">
 		<title>书籍详情</title>
-		<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/ebookstore/bootstrap/css/bootstrap.min.css">
 		<link href="/static/ebookstore/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="/static/ebookstore/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 		<link href="/static/ebookstore/assets/styles.css" rel="stylesheet" media="screen">
@@ -132,42 +132,44 @@
 							<div class="panel-body">
 								<!-- 购物车的表格 -->
 								<div style="float: left; width: 200px; height: 300px;">
-									<img id="bookphoto" src="/static/ebookstore/img/书1.jpg" alt="">
+									<img id="bookphoto" src="{{ book_photo_url }}" alt="">
 								</div>
 								<div style="margin-left: 27%">
 									<table>
 										<tr>
 											<th>书&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</th>
-											<td><b id="bookISBN" name="">此处为书号</b></td>
+											<td><b id="bookISBN" name="">{{ book_ISBN }}</b></td>
 										</tr>
 										<tr>
 											<th>书&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</th>
-											<td><b id="bookname">此处书名</b></td>
+											<td><b id="bookname">{{ book_name }}</b></td>
 										</tr>
 										<tr>
 											<th>出&nbsp;版&nbsp;&nbsp;社：</th>
-											<td><b id="publisher">此处出版社</b></td>
+											<td><b id="publisher">{{ book_press }}</b></td>
 										</tr>
 										<tr>
 											<th>作&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;者：</th>
-											<td><b id="authname">此处作者</b></td>
+											<td><b id="authname">{{ book_auth_name }}</b></td>
 										</tr>
 										<tr>
 											<th>售&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</th>
-											<td><b id="bookprice">此处售价</b></td>
+											<td><b id="bookprice">{{ book_price }}</b></td>
 										</tr>
 										<tr>
 											<th>出版日期：</th>
-											<td><b id="publishdate">此处出版日期</b></td>
+											<td><b id="publishdate">{{ book_publish_date }}</b></td>
 										</tr>
 										<tr>
 											<th>图书简介：</th>
-											<td><b id="bookIntro">此处简介</b></td>
+											<td><b id="bookIntro">{{ book_info }}</b></td>
 										</tr>
+                                        <!--
 										<tr>
 											<th>图书剩余：</th>
-											<td><b id="booknumbersStock">此处剩余</b></td>
+											<td><b id="booknumbersStock">{{ book_left_number }}</b></td>
 										</tr>
+										-->
 									</table>
 									<br>
 									<br>
@@ -179,7 +181,7 @@
 													<div class="input-group">
 														<span class="input-group-btn">
 														<button onclick="numDec()" class="form-control btn btn-primary" type="button">-</button>
-													</span> <input type="text" id="quantity" class="form-control" style="width: 200px; height: 33px; text-align: center;" /> <span class="input-group-btn">
+													</span> <input type="text" value="1" id="quantity" class="form-control" style="width: 200px; height: 33px; text-align: center;" /> <span class="input-group-btn">
 														<button onclick="numAdd()" class="btn btn-primary form-control" type="button">+</button>
 													</span>
 													</div>
@@ -199,27 +201,6 @@
 				</div>
 			</div>
 		</div>
-		<script>
-			/*商品数量+1*/
-			function numAdd() {
-				var num_add = parseInt($("#quantity").val()) + 1;
-				if($("#quantity").val() == "") {
-					num_add = 1;
-				}
-				$("#quantity").val(num_add);
-			}
-
-			/*商品数量-1*/
-			function numDec() {
-				var num_dec = parseInt($("#quantity").val()) - 1;
-				if(num_dec < 1) {
-					//购买数量必须大于或等于1
-					alert("数量不可以小于1");
-				} else {
-					$("#quantity").val(num_dec);
-				}
-			}
-		</script>
 		<hr style="width: 70%; margin: 0 auto;"/>
 		<div class="row-fluid" style=" width: 1086px; margin: 0 auto;">
                         <!-- block -->
@@ -258,5 +239,26 @@
                         </div>
                         <!-- /block -->
                     </div>
+        <script>
+			/*商品数量+1*/
+			function numAdd() {
+				var num_add = parseInt($("#quantity").val()) + 1;
+				if($("#quantity").val() == "") {
+					num_add = 1;
+				}
+				$("#quantity").val(num_add);
+			}
+
+			/*商品数量-1*/
+			function numDec() {
+				var num_dec = parseInt($("#quantity").val()) - 1;
+				if(num_dec < 1) {
+					//购买数量必须大于或等于1
+					alert("数量不可以小于1");
+				} else {
+					$("#quantity").val(num_dec);
+				}
+			}
+		</script>
 	</body>
 </html>

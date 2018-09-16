@@ -16,4 +16,7 @@ urlpatterns = [
     path('myinfo/', views.myinfo, name='myinfo'),
     path('admin-login/', views.adminLogin, name='adminLogin'),
     path('newBook/', views.newBook, name="newBook"),
+    path('book_detail/', views.book_detail, name="book_detail"),
+    path('base/', views.base, name="base"),
+    path('test/', views.test, name="test"),
 ]
