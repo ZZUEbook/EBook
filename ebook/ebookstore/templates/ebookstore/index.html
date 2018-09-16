@@ -311,7 +311,7 @@
 						len = arr.length,
 						englishHTML = "";
 					for(var i = 0; i < len; i++) {
-						englishHTML += `<a href="/ebookstore/book_detail?id=${arr[i].id} class="list-group-item ">${i+1}.${arr[i].name}</a>`;
+						englishHTML += `<a href="/ebookstore/book_detail?id=${arr[i].id}" class="list-group-item ">${i+1}.${arr[i].name}</a>`;
 					}
 					english.innerHTML = englishHTML;
 				}

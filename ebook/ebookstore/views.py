@@ -124,6 +124,8 @@ def newBook(request):
 def book_detail(request):
     id = request.GET.get('id', 0)
     book = Book.objects.filter(book_id=id).first()
+    if not book:
+        return HttpResponse("are you a robot?")
     context = {
         "book_id": id,
         "book_name": book.book_name,

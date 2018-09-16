@@ -164,10 +164,12 @@
 											<th>图书简介：</th>
 											<td><b id="bookIntro">{{ book_info }}</b></td>
 										</tr>
+                                        <!--
 										<tr>
 											<th>图书剩余：</th>
 											<td><b id="booknumbersStock">{{ book_left_number }}</b></td>
 										</tr>
+										-->
 									</table>
 									<br>
 									<br>
@@ -179,7 +181,7 @@
 													<div class="input-group">
 														<span class="input-group-btn">
 														<button onclick="numDec()" class="form-control btn btn-primary" type="button">-</button>
-													</span> <input type="text" id="quantity" class="form-control" style="width: 200px; height: 33px; text-align: center;" /> <span class="input-group-btn">
+													</span> <input type="text" value="1" id="quantity" class="form-control" style="width: 200px; height: 33px; text-align: center;" /> <span class="input-group-btn">
 														<button onclick="numAdd()" class="btn btn-primary form-control" type="button">+</button>
 													</span>
 													</div>
@@ -199,27 +201,6 @@
 				</div>
 			</div>
 		</div>
-		<script>
-			/*商品数量+1*/
-			function numAdd() {
-				var num_add = parseInt($("#quantity").val()) + 1;
-				if($("#quantity").val() == "") {
-					num_add = 1;
-				}
-				$("#quantity").val(num_add);
-			}
-
-			/*商品数量-1*/
-			function numDec() {
-				var num_dec = parseInt($("#quantity").val()) - 1;
-				if(num_dec < 1) {
-					//购买数量必须大于或等于1
-					alert("数量不可以小于1");
-				} else {
-					$("#quantity").val(num_dec);
-				}
-			}
-		</script>
 		<hr style="width: 70%; margin: 0 auto;"/>
 		<div class="row-fluid" style=" width: 1086px; margin: 0 auto;">
                         <!-- block -->
@@ -258,5 +239,26 @@
                         </div>
                         <!-- /block -->
                     </div>
+        <script>
+			/*商品数量+1*/
+			function numAdd() {
+				var num_add = parseInt($("#quantity").val()) + 1;
+				if($("#quantity").val() == "") {
+					num_add = 1;
+				}
+				$("#quantity").val(num_add);
+			}
+
+			/*商品数量-1*/
+			function numDec() {
+				var num_dec = parseInt($("#quantity").val()) - 1;
+				if(num_dec < 1) {
+					//购买数量必须大于或等于1
+					alert("数量不可以小于1");
+				} else {
+					$("#quantity").val(num_dec);
+				}
+			}
+		</script>
 	</body>
 </html>
