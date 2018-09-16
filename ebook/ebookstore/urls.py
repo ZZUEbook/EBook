@@ -16,7 +16,7 @@ urlpatterns = [
     path('newBook/', views.newBook, name="newBook"),
     path('book_detail/', views.book_detail, name="book_detail"),
     path('admin', views.admin, name="admin"),
-    path('addBook/', views.addBook, name="addBook"),
+    path('addBook/', views.add_book, name="addBook"),
     path('base/', views.base, name="base"),
     path('test/', views.test, name="test"),
     path('BookManage/', views.admin, name="BookManage"),
@@ -26,4 +26,7 @@ urlpatterns = [
     path('AccountManage/', views.AccountManage, name="AccountManage"),
     path('ConmentManage/', views.ConmentManage, name="Commentmange"),
     path('manage_base/', views.manage_base, name="manage_base"),
+    path('order_content', views.order_content, name="order_content"),
+    path('cart', views.cart, name="cart"),
+    path('order', views.order, name="order"),
 ]

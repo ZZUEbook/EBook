@@ -184,8 +184,6 @@ def test(request):
 def admin(request):
     return render(request, 'ebookstore/Book-manage.html')
 
-def addBook(request):
-    return render(request, 'ebookstore/AddBook.html')
 def UserManage(request):
     return render(request, 'ebookstore/user-manage.html')
 def OrderManage(request):
@@ -198,3 +196,11 @@ def ConmentManage(request):
     return render(request, 'ebookstore/comment-manage.html')
 def manage_base(request):
     return render(request, 'ebookstore/manage_base.html')
+def add_book(request):
+    return render(request, 'ebookstore/AddBook.html')
+def order_content(request):
+    return render(request, 'ebookstore/OrderContent.html')
+def cart(request):
+    return render(request, 'ebookstore/Cart.html')
+def order(request):
+    return render(request, 'ebookstore/order.html')

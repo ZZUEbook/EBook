@@ -1,94 +1,9 @@
-<!DOCTYPE html>
-<html>
-
-	<head>
-		<!--
-        	作者：offline
-        	时间：2018-09-07
-        	描述：购物车页面
-        -->
-		<meta charset="UTF-8">
-		<title>购物车</title>
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-		<script src="https://code.jquery.com/jquery.js"></script>
-		<script src="/static/ebookstore/js/bootstrap.min.js"></script>
-		<link href="/static/ebookstore/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<link href="/static/ebookstore/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-		<link href="/static/ebookstore/css/styles.css" rel="stylesheet" media="screen">
-		<script src="/static/ebookstore/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-		<style>
-			body {
-				background-image: url('/static/ebookstore/img/背景.jpg');
-				background-size: cover;
-			}
-		</style>
-	</head>
-
-	<body>
-
-		<nav id="navbar-example" class="navbar navbar-inverse navbar navbar-fixed-top navbar-has-shadow" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-					<a class="navbar-brand" href="#">My-eBookStore</a>
-				</div>
-				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
-					<ul class="nav navbar-nav">
-						<li>
-							<a href="#">主页</a>
-						</li>
-						<li class="dropdown">
-							<a href="#" data-toggle="dropdown" class="dropdown-toggle">书籍分类<b class="caret"></b>
-
-							</a>
-							<ul class="dropdown-menu" id="menu1">
-
-								<li>
-									<a href="#">计算机类</a>
-								</li>
-								<li>
-									<a href="#">英语类</a>
-								</li>
-
-							</ul>
-						</li>
-						<li>
-							<a href="#">新书上架</a>
-						</li>
-					</ul>
-
-					<ul class="nav pull-right">
-						<li class="dropdown">
-							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-user"></i> 用户 <i class="caret"></i>
-							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<a tabindex="-1" href="MyInoformation.html">我的信息</a>
-								</li>
-								<li>
-									<a tabindex="-1" href="#">我的订单</a>
-								</li>
-								<li>
-									<a tabindex="-1" href="cart.html">购物车</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a tabindex="-1" href="login.html">退出登录</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-
-		<div class="row-fluid" style=" width:70%; margin: 0 auto;">
+{% extends "ebookstore/base.html" %}
+{% block title %}购物车{% endblock %}
+{% block thirt %}
+{% endblock %}
+{% block body %}
+<div class="row-fluid" style=" width:70%; margin: 0 auto;">
 			<!-- block -->
 			<div class="block">
 				<div class="navbar navbar-inner block-header">
@@ -160,6 +75,7 @@
 			<!-- /block -->
 
 		</div>
-	</body>
+{% endblock %}
+{% block js %}
 
-</html>
+{% endblock %}
