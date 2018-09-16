@@ -55,9 +55,6 @@ def register(request):
 def book_manage(request):
     return render(request, template_name="ebookstore/Book-manage.html")
 
-def administrator_Login(request):
-    return render(request, template_name="ebookstore/Administrator-Login.html")
-
 def logout(request):
     res = render(request, template_name="ebookstore/Login.html")
     res.delete_cookie('name')
@@ -138,11 +135,14 @@ def adminLogin(request):
             password = request.POST["password"]
             admin = Admin.objects.filter(admin_name=name).first()
             if password == admin.admin_password:
+                print("debug0", admin.admin_status)
                 if admin.admin_status != 0:
-                    return -1
-                return 1
+                    return HttpResponse(-1)
+                res = HttpResponse(1)
+                res.set_cookie("admin_name", name)
+                return res
             else:
-                return 0
+                return HttpResponse(0)
         except Exception as err:
             print(err)
             return 0
@@ -189,8 +189,10 @@ def addBook(request):
 def UserManage(request):
     return render(request, 'ebookstore/user-manage.html')
 def OrderManage(request):
-    return render(request, 'ebookstore/OrderDetail.html')
+    return render(request, 'ebookstore/order-manage.html')
 def NoticeManage(request):
     return render(request, 'ebookstore/Notice-manage.html')
 def AccountManage(request):
     return render(request, 'ebookstore/account-manage.html')
+def ConmentManage(request):
+    return render(request, 'ebookstore/comment-manage.html')
