@@ -4,6 +4,7 @@ from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.template import loader, Context
 from ebookstore.models import User, Book, Notice, BookType, Admin
 import json, socket
+from PIL import Image
 
 # Create your views here.
 def index(request):
@@ -197,6 +198,41 @@ def ConmentManage(request):
 def manage_base(request):
     return render(request, 'ebookstore/manage_base.html')
 def add_book(request):
+    print(request.FILES)
+    if request.method == 'POST':
+        try:
+            name = request.POST['name']
+            isbn = request.POST['isbn']
+            author = request.POST['author']
+            press = request.POST['press']
+            time = request.POST['timeOfPress']
+            (month, day, year) = time.split('/')
+            time = year + '-' + month + '-' + day
+            category = request.POST['category']
+            category = 'English' if category == r"英语类" else 'Computer'
+            category = BookType.objects.filter(booktype_name=category).first()
+            quantity = request.POST['quantity']
+            price = request.POST['price']
+            cost = request.POST['cost']
+            cover = request.FILES['cover']
+            introduce = request.POST['introduce']
+            url = '/static/ebookstore/img/计算机类/default.jpg'
+            admin = Admin.objects.filter(admin_id=1).first()
+            if cover:
+                img_name = name
+                img = Image.open(cover)
+                img_type = str(cover).split('.')[-1]
+                url = img_name + '.' + img_type
+                url = '/static/ebookstore/img/' + request.POST['category'] + '/' + url
+                img.save('ebookstore' + url)
+            book = Book(book_ISBN=isbn, book_name=name, book_auth_name=author, book_publish_date=time,
+                        book_publisher=admin, book_type_id=category, book_introduce=introduce, book_price=price,
+                        book_photo=url, book_left_number=quantity, book_cost=cost, book_press=press)
+            book.save()
+            return HttpResponse(1)
+        except Exception as err:
+            print(err)
+            return HttpResponse(0)
     return render(request, 'ebookstore/AddBook.html')
 def order_content(request):
     return render(request, 'ebookstore/OrderContent.html')
