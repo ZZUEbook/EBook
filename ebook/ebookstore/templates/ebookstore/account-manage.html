@@ -3,89 +3,153 @@
 {% block thirt %}
 {% endblock %}
 {% block body %}
-<div class="row-fluid" style="width: 70%;margin: 0 auto;" >
-            <!-- block -->
-            <div class="block">
-                <div class="navbar navbar-inner block-header">
-                    <div class="muted pull-left">账目管理</div>
-                </div>
-                <div class="block-content collapse in">
-                    <div class="span12">
-                    	<div class="table-toolbar">
-                          	<div class="control-group">
-                              <div class="controls">
-                                <input type="text" class="input-xlarge datepicker" value="初始日期">
-                                <input type="text" class="input-xlarge datepicker" value="结束日期">
-                                <a class="btn btn-info pull-right" href="#" role="button" style="width:100px;height:30px">查询</a>
-                             </div>
-                            </div>
-                       	</div>
-                       	<table class="table table-striped" style="margin: auto;">
-
-			            	<tr>
+<div class="row-fluid" style="width: 70%;margin: 0 auto;">
+			<!-- block -->
+			<div class="block">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">账目管理</div>
+				</div>
+				<div class="block-content collapse in">
+					<div class="span12">
+						<div class="table-toolbar">
+							<div class="control-group">
+								<div class="controls">
+									<input id="start" type="text" class="input-xlarge datepicker" placeholder="初始日期">
+									<input id="end" type="text" class="input-xlarge datepicker" placeholder="结束日期">
+									<a id="search" class="btn btn-info pull-right" href="javascript:void(0);" role="button" style="width:100px;height:30px">查询</a>
+								</div>
+							</div>
+						</div>
+						<table id="total" class="table table-striped" style="margin: auto;">
+							<tr>
 								<th>总销售量：</th>
-								<td><b>此处总销售量</b></td>
+								<td><b></b></td>
 							</tr>
 							<tr>
 								<th>总&ensp;成&ensp;本：</th>
-								<td><b>此处总成本</b></td>
+								<td><b></b></td>
 							</tr>
 							<tr>
 								<th>总销售额：</th>
-								<td><b>此处总销售额</b></td>
+								<td><b></b></td>
 							</tr>
 							<tr>
 								<th>总&ensp;利&ensp;润：</th>
-								<td><b>此处总利润</b></td>
+								<td><b></b></td>
 							</tr>
-			            </table>
+						</table>
 						<table class="table table-striped" style="margin: auto;">
-			              <thead>
-			                <tr>
-			                  <th style="width: 50px;">ISBN</th>
-			                  <th style="width: 300px;">书名</th>
-			                  <th style="width: 300px;">出版社</th>
-			                  <th style="width: 100px;">作者</th>
-			                  <th style="width: 100px;">销售量</th>
-			                  <th style="width: 280px;">营销利润</th>
-			                </tr>
-			              </thead>
-			              <tbody>
-			                <tr id="tr1">
-			                  <td>1</td>
-			                  <td>加密和解密</td>
-			                  <td>Otto</td>
-			                  <td>@mdo</td>
-			                  <td>20</td>
-			                  <td>**</td>
-			                </tr>
-			                <tr>
-			                  <td>2</td>
-			                  <td>数据库</td>
-			                  <td>Thornton</td>
-			                  <td>@fat</td>
-			                  <td>20</td>
-			                  <td>**</td>
-			                </tr>
-			                <tr>
-			                  <td>3</td>
-			                  <td>Larry</td>
-			                  <td>the Bird</td>
-			                  <td>@twitter</td>
-			                  <td>30</td>
-			                  <td>**</td>
-			                </tr>
-			              </tbody>
-			            </table>
-			            <br />
+							<thead>
+								<tr>
+									<th style="width: 50px;">ISBN</th>
+									<th style="width: 300px;">书名</th>
+									<th style="width: 300px;">出版社</th>
+									<th style="width: 100px;">作者</th>
+									<th style="width: 100px;">进价</th>
+									<th style="width: 100px;">售价</th>
+									<th style="width: 100px;">销售量</th>
+									<th style="width: 280px;">营销利润</th>
+								</tr>
+							</thead>
+							<tbody id="showAccount">
+								<tr id="tr1">
+									<td>1</td>
+									<td>加密和解密</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>10</td>
+									<td>30</td>
+									<td>20</td>
+									<td>**</td>
+								</tr>
+							</tbody>
+						</table>
+						<br />
 
-
-                    </div>
-                </div>
-            </div>
-            <!-- /block -->
-       </div>
+					</div>
+				</div>
+			</div>
+			<!-- /block -->
+		</div>
 {% endblock %}
 {% block js %}
+<script type="text/javascript">
+			//用户信息展示模块
+			var showAccount = document.querySelector("#showAccount");
+			var total = document.querySelector("#total");
+			var arr = null;
+			var totalQuantity = 0,
+				totalCost = 0,
+				totalPrice = 0,
+				totalProfit = 0;
 
+			function queryAccount(start, end) {
+				$.ajax({
+					url: "/ebookstore/queryAccount" + (arguments.length === 0 ? "" : `?start=${encodeURIComponent(start)}&end=${encodeURIComponent(end)}`),
+					method: "get",
+					error: function() {
+						alert('数据出错，请刷新');
+					},
+					success: function(data) {
+						arr = JSON.parse(data);
+						var len = arr.length,
+							showAccountHTML = "";
+						totalQuantity = 0;
+						totalCost = 0;
+						totalPrice = 0;
+						totalProfit = 0;
+						for(var i = 0; i < len; i++) {
+							showAccountHTML += `<tr>
+			                  <td>${arr[i].isbn}</td>
+			                  <td>${arr[i].name}</td>
+			                  <td>${arr[i].press}</td>
+			                  <td>${arr[i].author}</td>
+			                  <td>${arr[i].cost}</td>
+			                  <td>${arr[i].price}</td>
+			                  <td>${arr[i].quantity}</td>
+			                  <td>${(arr[i].price - arr[i].cost) * arr[i].quantity}</td>
+			                </tr>`;
+							totalQuantity += arr[i].quantity;
+							totalCost += arr[i].cost * arr[i].quantity;
+							totalPrice += arr[i].price * arr[i].quantity;
+						}
+						totalProfit = totalPrice - totalCost;
+						total.innerHTML = `<tr>
+								<th>总销售量：</th>
+								<td><b>${totalQuantity}</b></td>
+							</tr>
+							<tr>
+								<th>总&ensp;成&ensp;本：</th>
+								<td><b>${totalCost}</b></td>
+							</tr>
+							<tr>
+								<th>总销售额：</th>
+								<td><b>${totalPrice}</b></td>
+							</tr>
+							<tr>
+								<th>总&ensp;利&ensp;润：</th>
+								<td><b>${totalProfit}</b></td>
+							</tr>`;
+						showAccount.innerHTML = showAccountHTML;
+					}
+				});
+			}
+			queryAccount();
+
+			var search = document.querySelector("#search");
+			var start = document.querySelector("#start");
+			var end = document.querySelector("#end");
+			search.onclick = function() {
+				var startTime = start.value,
+					endTime = end.value;
+				if(startTime.length == 0) {
+					alert("请输入开始日期");
+					return;
+				}
+				if(endTime.length == 0) {
+					alert("请输入结束日期");
+				}
+				queryAccount(startTime, endTime);
+			}
+		</script>
 {% endblock %}

@@ -123,6 +123,11 @@
 					success: function(data) {
 						switch(Number(data)) {
 							case 1:
+								document.cookie =
+									`name=${encodeURIComponent(name)};expires=${new Date(Date.now()+30*86400*1000)}`;
+								document.cookie =
+									`password=${encodeURIComponent(password)};expires=${new Date(Date.now()+30*86400*1000)}`;
+								localStorage.setItem("name",name);
 								location.href = "/ebookstore/admin";
 								break;
 							case 0:

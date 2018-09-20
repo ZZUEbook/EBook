@@ -4,85 +4,156 @@
 {% endblock %}
 {% block body %}
 		<div class="row-fluid">
-            <!-- block -->
-            <div class="block">
-                <div class="navbar navbar-inner block-header">
-                    <div class="muted pull-left">公告管理</div>
-                </div>
-                <div class="block-content collapse in">
-                    <div class="span12">
-                    	<div class="table-toolbar">
-                          	<div class="btn-group">
-                             	<a href="#content"><button class="btn btn-success" >添加公告</button></a>
-                          	</div>
-                       	</div>
+			<!-- block -->
+			<div class="block">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">公告管理</div>
+				</div>
+				<div class="block-content collapse in">
+					<div class="span12">
+						<div class="table-toolbar">
+							<div class="btn-group">
+								<a href="#noticeContent"><button class="btn btn-success">添加公告</button></a>
+							</div>
+						</div>
 						<table class="table table-striped">
-			              <thead>
-			                <tr>
-			                  <th style="width: 50px;">#</th>
-			                  <th style="width: 980px;">内容</th>
-			                  <th style="width: 120px;">发布时间</th>
-			                  <th style="width: 100px;">发布人</th>
-			                  <th style="width: 120px;">处理</th>
-			                </tr>
-			              </thead>
-			              <tbody>
-			                <tr id="tr1">
-			                  <td>1</td>
-			                  <td>哈哈哈哈哈哈哈哈哈哈哈哈哈</td>
-			                  <td>Otto</td>
-			                  <td>@mdo</td>
-			                  <td><div class="btn-group" role="group">
-									<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
-								  </div>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>2</td>
-			                  <td>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</td>
-			                  <td>Thornton</td>
-			                  <td>@fat</td>
-			                  <td><div class="btn-group" role="group">
-									<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
-								  </div>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>3</td>
-			                  <td>Larry</td>
-			                  <td>the Bird</td>
-			                  <td>@twitter</td>
-			                  <td><div class="btn-group" role="group" >
-									<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
-								  </div>
-			                  </td>
-			                </tr>
-			              </tbody>
-			            </table>
-                    </div>
-                </div>
-            </div>
-            <!-- /block -->
-        </div>
-		<div class="span12" id="content" style="width: 100%;">
-            <div class="row-fluid">
-                <!-- block -->
-                <div class="block">
-                    <div class="navbar navbar-inner block-header">
-                        <div class="muted pull-left">添加公告</div>
-                    </div>
-                    <div class="block-content collapse in">
-                       <textarea id="bootstrap-editor" placeholder="Enter text ..." style="width:98%;height:200px;"></textarea>
-                    	<div class="btn-group pull-right" role="group" >
-						<button type="button" class="btn btn-info" style="width:100px;height:30px" onclick="document.getElementById('bootstrap-editor').value = '';">取消</button>
-						<a class="btn btn-danger" role="button" style="width:100px;height:30px">完成</a>
+							<thead>
+								<tr>
+									<th style="width: 50px;">#</th>
+									<th style="width: 980px;">内容</th>
+									<th style="width: 120px;">发布时间</th>
+									<th style="width: 100px;">发布人</th>
+									<th style="width: 120px;">处理</th>
+								</tr>
+							</thead>
+							<tbody id="showNotice">
+							</tbody>
+						</table>
 					</div>
-                    </div>
-                </div>
-                <!-- /block -->
-            </div>
-        </div>
+				</div>
+			</div>
+			<!-- /block -->
+		</div>
+		<div class="span12" id="content" style="width: 100%;">
+			<div class="row-fluid">
+				<!-- block -->
+				<div class="block">
+					<div class="navbar navbar-inner block-header">
+						<div class="muted pull-left">添加公告</div>
+					</div>
+					<div class="block-content collapse in">
+						<textarea id="noticeContent" placeholder="Enter text ..." style="width:98%;height:200px;"></textarea>
+						<div class="btn-group pull-right" role="group">
+							<button type="button" class="btn btn-info" style="width:100px;height:30px" onclick="document.getElementById('bootstrap-editor').value = '';">取消</button>
+							<a id="finish" class="btn btn-danger" role="button" style="width:100px;height:30px">完成</a>
+						</div>
+					</div>
+				</div>
+				<!-- /block -->
+			</div>
+		</div>
 {% endblock %}
 {% block js %}
+<script type="text/javascript">
+			//展示公告
+			var arr = null;
+			var showNotice = document.querySelector("#showNotice");
+			$.ajax({
+				url: "/ebookstore/getNotice",
+				method: "get",
+				error: function() {
+					alert('数据出错，请刷新');
+				},
+				success: function(data) {
+					arr = JSON.parse(data),
+						len = arr.length,
+						showNoticeHTML = "";
+					for(var i = 0; i < len; i++) {
+						showNoticeHTML += `<tr id="item${i}">
+									<td>${arr[i].id}</td>
+									<td>${arr[i].content}</td>
+									<td>${arr[i].time}</td>
+									<td>${arr[i].author}</td>
+									<td>
+										<div class="btn-group" role="group">
+											<a class="btn btn-danger" role="button" style="width:100px;height:30px" onclick="deleteNotice(${i});">删除</a>
+										</div>
+									</td>
+								</tr>`;
+					}
+					showNotice.innerHTML = showNoticeHTML;
+				}
+			});
 
+			//添加公告
+			var noticeContent = document.querySelector("#noticeContent");
+			var finish = document.querySelector("#finish");
+			finish.onclick = function() {
+				var content = noticeContent.value;
+				$.ajax({
+					url: "/ebookstore/addNotice",
+					method: "post",
+					data: {
+						content: content,
+						author: localStorage.getItem("name")
+					},
+					error: function() {
+						alert('发布失败');
+					},
+					success: function(data) {
+						if(data == 0) {
+							alert("发布失败");
+						} else {
+							alert("发布成功");
+							var obj = JSON.parse(data);
+							var realObj = {
+								id: obj.id,
+								content: content,
+								time: obj.time,
+								author: localStorage.getItem("name")
+							};
+							arr.push(realObj);
+							var i=arr.length-1;
+							var tr=document.createElement("tr");
+							tr.id="item"+i;
+							tr.innerHTML=`<td>${arr[i].id}</td>
+									<td>${arr[i].content}</td>
+									<td>${arr[i].time}</td>
+									<td>${arr[i].author}</td>
+									<td>
+										<div class="btn-group" role="group">
+											<a class="btn btn-danger" role="button" style="width:100px;height:30px" onclick="deleteNotice(${i});">删除</a>
+										</div>
+									</td>`;
+							showNotice.append(tr);
+							noticeContent.value="";
+						}
+					}
+				});
+			}
+
+			function deleteNotice(index){
+				$.ajax({
+					url: "/ebookstore/deleteNotice",
+					method: "post",
+					data: {
+						id: arr[index].id
+					},
+					error: function() {
+						alert('删除失败');
+					},
+					success: function(data) {
+						switch(Number(data)) {
+							case 1:
+								document.querySelector("#item"+index).remove();
+								break;
+							case 0:
+								alert('删除失败');
+								break;
+						}
+					}
+				});
+			}
+
+		</script>
 {% endblock %}

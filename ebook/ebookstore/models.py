@@ -69,6 +69,7 @@ class Comment(models.Model):
     comment_time = models.DateTimeField()
     comment_book = models.ForeignKey(Book, models.DO_NOTHING)
     comment_user = models.ForeignKey(User, models.DO_NOTHING)
+    comment_status = models.IntegerField(default=1)
 
 
 class Order(models.Model):

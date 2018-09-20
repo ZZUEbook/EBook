@@ -45,8 +45,12 @@
 				flex-direction: column;
 				align-items: center;
 				justify-content: center;
+                overflow: auto;
+                z-index: 9999;
 			}
-			
+			#shade img{
+                max-height: 500px;
+            }
 			#shade div {
 				display: flex;
 				align-items: center;
@@ -55,6 +59,7 @@
 				width: 200px;
 			}
 		</style>
+
 	</head>
 
 	<body>
@@ -67,34 +72,43 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-					<a class="navbar-brand" href="#">My-eBookStore</a>
+					<a class="navbar-brand" href="/ebookstore/admin">My-eBookStore</a>
 				</div>
 				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
 					<ul class="nav navbar-nav">
-						<li class="active">
-							<a href="#">图书管理</a>
+						<li id="book_manage">
+							<a href="/ebookstore/BookManage">图书管理</a>
 						</li>
-						<li>
-							<a href="#">用户管理</a>
+						<li id="user_manage">
+							<a href="/ebookstore/UserManage">用户管理</a>
 						</li>
-						<li>
-							<a href="#">订单管理</a>
+						<li id="order_manage">
+							<a href="/ebookstore/OrderManage">订单管理</a>
 						</li>
-						<li>
-							<a href="#">公告管理</a>
+						<li id="notice_manage">
+							<a href="/ebookstore/NoticeManage">公告管理</a>
 						</li>
-						<li>
-							<a href="#">账目管理</a>
+						<li id="accout_manage">
+							<a href="/ebookstore/AccountManage">账目管理</a>
+						</li>
+						<li id="comment_manage">
+							<a href="/ebookstore/ConmentManage">评价管理</a>
 						</li>
 					</ul>
 					<ul class="nav pull-right">
 						<li class="dropdown">
 							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-user"></i> 管理员 <i class="caret"></i>
+								<i class="icon-user"></i>
+                                {% if admin_name %}
+                                    {{ admin_name }}
+                                {% else %}
+                                    未登录
+                                {% endif %}
+                                <i class="caret"></i>
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a tabindex="-1" href="Administrator-Login.html">退出</a>
+									<a tabindex="-1" href="/ebookstore/admin-login">Logout</a>
 								</li>
 							</ul>
 						</li>
@@ -192,7 +206,13 @@
 			</div>
 			<!-- /block -->
 		</div>
-
+		<div id="shade">
+			<img id="showPicture" />
+			<div>
+				<button class="btn btn-primary">确定</button>
+				<button class="btn">取消</button>
+			</div>
+		</div>
 		<script type="text/javascript" src="/static/ebookstore/jquery/jquery.js"></script>
 		<script type="text/javascript" src="/static/ebookstore/js/bootstrap.min.js"></script>
 	<script>

@@ -3,88 +3,237 @@
 {% block thirt %}
 {% endblock %}
 {% block body %}
-<div class="row-fluid" style="width: 70%;margin: 0 auto;" >
-            <!-- block -->
-            <div class="block">
-                <div class="navbar navbar-inner block-header">
-                    <div class="muted pull-left">订单管理</div>
-                </div>
-                <div class="block-content collapse in">
-                    <div class="span12">
-                    	<div class="table-toolbar">
-								<form action="#" class="pull-left">
-									<div class="form-group has-feedback" >
-										<label for="search" class="sr-only">搜索关键字</label>
-										<input type="search" placeholder="请输入查找的订单" class="form-control">
-										<span class="glyphicon glyphicon-search  form-control-feedback"></span>
-									</div>
-								</form>
-                       	</div>
+<div class="row-fluid" style="width: 70%;margin: 0 auto;">
+			<!-- block -->
+			<div class="block">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">订单管理</div>
+				</div>
+				<div class="block-content collapse in">
+					<div class="span12">
+						<input id="key" type="search" placeholder="请输入用户名或手机号">
+						<button id="search" style="display: inline-block;height: 30px;position: relative;top: -4px;" class="glyphicon glyphicon-search">
+						</button>
 						<table class="table table-striped" style="margin: auto;">
-			              <thead>
-			                <tr>
-			                  <th style="width: 100px;">订单号</th>
-			                  <th style="width: 300px;">用户名</th>
-			                  <th style="width: 300px;">联系方式</th>
-			                  <th style="width: 200px;">订单状态</th>
-			                  <th style="width: 280px;">处理</th>
-			                </tr>
-			              </thead>
-			              <tbody>
-			                <tr id="tr1">
-			                  <td><a href="order.html">1</a></td>
-			                  <td>王瀚</td>
-			                  <td>18838076765</td>
-			                  <td>未支付</td>
-			                  <td></td>
-			                </tr>
-			                <tr>
-			                  <td><a href="order.html">2</a></td>
-			                  <td>汪涛</td>
-			                  <td>18838981005</td>
-			                  <td>未发货</td>
-			                  <td><div class="btn-group" role="group" style="align-content: center;">
-			                  		<a class="btn btn-info" role="button" style="width:100px;height:30px">发货</a>
-								  </div>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td><a href="order.html">3</a></td>
-			                  <td>王卫国</td>
-			                  <td>18838904266</td>
-			                  <td>已发货</td>
-			                  <td></td>
-			                </tr>
-			                <tr id="tr1">
-			                  <td><a href="order.html">4</a></td>
-			                  <td>秦文杰</td>
-			                  <td>18838076765</td>
-			                  <td>关闭</td>
-			                  <td>
-			                  	<div class="btn-group" role="group">
-									<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
-								</div>
-			                  </td>
-			                </tr>
-			                <tr id="tr1">
-			                  <td><a href="order.html">5</a></td>
-			                  <td>武一博</td>
-			                  <td>18838076765</td>
-			                  <td>已完成</td>
-			                  <td>
-			                  	<div class="btn-group" role="group">
-									<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
-								</div>
-			                  </td>
-			                </tr>
-			              </tbody>
-			            </table>
-                    </div>
-                </div>
-            </div>
-            <!-- /block -->
-       </div>
+							<thead>
+								<tr>
+									<th style="width: 100px;">订单号</th>
+									<th style="width: 300px;">用户名</th>
+									<th style="width: 300px;">联系方式</th>
+									<th style="width: 200px;">订单状态</th>
+									<th style="width: 280px;">处理</th>
+								</tr>
+							</thead>
+							<tbody id="showOrder">
+                                <!--
+								<tr id="tr1">
+									<td>
+										<a href="order.html">1</a>
+									</td>
+									<td>王瀚</td>
+									<td>18838076765</td>
+									<td>未支付</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>
+										<a href="order.html">2</a>
+									</td>
+									<td>汪涛</td>
+									<td>18838981005</td>
+									<td>未发货</td>
+									<td>
+										<div class="btn-group" role="group" style="align-content: center;">
+											<a class="btn btn-info" role="button" style="width:100px;height:30px">发货</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="order.html">3</a>
+									</td>
+									<td>王卫国</td>
+									<td>18838904266</td>
+									<td>已发货</td>
+									<td></td>
+								</tr>
+								<tr id="tr1">
+									<td>
+										<a href="order.html">4</a>
+									</td>
+									<td>秦文杰</td>
+									<td>18838076765</td>
+									<td>关闭</td>
+									<td>
+										<div class="btn-group" role="group">
+											<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
+										</div>
+									</td>
+								</tr>
+								<tr id="tr1">
+									<td>
+										<a href="order.html">5</a>
+									</td>
+									<td>武一博</td>
+									<td>18838076765</td>
+									<td>已完成</td>
+									<td>
+										<div class="btn-group" role="group">
+											<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
+										</div>
+									</td>
+								</tr>
+								-->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- /block -->
+		</div>
 {% endblock %}
 {% block js %}
+<script type="text/javascript">
+			//展示订单，订单状态1：未支付，2：未发货，3：已发货，4：关闭，5：已完成
+			//[{"id":,"name":"","phone":"","state":},...]
+			var arr = null;
+			var showOrder = document.querySelector("#showOrder");
+			var stateText = [0, "未支付", "未发货", "已发货", "关闭", "已完成"],
+				dealText = [0, "", "发货", "", "删除", "删除"],
+				dealFunction = [0, "", "deliverGood", "", "deleteOrder", "deleteOrder"];
+			$.ajax({
+				url: "/ebookstore/queryOrder",
+				method: "get",
+				error: function() {
+					alert('数据出错，请刷新');
+				},
+				success: function(data) {
+					arr = JSON.parse(data),
+						len = arr.length,
+						showOrderHTML = "";
+					for(var i = 0; i < len; i++) {
+						if(arr[i].state == 1 || arr[i].state == 3) {
+							showOrderHTML += `<tr>
+			                  <td><a href="order.html?id=${arr[i].id}">${arr[i].id}</a></td>
+			                  <td>${arr[i].name}</td>
+			                  <td>${arr[i].phone}</td>
+			                  <td>${stateText[arr[i].state]}</td>
+			                  <td>
+			                  </td>
+			                </tr>`;
+						} else {
+							showOrderHTML += `<tr id="item${i}">
+			                  <td><a href="order.html?id=${arr[i].id}">${arr[i].id}</a></td>
+			                  <td>${arr[i].name}</td>
+			                  <td>${arr[i].phone}</td>
+			                  <td id="state${i}">${stateText[arr[i].state]}</td>
+			                  <td>
+			                  	  <div id="deal${i}" class="btn-group" role="group" style="align-content: center;">
+			                  		<a class="btn ${arr[i].state==2?'btn-info':'btn-danger'}" role="button" style="width:100px;height:30px" onclick="${dealFunction[arr[i].state]}(${i})">${dealText[arr[i].state]}</a>
+								  </div>
+			                  </td>
+			                </tr>`;
+						}
+					}
+					showOrder.innerHTML = showOrderHTML;
+				}
+			});
 
+			//删除订单
+			function deleteOrder(index) {
+				$.ajax({
+					url: "/ebookstore/deleteOrder",
+					method: "post",
+					data: {
+						id: arr[index].id
+					},
+					error: function() {
+						alert('删除失败');
+					},
+					success: function(data) {
+						switch(Number(data)) {
+							case 1:
+								document.querySelector("#item" + index).remove();
+								break;
+							case 0:
+								alert('删除失败');
+								break;
+						}
+					}
+				});
+			}
+
+			//发货
+			function deliverGood(index) {
+				$.ajax({
+					url: "/ebookstore/deliverGoods",
+					method: "post",
+					data: {
+						id: arr[index].id
+					},
+					error: function() {
+						alert('状态改变失败');
+					},
+					success: function(data) {
+						switch(Number(data)) {
+							case 1:
+								document.querySelector("#state" + index).innerText = "已发货";
+								document.querySelector("#deal" + index).remove();
+								break;
+							case 0:
+								alert('状态改变失败');
+								break;
+						}
+					}
+				});
+			}
+
+			//搜索模块
+			var search = document.querySelector("#search");
+			var key = document.querySelector("#key");
+			search.onclick = function() {
+				var value = key.value;
+				if(!/^[\w\u4e00-\u9fa5]+$/.test(value)) {
+					alert("关键字不合法");
+					return;
+				}
+				$.ajax({
+					url: "/ebookstore/queryOrder?key=" + encodeURIComponent(value),
+					method: "get",
+					error: function() {
+						alert('查找失败');
+					},
+					success: function(data) {
+						arr = JSON.parse(data),
+							len = arr.length,
+							showOrderHTML = "";
+						for(var i = 0; i < len; i++) {
+							if(arr[i].state == 1 || arr[i].state == 3) {
+								showOrderHTML += `<tr>
+			                  <td><a href="order.html?id=${arr[i].id}">${arr[i].id}</a></td>
+			                  <td>${arr[i].name}</td>
+			                  <td>${arr[i].phone}</td>
+			                  <td>${stateText[arr[i].state]}</td>
+			                  <td>
+			                  </td>
+			                </tr>`;
+							} else {
+								showOrderHTML += `<tr id="item${i}">
+			                  <td><a href="order.html?id=${arr[i].id}">${arr[i].id}</a></td>
+			                  <td>${arr[i].name}</td>
+			                  <td>${arr[i].phone}</td>
+			                  <td id="state${i}">${stateText[arr[i].state]}</td>
+			                  <td>
+			                  	  <div id="deal${i}" class="btn-group" role="group" style="align-content: center;">
+			                  		<a class="btn ${arr[i].state==2?'btn-info':'btn-danger'}" role="button" style="width:100px;height:30px" onclick="${dealFunction[arr[i].state]}(${i})">${dealText[arr[i].state]}</a>
+								  </div>
+			                  </td>
+			                </tr>`;
+							}
+						}
+						showOrder.innerHTML = showOrderHTML;
+					}
+				});
+			}
+		</script>
 {% endblock %}

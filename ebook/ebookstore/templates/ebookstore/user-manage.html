@@ -3,73 +3,162 @@
 {% block thirt %}
 {% endblock %}
 {% block body %}
-<div class="row-fluid" style="width: 70%;margin: 0 auto;" >
-            <!-- block -->
-            <div class="block">
-                <div class="navbar navbar-inner block-header">
-                    <div class="muted pull-left">用户管理</div>
-                </div>
-                <div class="block-content collapse in">
-                    <div class="span12">
-                    	<div class="table-toolbar">
-								<form action="#" class="pull-left">
-									<div class="form-group has-feedback" >
-										<label for="search" class="sr-only">搜索关键字</label>
-										<input type="search" placeholder="请输入查找的用户ID" class="form-control">
-										<span class="glyphicon glyphicon-search  form-control-feedback pull-right"></span>
-									</div>
-								</form>
-                       	</div>
+<div class="row-fluid" style="width: 70%;margin: 0 auto;">
+			<!-- block -->
+			<div class="block">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">用户管理</div>
+				</div>
+				<div class="block-content collapse in">
+					<div class="span12">
+						<input id="key" type="search" placeholder="请输入查找的用户名">
+						<button id="search" style="display: inline-block;height: 30px;position: relative;top: -4px;" class="glyphicon glyphicon-search">
+
+							</button>
+
 						<table class="table table-striped" style="margin: auto;">
-			              <thead>
-			                <tr>
-			                  <th style="width: 50px;">ID</th>
-			                  <th style="width: 300px;">用户名</th>
-			                  <th style="width: 300px;">联系方式</th>
-			                  <th style="width: 100px;">状态</th>
-			                  <th style="width: 150px;">处理</th>
-			                </tr>
-			              </thead>
-			              <tbody>
-			                <tr id="tr1">
-			                  <td>1</td>
-			                  <td>王瀚</td>
-			                  <td>18838076765</td>
-			                  <td><span class="glyphicon glyphicon-ok"></span></td>
-			                  <td>
-			                  	<div class="btn-group" role="group">
-									<a class="btn btn-info" role="button" style="width:100px;height:30px">冻结</a>
-								</div>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>2</td>
-			                  <td>汪涛</td>
-			                  <td>18838981005</td>
-			                  <td><span class="glyphicon glyphicon-ok"></span></td>
-			                  <td><div class="btn-group" role="group" style="align-content: center;">
-									<a class="btn btn-info" role="button" style="width:100px;height:30px">冻结</a>
-								  </div>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>3</td>
-			                  <td>王卫国</td>
-			                  <td>18838904266</td>
-			                  <td><span class="glyphicon glyphicon-remove"></span></td>
-			                  <td><div class="btn-group" role="group" >
-			                  		<a class="btn btn-danger" role="button" style="width:100px;height:30px">解冻</a>
-								  </div>
-			                  </td>
-			                </tr>
-			              </tbody>
-			            </table>
-                    </div>
-                </div>
-            </div>
-            <!-- /block -->
-       </div>
+							<thead>
+								<tr>
+									<th style="width: 50px;">ID</th>
+									<th style="width: 300px;">用户名</th>
+									<th style="width: 300px;">联系方式</th>
+									<th style="width: 100px;">状态</th>
+									<th style="width: 150px;">处理</th>
+								</tr>
+							</thead>
+							<tbody id="showUser">
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- /block -->
+		</div>
 {% endblock %}
 {% block js %}
+<script type="text/javascript">
+			//用户信息展示模块
+			var showUser = document.querySelector("#showUser");
+			//[{"id":,"name","","phone":"","freeze":0},{},{}]
+			var arr = null;
+			$.ajax({
+				url: "/ebookstore/queryUser/",
+				method: "get",
+				error: function() {
+					alert('数据出错，请刷新');
+				},
+				success: function(data) {
+					arr = JSON.parse(data),
+						len = arr.length,
+						showUserHTML = "";
+					for(var i = 0; i < len; i++) {
+						showUserHTML += `<tr id="tr1">
+									<td>${arr[i].id}</td>
+									<td>${arr[i].name}</td>
+									<td>${arr[i].phone}</td>
+									<td><span id="state${i}" class="glyphicon ${arr[i].freeze==0?'glyphicon-ok':'glyphicon-remove'}"></span></td>
+									<td>
+										<div class="btn-group" role="group">
+											<a class="btn ${arr[i].freeze==0?'btn-info':'btn-danger'}" role="button" style="width:100px;height:30px" data-index="${i}" onclick="changeFreezeState(this);">${arr[i].freeze==0?'冻结':'解冻'}</a>
+										</div>
+									</td>
+								</tr>`;
+					}
+					showUser.innerHTML = showUserHTML;
+				}
+			});
 
+			function changeFreezeState(el) {
+				var index = Number(el.getAttribute("data-index"));
+				var state = document.querySelector("#state" + index);
+				if(arr[index].freeze == 1) {
+					$.ajax({
+						url: "/ebookstore/changeUserFreezeState/",
+						method: "post",
+						data: {
+							id: arr[index].id,
+							state: 0
+						},
+						error: function() {
+							alert('状态改变失败');
+						},
+						success: function(data) {
+							switch(Number(data)) {
+								case 1:
+									arr[index].freeze = 0;
+									el.innerText = "冻结";
+									el.className="btn btn-info";
+									state.className = "glyphicon glyphicon-ok";
+									break;
+								case 0:
+									alert('状态改变失败');
+									break;
+							}
+						}
+					});
+				} else if(arr[index].freeze == 0) {
+					$.ajax({
+						url: "/ebookstore/changeUserFreezeState/",
+						method: "post",
+						data: {
+							id: arr[index].id,
+							state: 1
+						},
+						error: function() {
+							alert('状态改变失败');
+						},
+						success: function(data) {
+							switch(Number(data)) {
+								case 1:
+									arr[index].freeze = 1;
+									el.innerText = "解冻";
+									el.className="btn btn-danger";
+									state.className = "glyphicon glyphicon-remove";
+									break;
+								case 0:
+									alert('状态改变失败');
+									break;
+							}
+						}
+					});
+				}
+			}
+
+			//搜索模块
+			var search = document.querySelector("#search");
+			var key = document.querySelector("#key");
+			search.onclick = function() {
+				var value = key.value;
+				if(!/^[\w\u4e00-\u9fa5]+$/.test(value)) {
+					alert("关键字不合法");
+					return;
+				}
+				$.ajax({
+					url: "/ebookstore/queryUser/?key="+encodeURIComponent(value),
+					method: "get",
+					error: function() {
+						alert('查找失败');
+					},
+					success: function(data) {
+						arr = JSON.parse(data),
+							len = arr.length,
+							showUserHTML = "";
+						for(var i = 0; i < len; i++) {
+							showUserHTML += `<tr id="tr1">
+									<td>${arr[i].id}</td>
+									<td>${arr[i].name}</td>
+									<td>${arr[i].phone}</td>
+									<td><span id="state${i}" class="glyphicon ${arr[i].freeze==0?'glyphicon-ok':'glyphicon-remove'}"></span></td>
+									<td>
+										<div class="btn-group" role="group">
+											<a class="btn ${arr[i].freeze==0?'btn-info':'btn-danger'}" role="button" style="width:100px;height:30px" data-index="${i}" onclick="changeFreezeState(this);">${arr[i].freeze==0?'冻结':'解冻'}</a>
+										</div>
+									</td>
+								</tr>`;
+						}
+						showUser.innerHTML = showUserHTML;
+					}
+				});
+			};
+		</script>
 {% endblock %}

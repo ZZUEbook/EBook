@@ -3,83 +3,155 @@
 {% block thirt %}
 {% endblock %}
 {% block body %}
-<div class="row-fluid" style="width: 70%;margin: 0 auto;" >
-            <!-- block -->
-            <div class="block">
-                <div class="navbar navbar-inner block-header">
-                    <div class="muted pull-left">图书管理</div>
-                </div>
-                <div class="block-content collapse in">
-                    <div class="span12">
-                    	<div class="table-toolbar">
-                          	<div class="btn-group">
-                             	<a href="/ebookstore/addBook"><button class="btn btn-success" >添加书籍</button></a>
-                          	</div>
-								<form action="#" class="pull-right">
-									<div class="form-group has-feedback" >
-										<label for="search" class="sr-only">搜索关键字</label>
-										<input type="search" placeholder="请输入查找的书籍" class="form-control">
-										<span class="glyphicon glyphicon-search  form-control-feedback"></span>
-									</div>
-								</form>
-                       	</div>
+		<div class="row-fluid" style="width: 70%;margin: 0 auto;">
+			<!-- block -->
+			<div class="block">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">图书管理</div>
+				</div>
+				<div class="block-content collapse in">
+					<div class="span12">
+						<div class="table-toolbar">
+							<div class="btn-group">
+								<a href="/ebookstore/addBook"><button class="btn btn-success">添加书籍</button></a>
+							</div>
+							<div class="pull-right">
+								<input id="key" type="search" placeholder="请输入查找的书籍">
+								<button id="search" style="display: inline-block;height: 30px;position: relative;top: -4px;" class="glyphicon glyphicon-search">
+									</button>
+							</div>
+						</div>
 						<table class="table table-striped" style="margin: auto;">
-			              <thead>
-			                <tr>
-			                  <th style="width: 50px;">ISBN</th>
-			                  <th style="width: 300px;">书名</th>
-			                  <th style="width: 300px;">出版社</th>
-			                  <th style="width: 100px;">作者</th>
-			                  <th style="width: 100px;">库存量</th>
-			                  <th style="width: 280px;">处理</th>
-			                </tr>
-			              </thead>
-			              <tbody>
-			                <tr id="tr1">
-			                  <td>1</td>
-			                  <td>加密和解密</td>
-			                  <td>Otto</td>
-			                  <td>@mdo</td>
-			                  <td>20</td>
-			                  <td>
-			                  	<div class="btn-group" role="group">
-									<a class="btn btn-info" style="width:100px;height:30px" href="ModifyBook.html">修改</a>
-									<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
-								</div>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>2</td>
-			                  <td>数据库</td>
-			                  <td>Thornton</td>
-			                  <td>@fat</td>
-			                  <td>20</td>
-			                  <td><div class="btn-group" role="group" style="align-content: center;">
-			                  		<a class="btn btn-info" role="button" style="width:100px;height:30px" href="ModifyBook.html">修改</a>
-									<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
-								  </div>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>3</td>
-			                  <td>Larry</td>
-			                  <td>the Bird</td>
-			                  <td>@twitter</td>
-			                  <td>30</td>
-			                  <td><div class="btn-group" role="group" >
-			                  		<a class="btn btn-info" role="button" style="width:100px;height:30px" href="ModifyBook.html">修改</a>
-									<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
-								  </div>
-			                  </td>
-			                </tr>
-			              </tbody>
-			            </table>
-                    </div>
-                </div>
-            </div>
-            <!-- /block -->
-       </div>
+							<thead>
+								<tr>
+									<th style="width: 50px;">ISBN</th>
+									<th style="width: 300px;">书名</th>
+									<th style="width: 300px;">出版社</th>
+									<th style="width: 100px;">作者</th>
+									<th style="width: 100px;">库存量</th>
+									<th style="width: 280px;">处理</th>
+								</tr>
+							</thead>
+							<tbody id="showBook">
+                                <!--
+								<tr id="item1">
+									<td>1</td>
+									<td>加密和解密</td>
+									<td>Otto</td>
+									<td>@mdo</td>
+									<td>20</td>
+									<td>
+										<div class="btn-group" role="group">
+											<a class="btn btn-info" style="width:100px;height:30px" href="/ebookstore/modifyBook/">修改</a>
+											<a class="btn btn-danger" role="button" style="width:100px;height:30px" data-id="1" onclick="deleteBook(event);">删除</a>
+										</div>
+									</td>
+								</tr>
+								-->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- /block -->
+		</div>
 {% endblock %}
 {% block js %}
+<script type="text/javascript">
+			var showBook = document.querySelector("#showBook");
+			$.ajax({
+				url: "/ebookstore/queryBook",
+				method: "get",
+				error: function() {
+					alert('数据出错，请刷新');
+				},
+				success: function(data) {
+					var arr = JSON.parse(data),
+						len = arr.length,
+						showBookHTML = "";
+					for(var i = 0; i < len; i++) {
+						showBookHTML += `<tr id="item${arr[i].id}">
+									<td>${arr[i].isbn}</td>
+									<td>${arr[i].name}</td>
+									<td>${arr[i].press}</td>
+									<td>${arr[i].author}</td>
+									<td>${arr[i].count}</td>
+									<td>
+										<div class="btn-group" role="group">
+											<a class="btn btn-info" style="width:100px;height:30px" href="/ebookstore/modifyBook/?id=${arr[i].id}">修改</a>
+											<a class="btn btn-danger" role="button" style="width:100px;height:30px" data-id="${arr[i].id}" onclick="deleteBook(e)">删除</a>
+										</div>
+									</td>
+								</tr>`;
+					}
+					showBook.innerHTML = showBookHTML;
+				}
+			});
 
+			//删除书籍
+			function deleteBook(e) {
+				var e = e || window.event;
+				var bookId = e.target.getAttribute("data-id");
+
+				$.ajax({
+					url: "/ebookstore/deleteBook",
+					method: "post",
+					data: {
+						id: bookId
+					},
+					error: function() {
+						alert('删除失败');
+					},
+					success: function(data) {
+						switch(Number(data)) {
+							case 1:
+								document.querySelector("#item" + bookId).remove();
+								break;
+							case 0:
+								alert('删除失败');
+								break;
+						}
+					}
+				});
+			}
+
+			//搜索模块
+			var search = document.querySelector("#search");
+			var key = document.querySelector("#key");
+			search.onclick = function() {
+				var value = key.value;
+				if(!/^[\w\u4e00-\u9fa5]+$/.test(value)) {
+					alert("关键字不合法");
+					return;
+				}
+				$.ajax({
+					url: "/ebookstore/queryBook?key=" + encodeURIComponent(value),
+					method: "get",
+					error: function() {
+						alert('查找失败');
+					},
+					success: function(data) {
+						var arr = JSON.parse(data),
+							len = arr.length,
+							showBookHTML = "";
+						for(var i = 0; i < len; i++) {
+							showBookHTML += `<tr id="item${arr[i].id}">
+									<td>${arr[i].isbn}</td>
+									<td>${arr[i].name}</td>
+									<td>${arr[i].press}</td>
+									<td>${arr[i].author}</td>
+									<td>${arr[i].count}</td>
+									<td>
+										<div class="btn-group" role="group">
+											<a class="btn btn-info" style="width:100px;height:30px" href="/ebookstore/modifyBook/?id=${arr[i].id}">修改</a>
+											<a class="btn btn-danger" role="button" style="width:100px;height:30px" data-id="${arr[i].id}" onclick="deleteBook(e)">删除</a>
+										</div>
+									</td>
+								</tr>`;
+						}
+						showBook.innerHTML = showBookHTML;
+					}
+				});
+			}
+		</script>
 {% endblock %}

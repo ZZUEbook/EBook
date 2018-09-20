@@ -3,73 +3,145 @@
 {% block thirt %}
 {% endblock %}
 {% block body %}
-<div class="row-fluid" style="width: 70%;margin: 0 auto;" >
-            <!-- block -->
-            <div class="block">
-                <div class="navbar navbar-inner block-header">
-                    <div class="muted pull-left">评论管理</div>
-                </div>
-                <div class="block-content collapse in">
-                    <div class="span12">
-                    	<div class="table-toolbar">
-								<form action="#" class="pull-left">
-									<div class="form-group has-feedback" >
-										<label for="search" class="sr-only">搜索关键字</label>
-										<input type="search" placeholder="请输入查找的评价内容/用户" class="form-control">
-										<span class="glyphicon glyphicon-search  form-control-feedback"></span>
-									</div>
-								</form>
-                       	</div>
+<div class="row-fluid" style="width: 70%;margin: 0 auto;">
+			<!-- block -->
+			<div class="block">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">评论管理</div>
+				</div>
+				<div class="block-content collapse in">
+					<div class="span12">
+						<input id="key" type="search" placeholder="请输入查找的评价对应书名/用户">
+						<button id="search" style="display: inline-block;height: 30px;position: relative;top: -4px;" class="glyphicon glyphicon-search">
+						</button>
 						<table class="table table-striped" style="margin: auto;">
-			              <thead>
-			                <tr>
-			                  <th style="width: 100px;">评价编号</th>
-			                  <th style="width: 100px;">书名</th>
-			                  <th style="width: 100px;">用户名</th>
-			                  <th style="width: 500px;">内容</th>
-			                  <th style="width: 140px;">处理</th>
-			                </tr>
-			              </thead>
-			              <tbody>
-			                <tr id="tr1">
-			                  <td>1</td>
-			                  <td>加密和解密</td>
-			                  <td><a href="user-manage.html">王瀚</a></td>
-			                  <td>@mdo</td>
-			                  <td>
-			                  	<div class="btn-group" role="group">
-									<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
-								</div>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>2</td>
-			                  <td>数据库</td>
-			                  <td><a href="user-manage.html">汪涛</a></td>
-			                  <td>@fat</td>
-			                  <td><div class="btn-group" role="group" style="align-content: center;">
-									<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
-								  </div>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td>3</td>
-			                  <td>Larry</td>
-			                  <td><a href="user-manage.html">zzuwenjie</a></td>
-			                  <td>@twitter</td>
-			                  <td><div class="btn-group" role="group" >
-									<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
-								  </div>
-			                  </td>
-			                </tr>
-			              </tbody>
-			            </table>
-                    </div>
-                </div>
-            </div>
-            <!-- /block -->
-       </div>
+							<thead>
+								<tr>
+									<th style="width: 100px;">评价编号</th>
+									<th style="width: 100px;">书名</th>
+									<th style="width: 100px;">用户名</th>
+									<th style="width: 500px;">内容</th>
+                                    <th style="width: 180px;">时间</th>
+									<th style="width: 140px;">处理</th>
+								</tr>
+							</thead>
+							<tbody id="showComment">
+                            <!--
+								<tr id="tr1">
+									<td>1</td>
+									<td>加密和解密</td>
+									<td>
+										<a href="user-manage.html">王瀚</a>
+									</td>
+									<td>@mdo</td>
+									<td>
+										<div class="btn-group" role="group">
+											<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除</a>
+										</div>
+									</td>
+								</tr>
+								-->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- /block -->
+		</div>
 {% endblock %}
 {% block js %}
+<script type="text/javascript">
+			//展示评论
+			var arr = null;
+			var showComment = document.querySelector("#showComment");
+			$.ajax({
+				url: "/ebookstore/queryComment",
+				method: "get",
+				error: function() {
+					alert('数据出错，请刷新');
+				},
+				success: function(data) {
+					arr = JSON.parse(data),
+						len = arr.length,
+						showCommentHTML = "";
+					for(var i = 0; i < len; i++) {
+						showCommentHTML += `<tr id="item${i}">
+			                  <td>${arr[i].id}</td>
+			                  <td>${arr[i].name}</td>
+			                  <td><a href="/ebookstore/UserManage/">${arr[i].author}</a></td>
+			                  <td>${arr[i].content}</td>
+			                  <td>${arr[i].time}</td>
+			                  <td>
+			                  	<div class="btn-group" role="group">
+									<a class="btn btn-danger" role="button" style="width:100px;height:30px" onclick="deleteComment(${i})">删除</a>
+								</div>
+			                  </td>
+			                </tr>`;
+					}
+					showComment.innerHTML = showCommentHTML;
+				}
+			});
 
+			//删除评论
+			function deleteComment(index) {
+				$.ajax({
+					url: "/ebookstore/deleteComment",
+					method: "post",
+					data: {
+						id: arr[index].id
+					},
+					error: function() {
+						alert('删除失败');
+					},
+					success: function(data) {
+						switch(Number(data)) {
+							case 1:
+								document.querySelector("#item" + index).remove();
+								break;
+							case 0:
+								alert('删除失败');
+								break;
+						}
+					}
+				});
+			}
+
+			//搜索模块
+			var search = document.querySelector("#search");
+			var key = document.querySelector("#key");
+			search.onclick = function() {
+				var value = key.value;
+				if(!/^[\w\u4e00-\u9fa5]+$/.test(value)) {
+					alert("关键字不合法");
+					return;
+				}
+				$.ajax({
+					url: "/ebookstore/queryComment?key=" + encodeURIComponent(value),
+					method: "get",
+					error: function() {
+						alert('查找失败');
+					},
+					success: function(data) {
+						arr = JSON.parse(data),
+							len = arr.length,
+							showBookHTML = "";
+						for(var i = 0; i < len; i++) {
+							showBookHTML += `<tr id="item${i}">
+			                  <td>${arr[i].id}</td>
+			                  <td>${arr[i].name}</td>
+			                  <td><a href="/ebookstore/UserManage/">${arr[i].author}</a></td>
+			                  <td>${arr[i].content}</td>
+			                  <td>${arr[i].time}</td>
+			                  <td>
+			                  	<div class="btn-group" role="group">
+									<a class="btn btn-danger" role="button" style="width:100px;height:30px" onclick="deleteComment(${i})">删除</a>
+								</div>
+			                  </td>
+			                </tr>`;
+						}
+						showBook.innerHTML = showBookHTML;
+					}
+				});
+			}
+		</script>
 {% endblock %}

@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01a0e05d-eb8c-4e76-9fff-00b00c9fc7c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ebookstore/static/ebookstore/img/计算机类/default.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/tmp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ebookstore/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/AddBook.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/AddBook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/Administrator-Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/Administrator-Login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/Book-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/Book-manage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/ModifyBook.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/ModifyBook.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/Notice-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/Notice-manage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/account-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/account-manage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/comment-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/comment-manage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/order-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/order-manage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/user-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/user-manage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ebookstore/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ebookstore/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,34 +73,34 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="2947" />
-          <entry key="py" value="6870" />
+          <entry key="html" value="3502" />
+          <entry key="py" value="12578" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="2947" />
-          <entry key="Python" value="6870" />
+          <entry key="HTML" value="3502" />
+          <entry key="Python" value="12578" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="5" />
-          <entry key="html" value="301" />
+          <entry key="html" value="327" />
           <entry key="jpg" value="1" />
           <entry key="js" value="3" />
-          <entry key="py" value="55" />
+          <entry key="py" value="63" />
           <entry key="start" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CSS" value="5" />
-          <entry key="HTML" value="301" />
+          <entry key="HTML" value="327" />
           <entry key="Image" value="1" />
           <entry key="JavaScript" value="3" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="55" />
+          <entry key="Python" value="63" />
         </counts>
       </usages-collector>
     </session>
@@ -100,31 +110,111 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ebookstore/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="226" column="44" lean-forward="true" selection-start-line="226" selection-start-column="44" selection-end-line="226" selection-end-column="44" />
+            <state relative-caret-position="19">
+              <caret line="405" selection-start-line="405" selection-start-column="2" selection-end-line="427" selection-end-column="47" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1537172613931" expanded="true" signature="5649:5654" ph="..." />
-                <marker date="1537172613931" expanded="true" signature="6649:6654" ph="..." />
-                <marker date="1537172613931" expanded="true" signature="6735:6740" ph="..." />
-                <marker date="1537172613931" expanded="true" signature="6806:6811" ph="..." />
-                <marker date="1537172613931" expanded="true" signature="6878:6883" ph="..." />
-                <marker date="1537172613931" expanded="true" signature="7220:9251" ph="..." />
-                <marker date="1537172613931" expanded="true" signature="7396:9251" ph="..." />
-                <marker date="1537172613931" expanded="true" signature="7454:7455" ph="..." />
-                <marker date="1537172613931" expanded="true" signature="9278:9283" ph="..." />
-                <marker date="1537172613931" expanded="true" signature="9356:9361" ph="..." />
-                <marker date="1537172613931" expanded="true" signature="9427:9432" ph="..." />
+                <element signature="e#6883#7361#0" />
+                <element signature="e#10528#11051#0" />
+                <element signature="e#11242#12343#0" />
+                <element signature="e#13764#14075#0" />
+                <element signature="e#13781#14003#0" />
+                <element signature="e#14558#14823#0" />
+                <element signature="e#14575#14755#0" />
+                <marker date="1537405563138" expanded="true" signature="5976:5981" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="6976:6981" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="7062:7067" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="7133:7138" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="7723:7782" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="8064:10027" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="8240:10027" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="8298:8299" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="10054:10059" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="10132:10137" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="10203:10208" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="10308:10313" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="10665:10670" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="11345:11354" ph="..." />
+                <marker date="1537405563138" expanded="false" signature="12549:12616" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="12639:13014" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="13391:13396" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="13826:14015" ph="..." />
+                <marker date="1537405563138" expanded="false" signature="14050:14055" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="14424:14982" ph="..." />
+                <marker date="1537405563138" expanded="true" signature="15049:15054" ph="..." />
+                <marker date="1537405563138" expanded="false" signature="15383:15388" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/AddBook.html">
+        <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="116" column="54" lean-forward="true" selection-start-line="116" selection-start-column="54" selection-end-line="116" selection-end-column="54" />
+            <state relative-caret-position="209">
+              <caret line="114" column="14" lean-forward="true" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
+              <folding>
+                <element signature="e#123#5182#0#HTML" />
+                <element signature="e#5164#5478#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/tmp.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="169" selection-end-column="14" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#4172#4178#0#HTML" expanded="true" />
+                <element signature="e#4179#4185#0#HTML" expanded="true" />
+                <element signature="e#4329#4335#0#HTML" expanded="true" />
+                <element signature="e#4336#4342#0#HTML" expanded="true" />
+                <element signature="n#style#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#th#7;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/account-manage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+              <folding>
+                <element signature="e#153#187#0#HTML" expanded="true" />
+                <element signature="e#130#3012#0#HTML" />
+                <element signature="e#784#815#0#HTML" expanded="true" />
+                <element signature="e#917#938#0#HTML" expanded="true" />
+                <element signature="e#1038#1044#0#HTML" expanded="true" />
+                <element signature="e#1045#1051#0#HTML" expanded="true" />
+                <element signature="e#1195#1201#0#HTML" expanded="true" />
+                <element signature="e#1202#1208#0#HTML" expanded="true" />
+                <element signature="e#1310#1331#0#HTML" expanded="true" />
+                <element signature="e#1374#1394#0#HTML" expanded="true" />
+                <element signature="e#1418#1439#0#HTML" expanded="true" />
+                <element signature="e#1461#1482#0#HTML" expanded="true" />
+                <element signature="e#1505#1526#0#HTML" expanded="true" />
+                <element signature="e#1548#1569#0#HTML" expanded="true" />
+                <element signature="e#1591#1612#0#HTML" expanded="true" />
+                <element signature="e#1634#1655#0#HTML" expanded="true" />
+                <element signature="e#1678#1699#0#HTML" expanded="true" />
+                <element signature="e#3043#5381#0#HTML" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -132,8 +222,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ebookstore/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="41" column="16" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="16" />
+            <state relative-caret-position="397">
+              <caret line="87" column="14" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -150,36 +240,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>BookD</find>
-      <find>selectComputer</find>
-      <find>新书上架</find>
-      <find>newBook</find>
-      <find>chosen.jquery.min.js</find>
-      <find>static/ebookstore/css/datepicker.css</find>
-      <find>500</find>
-      <find>数量</find>
-      <find>&lt;!--这个div模拟一条白色的垂直分割线--&gt;</find>
-      <find>Book-</find>
-      <find>src=&quot;js/</find>
-      <find>adminLoing</find>
-      <find>href=&quot;/static/eoookstore</find>
-      <find>adminLogin</find>
-      <find>管理员</find>
-      <find>name</find>
-      <find>href=&quot;/static/ebookstor/css</find>
-      <find>/DT_bootstrap.js</find>
-      <find>/bootstrap/js/bootstrap.min</find>
-      <find>./</find>
-      <find>href=&quot;/static/ebookstor/css/</find>
-      <find>login</find>
-      <find>哈哈哈</find>
       <find>添加</find>
       <find>我的订单</find>
       <find>/static/ebookstore/jquery</find>
       <find>assets</find>
       <find>bootstrap/css</find>
       <find>出版日期</find>
+      <find>s</find>
       <find>AddBook</find>
+      <find>getBo</find>
+      <find>m</find>
+      <find>content</find>
+      <find>context</find>
+      <find>ModifyBook.html</find>
+      <find>action</find>
+      <find>addBook</find>
+      <find>-</find>
+      <find>delete</find>
+      <find>getUserManage</find>
+      <find>btn</find>
+      <find>changeFreezeState</find>
+      <find>ueryUser</find>
+      <find>queryUser</find>
+      <find>changeUserFreezeState</find>
+      <find>王</find>
+      <find>Html</find>
+      <find>user-manage</find>
+      <find>html</find>
+      <find>getBook</find>
+      <find>query</find>
+      <find>split</find>
     </findStrings>
     <replaceStrings>
       <replace>AutoField</replace>
@@ -203,8 +293,10 @@
       <replace>href=&quot;/static/ebookstore/css</replace>
       <replace>href=&quot;/static/ebookstorecss/</replace>
       <replace>href=&quot;/static/ebookstore/css/</replace>
-      <replace>ebookstore</replace>
       <replace>href=&quot;/static/ebookstore</replace>
+      <replace>/ebookstore/modifyBook/</replace>
+      <replace>ebookstore</replace>
+      <replace>queryUser/</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/ebookstore/templates/ebookstore</dir>
@@ -219,31 +311,32 @@
         <option value="$PROJECT_DIR$/ebook/urls.py" />
         <option value="$PROJECT_DIR$/ebook/views.py" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/Administrator.html" />
-        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/ModifyBook.html" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/conment-manage.html" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/Login.html" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/Register.html" />
         <option value="$PROJECT_DIR$/ebook/settings.py" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/index.html" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/MyInoformation.html" />
-        <option value="$PROJECT_DIR$/ebookstore/models.py" />
-        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/Administrator-Login.html" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/UserOrder.html" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/manage_base.html" />
-        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/order-manage.html" />
-        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/user-manage.html" />
-        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/Notice-manage.html" />
-        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/account-manage.html" />
-        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/comment-manage.html" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/Cart.html" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/OrderDetail.html" />
-        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/test.html" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/order.html" />
-        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/BookDetail.html" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/base.html" />
+        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/Administrator-Login.html" />
+        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/Notice-manage.html" />
+        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/AddBook.html" />
+        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/BookDetail.html" />
+        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/test.html" />
+        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/ModifyBook.html" />
+        <option value="$PROJECT_DIR$/ebookstore/models.py" />
+        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/user-manage.html" />
         <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/Book-manage.html" />
         <option value="$PROJECT_DIR$/ebookstore/urls.py" />
-        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/AddBook.html" />
+        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/order-manage.html" />
+        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/comment-manage.html" />
+        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/tmp.html" />
+        <option value="$PROJECT_DIR$/ebookstore/templates/ebookstore/account-manage.html" />
         <option value="$PROJECT_DIR$/ebookstore/views.py" />
       </list>
     </option>
@@ -290,6 +383,25 @@
             <path>
               <item name="ebook" type="b2602c69:ProjectViewProjectNode" />
               <item name="ebook" type="462c0819:PsiDirectoryNode" />
+              <item name="ebookstore" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ebook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ebook" type="462c0819:PsiDirectoryNode" />
+              <item name="ebookstore" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ebook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ebook" type="462c0819:PsiDirectoryNode" />
+              <item name="ebookstore" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ebook" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ebook" type="462c0819:PsiDirectoryNode" />
+              <item name="ebookstore" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="ebookstore" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -374,7 +486,7 @@
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16785999" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17104216" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -388,7 +500,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32933334" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5003978" side_tool="true" weight="0.35436893" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49960223" visible="true" weight="0.2961165" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49960223" visible="true" weight="0.40453073" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32847896" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -397,7 +509,7 @@
       <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16785999" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.16785999" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -410,8 +522,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32933334" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5003978" side_tool="true" weight="0.5275081" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49960223" visible="true" weight="0.5177994" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5003978" side_tool="true" weight="0.35436893" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49960223" visible="true" weight="0.44174758" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32847896" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -431,8 +543,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/ebookstore/views.py</url>
-          <line>65</line>
-          <option name="timeStamp" value="1" />
+          <line>290</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -524,13 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/ModifyBook.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-38">
-          <caret line="12" column="48" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/django/django/forms/widgets.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
@@ -585,17 +690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/Administrator-Login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="60" column="52" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="52" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/Login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
@@ -617,67 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/order-manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="89" column="14" selection-start-line="89" selection-start-column="14" selection-end-line="89" selection-end-column="14" />
-          <folding>
-            <element signature="e#130#3377#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/user-manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/Notice-manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="85" column="14" lean-forward="true" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="14" />
-          <folding>
-            <element signature="e#1456#1487#0#HTML" expanded="true" />
-            <element signature="e#2547#2567#0#HTML" expanded="true" />
-            <element signature="e#2974#3005#0#HTML" expanded="true" />
-            <element signature="e#3137#3168#0#HTML" expanded="true" />
-            <element signature="e#3293#3324#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/account-manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="90" column="14" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
-          <folding>
-            <element signature="e#130#3012#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/comment-manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="74" column="14" selection-start-line="74" selection-start-column="14" selection-end-line="74" selection-end-column="14" />
-          <folding>
-            <element signature="e#130#2847#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/manage_base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="87" column="33" lean-forward="true" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
-          <folding>
-            <element signature="n#head#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/OrderContent.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -685,13 +718,6 @@
           <folding>
             <element signature="e#206#2973#0#HTML" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/BookDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="196" column="96" selection-start-line="196" selection-start-column="94" selection-end-line="196" selection-end-column="96" />
         </state>
       </provider>
     </entry>
@@ -725,67 +751,306 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/Book-manage.html">
+    <entry file="file://$PROJECT_DIR$/Python.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/tests.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/Administrator-Login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="15" column="65" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
+        <state relative-caret-position="250">
+          <caret line="133" column="52" lean-forward="true" selection-start-line="133" selection-start-column="52" selection-end-line="133" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/urls.py">
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/Notice-manage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="39">
-          <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
+        <state relative-caret-position="19">
+          <caret line="101" selection-start-line="101" selection-end-line="102" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#632#652#0#HTML" expanded="true" />
+            <element signature="e#673#694#0#HTML" expanded="true" />
+            <element signature="e#716#737#0#HTML" expanded="true" />
+            <element signature="e#761#782#0#HTML" expanded="true" />
+            <element signature="e#805#826#0#HTML" expanded="true" />
+            <element signature="e#1345#1365#0#HTML" expanded="true" />
+            <element signature="e#1714#1745#0#HTML" expanded="true" />
+            <element signature="e#1862#1893#0#HTML" expanded="true" />
+            <element signature="e#2031#2062#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/test.html">
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/manage_base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        <state relative-caret-position="608">
+          <caret line="53" column="43" lean-forward="true" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/BookDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="220" column="20" selection-start-line="220" selection-start-column="20" selection-end-line="220" selection-end-column="20" />
           <folding>
-            <element signature="e#123#4102#0#HTML" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#4848#4854#0#HTML" expanded="true" />
+            <element signature="e#4854#4860#0#HTML" expanded="true" />
+            <element signature="e#4860#4866#0#HTML" expanded="true" />
+            <element signature="e#4866#4872#0#HTML" expanded="true" />
+            <element signature="e#4872#4878#0#HTML" expanded="true" />
+            <element signature="e#4878#4884#0#HTML" expanded="true" />
+            <element signature="e#4884#4890#0#HTML" expanded="true" />
+            <element signature="e#5010#5016#0#HTML" expanded="true" />
+            <element signature="e#5016#5022#0#HTML" expanded="true" />
+            <element signature="e#5022#5028#0#HTML" expanded="true" />
+            <element signature="e#5028#5034#0#HTML" expanded="true" />
+            <element signature="e#5034#5040#0#HTML" expanded="true" />
+            <element signature="e#5040#5046#0#HTML" expanded="true" />
+            <element signature="e#5046#5052#0#HTML" expanded="true" />
+            <element signature="e#5164#5170#0#HTML" expanded="true" />
+            <element signature="e#5171#5177#0#HTML" expanded="true" />
+            <element signature="e#5177#5183#0#HTML" expanded="true" />
+            <element signature="e#5297#5303#0#HTML" expanded="true" />
+            <element signature="e#5303#5309#0#HTML" expanded="true" />
+            <element signature="e#5309#5315#0#HTML" expanded="true" />
+            <element signature="e#5315#5321#0#HTML" expanded="true" />
+            <element signature="e#5321#5327#0#HTML" expanded="true" />
+            <element signature="e#5327#5333#0#HTML" expanded="true" />
+            <element signature="e#5333#5339#0#HTML" expanded="true" />
+            <element signature="e#5456#5462#0#HTML" expanded="true" />
+            <element signature="e#5462#5468#0#HTML" expanded="true" />
+            <element signature="e#5468#5474#0#HTML" expanded="true" />
+            <element signature="e#5474#5480#0#HTML" expanded="true" />
+            <element signature="e#5480#5486#0#HTML" expanded="true" />
+            <element signature="e#5486#5492#0#HTML" expanded="true" />
+            <element signature="e#5492#5498#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#hr#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/AddBook.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="116" column="54" lean-forward="true" selection-start-line="116" selection-start-column="54" selection-end-line="116" selection-end-column="54" />
+        <state relative-caret-position="105">
+          <caret line="127" column="111" selection-start-line="127" selection-start-column="104" selection-end-line="127" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/Book-manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/ModifyBook.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="17" column="52" lean-forward="true" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
+          <folding>
+            <element signature="e#153#188#0#HTML" expanded="true" />
+            <element signature="e#4966#5001#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/user-manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+          <folding>
+            <element signature="e#494#566#0#HTML" expanded="true" />
+            <element signature="e#671#692#0#HTML" expanded="true" />
+            <element signature="e#735#755#0#HTML" expanded="true" />
+            <element signature="e#777#798#0#HTML" expanded="true" />
+            <element signature="e#821#842#0#HTML" expanded="true" />
+            <element signature="e#866#887#0#HTML" expanded="true" />
+            <element signature="e#909#930#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/order-manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-95">
+          <caret line="110" column="43" lean-forward="true" selection-start-line="110" selection-start-column="43" selection-end-line="110" selection-end-column="43" />
+          <folding>
+            <element signature="e#153#187#0#HTML" expanded="true" />
+            <element signature="e#495#567#0#HTML" expanded="true" />
+            <element signature="e#661#682#0#HTML" expanded="true" />
+            <element signature="e#725#746#0#HTML" expanded="true" />
+            <element signature="e#769#790#0#HTML" expanded="true" />
+            <element signature="e#813#834#0#HTML" expanded="true" />
+            <element signature="e#858#879#0#HTML" expanded="true" />
+            <element signature="e#903#924#0#HTML" expanded="true" />
+            <element signature="e#1001#1186#0#HTML" />
+            <element signature="e#1195#1564#0#HTML" />
+            <element signature="e#1209#1265#0#HTML" />
+            <element signature="e#1573#1750#0#HTML" />
+            <element signature="e#1587#1643#0#HTML" />
+            <element signature="e#1759#2108#0#HTML" />
+            <element signature="e#1782#1838#0#HTML" />
+            <element signature="e#1921#2094#0#HTML" />
+            <element signature="e#2117#2467#0#HTML" />
+            <element signature="e#2140#2196#0#HTML" />
+            <element signature="e#2280#2453#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="40" column="20" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/tmp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="169" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#4172#4178#0#HTML" expanded="true" />
+            <element signature="e#4179#4185#0#HTML" expanded="true" />
+            <element signature="e#4329#4335#0#HTML" expanded="true" />
+            <element signature="e#4336#4342#0#HTML" expanded="true" />
+            <element signature="n#style#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#4;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#5;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#6;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#th#7;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="114" column="14" lean-forward="true" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
+          <folding>
+            <element signature="e#123#5182#0#HTML" />
+            <element signature="e#5164#5478#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/comment-manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="118" column="77" selection-start-line="118" selection-start-column="59" selection-end-line="118" selection-end-column="77" />
+          <folding>
+            <element signature="e#153#187#0#HTML" expanded="true" />
+            <element signature="e#500#572#0#HTML" expanded="true" />
+            <element signature="e#666#687#0#HTML" expanded="true" />
+            <element signature="e#730#751#0#HTML" expanded="true" />
+            <element signature="e#775#796#0#HTML" expanded="true" />
+            <element signature="e#818#839#0#HTML" expanded="true" />
+            <element signature="e#862#883#0#HTML" expanded="true" />
+            <element signature="e#895#916#0#HTML" expanded="true" />
+            <element signature="e#905#926#0#HTML" expanded="true" />
+            <element signature="e#1025#1400#0#HTML" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ebookstore/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="41" column="16" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="16" />
+        <state relative-caret-position="397">
+          <caret line="87" column="14" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python.jpg">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/account-manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+          <folding>
+            <element signature="e#153#187#0#HTML" expanded="true" />
+            <element signature="e#130#3012#0#HTML" />
+            <element signature="e#784#815#0#HTML" expanded="true" />
+            <element signature="e#917#938#0#HTML" expanded="true" />
+            <element signature="e#1038#1044#0#HTML" expanded="true" />
+            <element signature="e#1045#1051#0#HTML" expanded="true" />
+            <element signature="e#1195#1201#0#HTML" expanded="true" />
+            <element signature="e#1202#1208#0#HTML" expanded="true" />
+            <element signature="e#1310#1331#0#HTML" expanded="true" />
+            <element signature="e#1374#1394#0#HTML" expanded="true" />
+            <element signature="e#1418#1439#0#HTML" expanded="true" />
+            <element signature="e#1461#1482#0#HTML" expanded="true" />
+            <element signature="e#1505#1526#0#HTML" expanded="true" />
+            <element signature="e#1548#1569#0#HTML" expanded="true" />
+            <element signature="e#1591#1612#0#HTML" expanded="true" />
+            <element signature="e#1634#1655#0#HTML" expanded="true" />
+            <element signature="e#1678#1699#0#HTML" expanded="true" />
+            <element signature="e#3043#5381#0#HTML" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ebookstore/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="226" column="44" lean-forward="true" selection-start-line="226" selection-start-column="44" selection-end-line="226" selection-end-column="44" />
+        <state relative-caret-position="19">
+          <caret line="405" selection-start-line="405" selection-start-column="2" selection-end-line="427" selection-end-column="47" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <marker date="1537172613931" expanded="true" signature="5649:5654" ph="..." />
-            <marker date="1537172613931" expanded="true" signature="6649:6654" ph="..." />
-            <marker date="1537172613931" expanded="true" signature="6735:6740" ph="..." />
-            <marker date="1537172613931" expanded="true" signature="6806:6811" ph="..." />
-            <marker date="1537172613931" expanded="true" signature="6878:6883" ph="..." />
-            <marker date="1537172613931" expanded="true" signature="7220:9251" ph="..." />
-            <marker date="1537172613931" expanded="true" signature="7396:9251" ph="..." />
-            <marker date="1537172613931" expanded="true" signature="7454:7455" ph="..." />
-            <marker date="1537172613931" expanded="true" signature="9278:9283" ph="..." />
-            <marker date="1537172613931" expanded="true" signature="9356:9361" ph="..." />
-            <marker date="1537172613931" expanded="true" signature="9427:9432" ph="..." />
+            <element signature="e#6883#7361#0" />
+            <element signature="e#10528#11051#0" />
+            <element signature="e#11242#12343#0" />
+            <element signature="e#13764#14075#0" />
+            <element signature="e#13781#14003#0" />
+            <element signature="e#14558#14823#0" />
+            <element signature="e#14575#14755#0" />
+            <marker date="1537405563138" expanded="true" signature="5976:5981" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="6976:6981" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="7062:7067" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="7133:7138" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="7723:7782" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="8064:10027" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="8240:10027" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="8298:8299" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="10054:10059" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="10132:10137" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="10203:10208" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="10308:10313" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="10665:10670" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="11345:11354" ph="..." />
+            <marker date="1537405563138" expanded="false" signature="12549:12616" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="12639:13014" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="13391:13396" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="13826:14015" ph="..." />
+            <marker date="1537405563138" expanded="false" signature="14050:14055" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="14424:14982" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="15049:15054" ph="..." />
+            <marker date="1537405563138" expanded="false" signature="15383:15388" ph="..." />
           </folding>
         </state>
       </provider>
