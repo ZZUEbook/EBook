@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="01a0e05d-eb8c-4e76-9fff-00b00c9fc7c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/tmp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/AddBook.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/AddBook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/Administrator-Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/Administrator-Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/Book-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/Book-manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/ModifyBook.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/ModifyBook.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/Notice-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/Notice-manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/account-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/account-manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/comment-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/comment-manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/order-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/order-manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/templates/ebookstore/user-manage.html" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/templates/ebookstore/user-manage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ebookstore/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ebookstore/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,13 +48,15 @@
     <session id="-458270073">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.56" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.open.time.62" value="1" />
+          <entry key="project.open.time.89" value="1" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -110,17 +98,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ebookstore/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="405" selection-start-line="405" selection-start-column="2" selection-end-line="427" selection-end-column="47" />
+            <state relative-caret-position="90">
+              <caret line="356" column="35" lean-forward="true" selection-start-line="356" selection-start-column="35" selection-end-line="356" selection-end-column="35" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <element signature="e#6883#7361#0" />
-                <element signature="e#10528#11051#0" />
-                <element signature="e#11242#12343#0" />
-                <element signature="e#13764#14075#0" />
-                <element signature="e#13781#14003#0" />
-                <element signature="e#14558#14823#0" />
-                <element signature="e#14575#14755#0" />
                 <marker date="1537405563138" expanded="true" signature="5976:5981" ph="..." />
                 <marker date="1537405563138" expanded="true" signature="6976:6981" ph="..." />
                 <marker date="1537405563138" expanded="true" signature="7062:7067" ph="..." />
@@ -135,14 +116,6 @@
                 <marker date="1537405563138" expanded="true" signature="10308:10313" ph="..." />
                 <marker date="1537405563138" expanded="true" signature="10665:10670" ph="..." />
                 <marker date="1537405563138" expanded="true" signature="11345:11354" ph="..." />
-                <marker date="1537405563138" expanded="false" signature="12549:12616" ph="..." />
-                <marker date="1537405563138" expanded="true" signature="12639:13014" ph="..." />
-                <marker date="1537405563138" expanded="true" signature="13391:13396" ph="..." />
-                <marker date="1537405563138" expanded="true" signature="13826:14015" ph="..." />
-                <marker date="1537405563138" expanded="false" signature="14050:14055" ph="..." />
-                <marker date="1537405563138" expanded="true" signature="14424:14982" ph="..." />
-                <marker date="1537405563138" expanded="true" signature="15049:15054" ph="..." />
-                <marker date="1537405563138" expanded="false" signature="15383:15388" ph="..." />
               </folding>
             </state>
           </provider>
@@ -151,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="114" column="14" lean-forward="true" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
+            <state relative-caret-position="2166">
+              <caret line="114" column="14" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
               <folding>
                 <element signature="e#123#5182#0#HTML" />
                 <element signature="e#5164#5478#0#HTML" />
@@ -164,7 +137,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/tmp.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
+            <state relative-caret-position="1938">
               <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="169" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -222,7 +195,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ebookstore/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
+            <state relative-caret-position="1653">
               <caret line="87" column="14" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="14" />
             </state>
           </provider>
@@ -367,7 +340,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -408,6 +380,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -486,7 +459,7 @@
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17104216" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17740652" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -500,7 +473,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32933334" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5003978" side_tool="true" weight="0.35436893" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49960223" visible="true" weight="0.40453073" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49960223" visible="true" weight="0.23462783" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32847896" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -598,9 +571,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="19" column="15" lean-forward="true" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
-          <folding>
-            <element signature="e#629#661#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -647,11 +617,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
           <caret line="249" column="42" lean-forward="true" selection-start-line="249" selection-start-column="42" selection-end-line="249" selection-end-column="42" />
-          <folding>
-            <element signature="n#head#0;n#html#0;n#!!top" />
-            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -662,13 +627,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/Administrator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="11" column="67" selection-start-line="11" selection-start-column="67" selection-end-line="11" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/Administrator.html" />
     <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/MyInoformation.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
@@ -715,9 +674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="106" column="14" selection-start-line="106" selection-start-column="14" selection-end-line="106" selection-end-column="14" />
-          <folding>
-            <element signature="e#206#2973#0#HTML" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -725,9 +681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1064">
           <caret line="56" column="67" selection-start-line="56" selection-start-column="58" selection-end-line="56" selection-end-column="67" />
-          <folding>
-            <element signature="e#145#180#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -735,9 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="779">
           <caret line="87" column="34" lean-forward="true" selection-start-line="87" selection-start-column="34" selection-end-line="87" selection-end-column="34" />
-          <folding>
-            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -745,15 +695,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="864">
           <caret line="207" column="88" selection-start-line="207" selection-start-column="88" selection-end-line="207" selection-end-column="88" />
-          <folding>
-            <element signature="e#1531#1621#0#HTML" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Python.jpg" />
     <entry file="file://$PROJECT_DIR$/ebookstore/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -768,17 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="101" selection-start-line="101" selection-end-line="102" />
-          <folding>
-            <element signature="e#632#652#0#HTML" expanded="true" />
-            <element signature="e#673#694#0#HTML" expanded="true" />
-            <element signature="e#716#737#0#HTML" expanded="true" />
-            <element signature="e#761#782#0#HTML" expanded="true" />
-            <element signature="e#805#826#0#HTML" expanded="true" />
-            <element signature="e#1345#1365#0#HTML" expanded="true" />
-            <element signature="e#1714#1745#0#HTML" expanded="true" />
-            <element signature="e#1862#1893#0#HTML" expanded="true" />
-            <element signature="e#2031#2062#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -793,56 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="220" column="20" selection-start-line="220" selection-start-column="20" selection-end-line="220" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#4848#4854#0#HTML" expanded="true" />
-            <element signature="e#4854#4860#0#HTML" expanded="true" />
-            <element signature="e#4860#4866#0#HTML" expanded="true" />
-            <element signature="e#4866#4872#0#HTML" expanded="true" />
-            <element signature="e#4872#4878#0#HTML" expanded="true" />
-            <element signature="e#4878#4884#0#HTML" expanded="true" />
-            <element signature="e#4884#4890#0#HTML" expanded="true" />
-            <element signature="e#5010#5016#0#HTML" expanded="true" />
-            <element signature="e#5016#5022#0#HTML" expanded="true" />
-            <element signature="e#5022#5028#0#HTML" expanded="true" />
-            <element signature="e#5028#5034#0#HTML" expanded="true" />
-            <element signature="e#5034#5040#0#HTML" expanded="true" />
-            <element signature="e#5040#5046#0#HTML" expanded="true" />
-            <element signature="e#5046#5052#0#HTML" expanded="true" />
-            <element signature="e#5164#5170#0#HTML" expanded="true" />
-            <element signature="e#5171#5177#0#HTML" expanded="true" />
-            <element signature="e#5177#5183#0#HTML" expanded="true" />
-            <element signature="e#5297#5303#0#HTML" expanded="true" />
-            <element signature="e#5303#5309#0#HTML" expanded="true" />
-            <element signature="e#5309#5315#0#HTML" expanded="true" />
-            <element signature="e#5315#5321#0#HTML" expanded="true" />
-            <element signature="e#5321#5327#0#HTML" expanded="true" />
-            <element signature="e#5327#5333#0#HTML" expanded="true" />
-            <element signature="e#5333#5339#0#HTML" expanded="true" />
-            <element signature="e#5456#5462#0#HTML" expanded="true" />
-            <element signature="e#5462#5468#0#HTML" expanded="true" />
-            <element signature="e#5468#5474#0#HTML" expanded="true" />
-            <element signature="e#5474#5480#0#HTML" expanded="true" />
-            <element signature="e#5480#5486#0#HTML" expanded="true" />
-            <element signature="e#5486#5492#0#HTML" expanded="true" />
-            <element signature="e#5492#5498#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#0;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#1;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#2;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#th#3;n#tr#0;n#thead#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -864,10 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="17" column="52" lean-forward="true" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
-          <folding>
-            <element signature="e#153#188#0#HTML" expanded="true" />
-            <element signature="e#4966#5001#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -875,15 +755,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-          <folding>
-            <element signature="e#494#566#0#HTML" expanded="true" />
-            <element signature="e#671#692#0#HTML" expanded="true" />
-            <element signature="e#735#755#0#HTML" expanded="true" />
-            <element signature="e#777#798#0#HTML" expanded="true" />
-            <element signature="e#821#842#0#HTML" expanded="true" />
-            <element signature="e#866#887#0#HTML" expanded="true" />
-            <element signature="e#909#930#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -891,27 +762,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-95">
           <caret line="110" column="43" lean-forward="true" selection-start-line="110" selection-start-column="43" selection-end-line="110" selection-end-column="43" />
-          <folding>
-            <element signature="e#153#187#0#HTML" expanded="true" />
-            <element signature="e#495#567#0#HTML" expanded="true" />
-            <element signature="e#661#682#0#HTML" expanded="true" />
-            <element signature="e#725#746#0#HTML" expanded="true" />
-            <element signature="e#769#790#0#HTML" expanded="true" />
-            <element signature="e#813#834#0#HTML" expanded="true" />
-            <element signature="e#858#879#0#HTML" expanded="true" />
-            <element signature="e#903#924#0#HTML" expanded="true" />
-            <element signature="e#1001#1186#0#HTML" />
-            <element signature="e#1195#1564#0#HTML" />
-            <element signature="e#1209#1265#0#HTML" />
-            <element signature="e#1573#1750#0#HTML" />
-            <element signature="e#1587#1643#0#HTML" />
-            <element signature="e#1759#2108#0#HTML" />
-            <element signature="e#1782#1838#0#HTML" />
-            <element signature="e#1921#2094#0#HTML" />
-            <element signature="e#2117#2467#0#HTML" />
-            <element signature="e#2140#2196#0#HTML" />
-            <element signature="e#2280#2453#0#HTML" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -919,15 +769,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
           <caret line="40" column="20" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/comment-manage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="118" column="77" selection-start-line="118" selection-start-column="59" selection-end-line="118" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="356" column="35" lean-forward="true" selection-start-line="356" selection-start-column="35" selection-end-line="356" selection-end-column="35" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1537405563138" expanded="true" signature="5976:5981" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="6976:6981" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="7062:7067" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="7133:7138" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="7723:7782" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="8064:10027" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="8240:10027" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="8298:8299" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="10054:10059" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="10132:10137" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="10203:10208" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="10308:10313" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="10665:10670" ph="..." />
+            <marker date="1537405563138" expanded="true" signature="11345:11354" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2166">
+          <caret line="114" column="14" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
+          <folding>
+            <element signature="e#123#5182#0#HTML" />
+            <element signature="e#5164#5478#0#HTML" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/tmp.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
+        <state relative-caret-position="1938">
           <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="169" selection-end-column="14" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -949,43 +838,6 @@
             <element signature="n#style#0;n#th#7;n#tr#0;n#thead#0;n#table#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="114" column="14" lean-forward="true" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
-          <folding>
-            <element signature="e#123#5182#0#HTML" />
-            <element signature="e#5164#5478#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/templates/ebookstore/comment-manage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="118" column="77" selection-start-line="118" selection-start-column="59" selection-end-line="118" selection-end-column="77" />
-          <folding>
-            <element signature="e#153#187#0#HTML" expanded="true" />
-            <element signature="e#500#572#0#HTML" expanded="true" />
-            <element signature="e#666#687#0#HTML" expanded="true" />
-            <element signature="e#730#751#0#HTML" expanded="true" />
-            <element signature="e#775#796#0#HTML" expanded="true" />
-            <element signature="e#818#839#0#HTML" expanded="true" />
-            <element signature="e#862#883#0#HTML" expanded="true" />
-            <element signature="e#895#916#0#HTML" expanded="true" />
-            <element signature="e#905#926#0#HTML" expanded="true" />
-            <element signature="e#1025#1400#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="87" column="14" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1016,42 +868,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ebookstore/views.py">
+    <entry file="file://$PROJECT_DIR$/ebookstore/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="405" selection-start-line="405" selection-start-column="2" selection-end-line="427" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#6883#7361#0" />
-            <element signature="e#10528#11051#0" />
-            <element signature="e#11242#12343#0" />
-            <element signature="e#13764#14075#0" />
-            <element signature="e#13781#14003#0" />
-            <element signature="e#14558#14823#0" />
-            <element signature="e#14575#14755#0" />
-            <marker date="1537405563138" expanded="true" signature="5976:5981" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="6976:6981" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="7062:7067" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="7133:7138" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="7723:7782" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="8064:10027" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="8240:10027" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="8298:8299" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="10054:10059" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="10132:10137" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="10203:10208" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="10308:10313" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="10665:10670" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="11345:11354" ph="..." />
-            <marker date="1537405563138" expanded="false" signature="12549:12616" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="12639:13014" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="13391:13396" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="13826:14015" ph="..." />
-            <marker date="1537405563138" expanded="false" signature="14050:14055" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="14424:14982" ph="..." />
-            <marker date="1537405563138" expanded="true" signature="15049:15054" ph="..." />
-            <marker date="1537405563138" expanded="false" signature="15383:15388" ph="..." />
-          </folding>
+        <state relative-caret-position="1653">
+          <caret line="87" column="14" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="14" />
         </state>
       </provider>
     </entry>
