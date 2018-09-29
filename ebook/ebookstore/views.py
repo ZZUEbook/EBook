@@ -24,7 +24,7 @@ def login(request):
         if user.user_password == request.POST['password']:
             if user.user_status == -1:
                 return HttpResponse(-1)
-            res = HttpResponse(1)
+            res = HttpResponse(user.user_id)
             res.set_cookie('name', value=user.user_name)
             return res
         else:
