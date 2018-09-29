@@ -99,16 +99,9 @@
 				<div style="height: 300px;">
 				</div>
 				<hr />
-				<div style="height: 70px;">
-					<form action="#" class="navbar-right navbar-form">
-						<div class="form-group has-feedback">
-							<!--has-feedback样式/反馈控制/ form-control-feedback 增加这两个样式后，span代表的放大镜就可以放在搜索栏里面-->
-							<label for="search" class="sr-only">搜索关键字</label>
-							<input type="search" placeholder="请输入查找的书籍" id="search" class="form-control">
-							<span class="glyphicon glyphicon-search  form-control-feedback"></span>
-						</div>
-					</form>
-				</div>
+				<input id="key" type="search" placeholder="请输入书名" style="height: 30px;">
+				<button id="search" style="display: inline-block;height: 30px;position: relative;top: -4px;" class="glyphicon glyphicon-search">
+				</button>
 				<div id="showBook">
 
 				</div>
@@ -163,6 +156,7 @@
 {% endblock %}
 {% block js %}
     <script type="text/javascript">
+
         //新书上架模块
 			var newBook = document.querySelector("#newBook");
 			newBook.onclick = function() {
@@ -264,10 +258,10 @@
 						showBookHTML = "";
 					for(var i = 0; i < len; i++) {
 						showBookHTML += `<div class="col-xs-6 col-md-4">
-						<a href="BookDetail.html?id=${arr[i].id}">
+						<a href="/ebookstore/book_detail?id=${arr[i].id}">
 							<img src="${arr[i].url}" >
 						</a>
-						<a href="BookDetail.html?id=${arr[i].id}">
+						<a href="/ebookstore/book_detail?id=${arr[i].id}">
 							<h3 style=" color: white;">${arr[i].name}</h3>
 						</a>
 					</div>`;
@@ -376,5 +370,38 @@
 				}
 			});
 
+			//搜索功能
+			var key = document.querySelector("#key");
+			var search = document.querySelector("#search");
+			search.onclick = function() {
+				var value = key.value;
+				if(!/^[\w\u4e00-\u9fa5]+$/.test(value)) {
+					alert("关键字不合法");
+					return;
+				}
+				$.ajax({
+					url: "/ebookstore/searchBook?key=" + encodeURIComponent(value),
+					method: "get",
+					error: function() {
+						alert('查找失败');
+					},
+					success: function(data) {
+						var arr = JSON.parse(data),
+							len = arr.length,
+							showBookHTML = "";
+						for(var i = 0; i < len; i++) {
+							showBookHTML += `<div class="col-xs-6 col-md-4">
+							<a href="/ebookstore/book_detail?id=${arr[i].id}">
+							<img src="${arr[i].url}" >
+						</a>
+						<a href="/ebookstore/book_detail?id=${arr[i].id}">
+							<h3 style=" color: white;">${arr[i].name}</h3>
+						</a>
+					</div>`;
+						}
+						showBook.innerHTML = showBookHTML;
+					}
+				});
+			};
 		</script>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block thirt %}
 {% endblock %}
 {% block body %}
-<div class="row-fluid" style=" width:70%; margin: 0 auto;">
+    		<div class="row-fluid" style=" width:70%; margin: 0 auto;">
 			<!-- block -->
 			<div class="block">
 				<div class="navbar navbar-inner block-header">
@@ -23,7 +23,8 @@
 									<th style="width: 10%;text-align: center;">数量</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="showCart">
+                            <!--
 								<tr>
 									<td><input class="uniform_on" type="checkbox" id=""></td>
 									<td>123</td>
@@ -33,49 +34,132 @@
 									<td>123</td>
 									<td><input type="text" id="" class="form-control" style=" text-align: center;" /></td>
 								</tr>
-								<tr>
-									<td><input class="uniform_on" type="checkbox" id=""></td>
-									<td>321</td>
-									<td>Thornton</td>
-									<td>王蠢雷</td>
-									<td>abc出版社</td>
-									<td>16</td>
-									<td><input type="text" id="" class="form-control" style=" text-align: center;" /></td>
-								</tr>
+								-->
 							</tbody>
 						</table>
-						<h4>合计：</h4></div>
 				</div>
-				<form class="form-horizontal">
+				<form class="form-horizontal" onsubmit="return 0;">
 					<div class="control-group">
 						<label class="control-label" for="typeahead">收件人</label>
 						<div class="controls">
-							<input type="text" class="span6" id="" data-provide="typeahead" data-items="4">
+							<input type="text" class="span6" id="realname" data-provide="typeahead" data-items="4">
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="typeahead">地址 </label>
 						<div class="controls">
-							<input type="text" class="span6" id="" data-provide="typeahead" data-items="4">
+							<input type="text" class="span6" id="address" data-provide="typeahead" data-items="4">
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="typeahead">联系电话 </label>
 						<div class="controls">
-							<input type="text" class="span6" id="" data-provide="typeahead" data-items="4">
+							<input type="text" class="span6" id="phone" data-provide="typeahead" data-items="4">
 						</div>
 					</div>
 
-					<div class="form-actions">
-						<button type="submit" class="btn btn-primary">提交订单</button>
-						<a type="reset" class="btn" href="index.html">取消</a>
-					</div>
+
 				</form>
+                    <button style="margin: 0 auto;" align="center" id="submitOrder" class="btn btn-primary">提交订单</button>
 			</div>
 			<!-- /block -->
-
 		</div>
 {% endblock %}
 {% block js %}
-
+<script type="text/javascript">
+			if(localStorage.getItem("id")) {
+				var showCart = document.querySelector("#showCart");
+				var arr;
+				$.ajax({
+					url: "/ebookstore/getCart?id=" + localStorage.getItem("id"),
+					method: "get",
+					error: function() {
+						alert('数据出错，请刷新');
+					},
+					success: function(data) {
+						arr = JSON.parse(data),
+							len = arr.length,
+							showCartHTML = "";
+						for(var i = 0; i < len; i++) {
+							showCartHTML += `<tr>
+									<td><input class="uniform_on" type="checkbox" id="check${i}"></td>
+									<td>${arr[i].isbn}</td>
+									<td>${arr[i].name}</td>
+									<td>${arr[i].author}</td>
+									<td>${arr[i].press}</td>
+									<td>${arr[i].price}</td>
+									<td id="count${i}">${arr[i].count}</td>
+								</tr>`;
+						}
+						showCart.innerHTML = showCartHTML;
+					}
+				});
+				var submitOrder = document.querySelector("#submitOrder"),
+					realname = document.querySelector("#realname"),
+					address = document.querySelector("#address"),
+					phone = document.querySelector("#phone");
+				submitOrder.onclick = function() {
+					realnameValue = realname.value;
+					addressValue = address.value;
+					phoneValue = phone.value;
+					if(realnameValue.length == 0) {
+						alert("收件人不能为空");
+						return false;
+					}
+					if(addressValue.length == 0) {
+						alert("地址不能为空");
+						return false;
+					}
+					if(!/^\d{11,11}$/.test(phoneValue)) {
+						alert("手机号不合法");
+						return false;
+					}
+					var sum = 0;
+					var isbn = [],
+						count = [];
+					for(var i = 0; i < arr.length; i++) {
+						var check = document.querySelector("#check" + i);
+						if(check.checked) {
+							sum += arr[i].count * arr[i].price;
+							isbn.push(arr[i].isbn);
+							count.push(arr[i].count);
+						}
+					}
+					if(isbn.length == 0 || count.length == 0) {
+						alert("请选择书籍");
+						return;
+					}
+					alert("合计：" + sum);
+					$.ajax({
+						url: "/ebookstore/postCart",
+						method: "post",
+						data: {
+							id: localStorage.getItem("id"),
+							realname: realnameValue,
+							address: addressValue,
+							phone: phoneValue,
+							isbn: JSON.stringify(isbn),
+							count: JSON.stringify(count)
+						},
+						error: function() {
+							alert('提交失败');
+						},
+						success: function(data) {
+							switch(Number(data)) {
+								case 1:
+									alert("提交成功");
+									break;
+								case 0:
+									alert('提交失败');
+									break;
+							}
+						}
+					});
+					return false;
+				}
+			} else {
+				alert("请先登录");
+				location.href = "/ebookstore/login";
+			}
+		</script>
 {% endblock %}

@@ -43,78 +43,67 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-					<a class="navbar-brand" href="#">My-eBookStore</a>
+					<a class="navbar-brand" href="/ebookstore/index">eBookStore</a>
 				</div>
 				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
 					<ul class="nav navbar-nav">
-						<li>
-							<a href="index.html">主页</a>
+						<li class="active">
+							<a href="/ebookstore/index">主页</a>
 						</li>
-                        <!--
-						<li class="dropdown">
-							<a href="#" data-toggle="dropdown" class="dropdown-toggle">书籍分类<b class="caret"></b>
+                        {% block nav %}
 
-							</a>
-							<ul class="dropdown-menu" id="menu1">
-
-								<li>
-									<a href="#">计算机类</a>
-								</li>
-								<li>
-									<a href="#">英语类</a>
-								</li>
-
-							</ul>
-						</li>
-						<li>
-							<a href="#">新书上架</a>
-						</li>
-						-->
+                        {% endblock %}
 					</ul>
-
 					<!--
                     	作者：offline
                     	时间：2018-09-05
                     	描述：用户已登录
                     -->
-					<ul class="nav pull-right">
+                    {% if name %}
+
+					<ul class="nav pull-right" id="vip">
 						<li class="dropdown">
 							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-user"></i> 用户 <i class="caret"></i>
+								<i class="icon-user"></i> {{name}} <i class="caret"></i>
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a tabindex="-1" href="#">我的信息</a>
+									<a tabindex="-1" href="/ebookstore/myinfo" id="myinfo">我的信息</a>
 								</li>
 								<li>
-									<a tabindex="-1" href="#">我的订单</a>
+									<a tabindex="-1" href="/ebookstore/UserOrder/">我的订单</a>
 								</li>
 								<li>
-									<a tabindex="-1" href="#">购物车</a>
+									<a tabindex="-1" href="/ebookstore/cart">购物车</a>
 								</li>
 								<li class="divider"></li>
 								<li>
-									<a tabindex="-1" href="login.html">退出登录</a>
+									<a tabindex="-1" href="/ebookstore/logout">退出登录</a>
 								</li>
 							</ul>
 						</li>
 					</ul>
-					<!--
-                    	时间：2018-09-05
+                    {% else %}
+                    <!--
+                        时间：2018-09-05
                     	描述：用户未登陆时代码
-                    	<ul class="nav pull-right">
+                    -->
+                    <ul class="nav pull-right" id="tourist">
 						<li class="dropdown">
 							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
 								<i class="icon-user"></i> 游客 <i class="caret"></i>
 							</a>
 							<ul class="dropdown-menu">
+							    <li>
+									<a tabindex="-1" href="/ebookstore/login">登录</a>
+								</li>
 								<li>
-									<a tabindex="-1" href="login.html">注册</a>
+									<a tabindex="-1" href="/ebookstore/register">注册</a>
 								</li>
 							</ul>
 						</li>
 					</ul>
-                    -->
+                    {% endif %}
 				</div>
 			</div>
 		</nav>
@@ -215,25 +204,27 @@
   									<table class="table table-striped">
 						              <thead>
 						                <tr>
-						                  <th style="width: 10%;">评价</th>
+
 						                  <th style="width: 60%;">内容</th>
 						                  <th style="width: 15%;">用户名</th>
 						                  <th style="width: 15%;">时间</th>
 						                </tr>
 						              </thead>
-						              <tbody>
+						              <tbody  id="showComment">
+                                      <!--
 						                <tr>
-						                  <td><span class="glyphicon glyphicon-thumbs-up"></span></td>
+
 						                  <td>书很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好很好</td>
 						                  <td>Otto</td>
 						                  <td>2018.11.30</td>
 						                </tr>
 						                <tr>
-						                  <td><span class="glyphicon glyphicon-thumbs-down"></td>
+
 						                  <td>书很差很差很差很差很差很差很差很差很差很差很差很差很差</td>
 						                  <td>Thornton</td>
 						                  <td>2018.12.31</td>
 						                </tr>
+						                -->
 						              </tbody>
 						            </table>
                                 </div>
@@ -260,6 +251,65 @@
 				} else {
 					$("#quantity").val(num_dec);
 				}
+			}
+
+			var showComment = document.querySelector("#showComment");
+			$.ajax({
+				url: "/ebookstore/getComment?id=" + location.search.slice(4),
+				method: "get",
+				error: function() {
+					alert('数据出错，请刷新');
+				},
+				success: function(data) {
+					var arr = JSON.parse(data),
+						len = arr.length,
+						showCommentHTML = "";
+					for(var i = 0; i < len; i++) {
+						showCommentHTML += `<tr>
+									<td>${arr[i].content}</td>
+									<td>${arr[i].username}</td>
+									<td>${arr[i].time}</td>
+								</tr>`;
+					}
+					showComment.innerHTML = showCommentHTML;
+				}
+			});
+
+			var addCart = document.querySelector("#addCart"),
+				quantity = document.querySelector("#quantity");
+			addCart.onclick = function() {
+				var count = quantity.value;
+				if(!/^[1-9]\d*$/.test(count)) {
+					alert("请正确输入数量");
+					return;
+				}
+				if(!localStorage.getItem("id")) {
+					alert("请登录");
+					location.href = "/ebookstore/login";
+					return;
+				}
+				$.ajax({
+					url: "/ebookstore/add_cart",
+					method: "post",
+					data: {
+						bookId: location.search.slice(4),
+						userId: localStorage.getItem("id"),
+						count: count
+					},
+					error: function() {
+						alert('加入购物车失败');
+					},
+					success: function(data) {
+						switch(Number(data)) {
+							case 1:
+								alert("在购物车等亲");
+								break;
+							case 0:
+								alert('加入购物车失败');
+								break;
+						}
+					}
+				});
 			}
 		</script>
 	</body>
