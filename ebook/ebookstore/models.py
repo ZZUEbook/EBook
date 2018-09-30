@@ -66,7 +66,7 @@ class Cart_item(models.Model):
 class Comment(models.Model):
     comment_id = models.AutoField(primary_key=True)
     comment_content = models.CharField(max_length=300)
-    comment_time = models.DateTimeField()
+    comment_time = models.DateTimeField(auto_now_add=True)
     comment_book = models.ForeignKey(Book, models.DO_NOTHING)
     comment_user = models.ForeignKey(User, models.DO_NOTHING)
     comment_status = models.IntegerField(default=1)
@@ -74,11 +74,13 @@ class Comment(models.Model):
 
 class Order(models.Model):
     order_id = models.AutoField(primary_key=True)
-    order_create_time = models.DateTimeField()
-    order_complete_time = models.DateTimeField()
+    order_create_time = models.DateTimeField(auto_now_add=True)
+    order_complete_time = models.DateTimeField(blank=True, null=True)
     order_status = models.IntegerField(default=0)  # 0 haven't pay, -1 delete, 1 already pay
     order_user_id = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     order_receiver_phone = models.CharField(max_length=13)
+    order_receiver_name = models.CharField(max_length=60, blank=True)
+    order_receiver_address = models.CharField(max_length=200, blank=True)
 
 
 class Order_item(models.Model):

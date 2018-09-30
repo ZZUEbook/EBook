@@ -1,0 +1,88 @@
+{% extends "ebookstore/base.html" %}
+{% block title %}发布评论{% endblock %}
+{% block thirt %}
+{% endblock %}
+{% block body %}
+<div class="row-fluid" style="width: 70%;margin: 0 auto;">
+			<!-- block -->
+			<div class="block">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">发表评论</div>
+				</div>
+				<div class="block-content collapse in">
+					<div class="span12">
+						<table class="table table-striped" style="margin: auto;">
+							<thead>
+								<tr>
+									<th style="width: 100px;">书名</th>
+									<th style="width: 100px;">作者</th>
+									<th style="width: 300px;">评论内容</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr id="tr1" style="height: 300px;">
+									<td id="bookname"></td>
+									<td id="author"></td>
+									<td style="height: 300px;"><textarea cols="20" id="content" placeholder="Enter text ..." style="width: 95%;height: 100%;"></textarea></td>
+								</tr>
+
+							</tbody>
+						</table>
+					</div>
+					<div class="btn-group pull-right" role="group">
+						<button id="publish" class="btn btn-info" style="width:100px;height:30px">发布</button>
+					</div>
+				</div>
+
+			</div>
+			<!-- /block -->
+		</div>
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+			var publish = document.querySelector("#publish"),
+				bookname = document.querySelector("#bookname"),
+				author = document.querySelector("#author"),
+				content = document.querySelector("#content");
+			$.ajax({
+                url: "/ebookstore/getCommentBookDetail" + location.search,
+                method: "get",
+                error: function() {
+                    alert('加载数据失败');
+                },
+                success: function(data) {
+                    var obj = JSON.parse(data);
+                    bookname.innerText = obj.bookname;
+                    author.innerText = obj.author;
+                }
+			});
+			publish.onclick = function() {
+				var value=content.value.trim();
+				if(value.length==0){
+					alert("内容不能为空");
+				}
+				$.ajax({
+					url: "/ebookstore/postUserComment",
+					method: "post",
+					data: {
+						bookId: location.search.slice(4),
+						userId: localStorage.getItem("id"),
+						content: value
+					},
+					error: function() {
+						alert('发布失败');
+					},
+					success: function(data) {
+						switch(Number(data)) {
+							case 1:
+								alert("发布成功");
+								break;
+							case 0:
+								alert('发布失败');
+								break;
+						}
+					}
+				});
+			}
+		</script>
+{% endblock %}

@@ -3,10 +3,11 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 from django.template import loader, Context
 from django.db.models import Q, QuerySet
-from ebookstore.models import User, Book, Notice, BookType, Admin, Comment, Order, Order_item
+from ebookstore.models import User, Book, Notice, BookType, Admin, Comment, Order, Order_item, Cart, Cart_item
 import json, socket, time
 from PIL import Image
 from itertools import chain
+from decimal import Decimal
 
 # Create your views here.
 def index(request):
@@ -165,11 +166,13 @@ def newBook(request):
         return HttpResponse(content=json.dumps(items))
 
 def book_detail(request):
-    id = request.GET.get('id', 0)
+    name = request.COOKIES.get('name')
+    id = request.GET.get('id', 1)
     book = Book.objects.filter(book_id=id).first()
     if not book:
         return HttpResponse("are you a robot?")
     context = {
+        "name": name,
         "book_id": id,
         "book_name": book.book_name,
         "book_press": book.book_press,
@@ -217,6 +220,17 @@ def ConmentManage(request):
     return render(request, 'ebookstore/comment-manage.html')
 def manage_base(request):
     return render(request, 'ebookstore/manage_base.html')
+
+def order_content(request):
+    return render(request, 'ebookstore/OrderContent.html')
+
+
+def cart(request):
+    name = request.COOKIES.get("name")
+    context = {
+        "name": name,
+    }
+    return render(request, 'ebookstore/Cart.html', context)
 def add_book(request):
     # print(request.FILES)
     if request.method == 'POST':
@@ -227,7 +241,7 @@ def add_book(request):
             press = request.POST['press']
             time = request.POST['timeOfPress']
             (month, day, year) = time.split('/')
-            time = year + '-' + month + '-' + day
+            time = str(year) + '-' + str(month) + '-' + str(day)
             category = request.POST['category']
             category = 'English' if category == r"英语类" else 'Computer'
             category = BookType.objects.filter(booktype_name=category).first()
@@ -245,9 +259,11 @@ def add_book(request):
                 url = img_name + '.' + img_type
                 url = '/static/ebookstore/img/' + request.POST['category'] + '/' + url
                 img.save('ebookstore' + url)
-            book = Book(book_ISBN=isbn, book_name=name, book_auth_name=author, book_publish_date=time,
-                        book_publisher=admin, book_type_id=category, book_introduce=introduce, book_price=price,
-                        book_photo=url, book_left_number=quantity, book_cost=cost, book_press=press)
+            book = Book.objects.filter(book_name=name).first()
+            if not book:
+                book = Book(book_ISBN=isbn, book_name=name, book_auth_name=author, book_publish_date=time,
+                            book_publisher=admin, book_type_id=category, book_introduce=introduce, book_price=price,
+                            book_photo=url, book_left_number=quantity, book_cost=cost, book_press=press)
             book.save()
         except Exception as err:
             print(err)
@@ -255,7 +271,11 @@ def add_book(request):
 def order_content(request):
     return render(request, 'ebookstore/OrderContent.html')
 def cart(request):
-    return render(request, 'ebookstore/Cart.html')
+    name = request.COOKIES.get("name")
+    context = {
+        "name": name,
+    }
+    return render(request, 'ebookstore/Cart.html', context)
 def order(request):
     return render(request, 'ebookstore/order.html')
 def deleteNotice(request):
@@ -275,7 +295,7 @@ def addNotice(request):
         author = request.POST['author']
         content = request.POST['content']
         try:
-            admin = Admin.objects.filter(admin_name=author).first()
+            admin = Admin.objects.filter(admin_name='alice').first()
             timeTuple = time.localtime()
             time_str = time.strftime("%Y-%m-%d %H:%M:%S", timeTuple)
             notice = Notice(notice_admin_id=admin, notice_content=content, notice_time=time_str)
@@ -403,29 +423,257 @@ def deliverGoods(request):
             return HttpResponse(0)
         # queryAccount: get
         # [{"isbn": "", "name": "", "press": "", "author": "", "cost":, "price":, "quantity":}, ...]
-# def accountManage(request):
-#     if request.method == "GET":
-#         start = request.get('start', '')
-#         end = request.GET('end', '')
-#         data = []
-#         if start and end:
-#             (month, day, year) = start.split('/')
-#             start = year + '-' + month + '-' + day
-#             (month, day, year) = end.split('/')
-#             end = year + '-' + month + '-' + day
-#             orders = Order.objects.filter(order_complete_time__range=(start, end))
-#             for order in orders:
-#                 order_items = Order_item.objects.filter(order_id=order)
-#                 for item in order_items:
-#                     book = Book.objects.filter(book_id=item.book_id).first()
-#
-#         else:
-#             books = Book.objects.all()
-#             for book in books:
-#                 data.append({"isbn": book.book_ISBN, "name": book.book_name, "press": book.book_press,
-#                              "author": book.book_auth_name, "cost": book.book_cost, "price": book.book_price,
-#                              "quantity": book.book_sale_number})
-#         return HttpResponse(json.dumps(data))
+def accountManage(request):
+    if request.method == "GET":
+        start = request.get('start', '')
+        end = request.GET('end', '')
+        data = []
+        if start and end:
+            (month, day, year) = start.split('/')
+            start = year + '-' + month + '-' + day
+            (month, day, year) = end.split('/')
+            end = year + '-' + month + '-' + day
+            orders = Order.objects.filter(order_complete_time__range=(start, end))
+            for order in orders:
+                order_items = Order_item.objects.filter(order_id=order)
+                for item in order_items:
+                    book = Book.objects.filter(book_id=item.book_id).first()
+
+        else:
+            books = Book.objects.all()
+            for book in books:
+                data.append({"isbn": book.book_ISBN, "name": book.book_name, "press": book.book_press,
+                             "author": book.book_auth_name, "cost": book.book_cost, "price": book.book_price,
+                             "quantity": book.book_sale_number})
+        return HttpResponse(json.dumps(data))
+
+def UserOrder(request):
+    name = request.COOKIES.get('name')
+    context = {
+        "name": name,
+    }
+    return render(request, 'ebookstore/UserOrder.html', context)
+
+def getComment(request):
+    id = request.GET.get("id", 1)
+    print(id)
+    book = Book.objects.filter(book_id=id).first()
+    comments = Comment.objects.filter(comment_book=book)
+    data = []
+    print(comments)
+    for comment in comments:
+        user = comment.comment_user
+        data.append({'content': comment.comment_content,
+                     'time': str(comment.comment_time), 'id':str(comment.comment_user_id)
+                     , 'username': user.user_name})
+    print(data)
+    return HttpResponse(json.dumps(data))
+def add_cart(request):
+    name = request.COOKIES.get('name')
+    print(name)
+    if not name:
+        return render(request, template_name="ebookstore/Login.html")
+    user = User.objects.filter(user_name=name).first()
+    if request.method == "POST":
+        b_id = request.POST['bookId']
+        u_id = user.user_id  # int(request.POST['userId'])
+        count = int(request.POST['count'])
+        print(b_id, u_id, count)
+        book = Book.objects.filter(book_id=b_id).first()
+        price = book.book_price
+        now_cart = Cart.objects.filter(cart_user_id=u_id).first()
+        if now_cart is None:
+            now_cart = Cart(cart_user_id=user, cart_price=0)
+            now_cart.save()
+        c_id = now_cart.cart_id
+        print(c_id)
+        item = Cart_item(
+            book_id = book,
+            cart_id = now_cart,
+            book_count = count
+        )
+        now_cart.cart_price += count * price
+        try:
+            now_cart.save()
+            item.save()
+            res = HttpResponse(1)
+            return res
+        except Exception as e:
+            print(e)
+            return HttpResponse(0)
+
+def getCart(request):
+    name = request.COOKIES.get('name')
+    user = User.objects.filter(user_name=name).first()
+    cart = Cart.objects.filter(cart_user_id=user).first()
+    items = Cart_item.objects.filter(cart_id=cart)
+    print(items)
+    data = []
+    for item in items:
+        book = item.book_id
+        data.append({'isbn': book.book_ISBN, 'name': book.book_name,
+                     'author': book.book_auth_name, 'press': book.book_press,
+                     'price': str(book.book_price), 'count': item.book_count})
+    # print(data)
+    return HttpResponse(json.dumps(data))
+def comment_user(request):
+    name = request.COOKIES.get('name')
+    context = {
+        "name":name,
+    }
+    return render(request, 'ebookstore/conment-user.html', context)
 
 
+def post_cart(request):
+    if request.method == "POST":
+        u_id = request.POST['id']
+        # cart_id book_id
+        muser = User.objects.filter(user_id=u_id).first()
+        cart = Cart.objects.filter(cart_user_id=muser).first()
+        real = request.POST['realname']
+        addr = request.POST['address']
+        phone = request.POST['phone']
+        list_isbn = json.loads(request.POST['isbn'])
+        list_phone = json.loads(request.POST['count'])
+        new_order = Order(
+            order_user_id=muser,
+            order_receiver_phone=phone,
+            order_receiver_name=real,
+            order_receiver_address=addr,
+            order_status=1
+        )
+        try:
+            new_order.save()
+            res = HttpResponse(1)
+        except Exception as e:
+            print(e)
+            return HttpResponse(0)
+        sum = Decimal(0.0)
+        for i in range(len(list_isbn)):
+            mbook = Book.objects.filter(book_ISBN=list_isbn[i]).first()
+            cart_item = Cart_item.objects.filter(Q(cart_id=cart, book_id=mbook)).first()
+            sum += cart_item.book_count * mbook.book_price
+            ord = Order_item(
+                book_id=mbook,
+                order_id=new_order,
+                book_count=list_phone[i]
+            )
+            try:
+                cart_item.delete()
+                ord.save()
+            except Exception as e:
+                print(e)
+                return HttpResponse(0)
+        cart.cart_price -= sum
+        cart.save()
+        return res
 
+def get_user_order(request):
+    if request.method == "GET":
+        u_id = request.GET['id']
+        con_user = User.objects.filter(user_id=u_id).first()
+        orders = Order.objects.filter(order_user_id=con_user)
+        content = []
+        for o in orders:
+            price = 0
+            items = Order_item.objects.filter(order_id=o)
+            for item in items:
+                price += item.book_id.book_price * item.book_count
+            content.append({
+                'id': o.order_id,
+                'price': str(price),
+                'time': str(o.order_create_time),
+                'state': o.order_status
+            })
+        print(content)
+    return HttpResponse(json.dumps(content))
+
+def get_order_detail(request):
+    if request.method == "GET":
+        o_id = request.GET['id']
+        con_order = Order.objects.filter(order_id=o_id).first()
+        items = Order_item.objects.filter(order_id=con_order)
+        content = [con_order.order_status]
+        for item in items:
+            con_book = item.book_id
+            content.append({
+                'id':con_book.book_id,
+                'isbn':con_book.book_ISBN,
+                'name':con_book.book_name,
+                'press':con_book.book_press,
+                'price':str(con_book.book_price),
+                'count':item.book_count,
+            })
+    return HttpResponse(json.dumps(content))
+
+def change_user_order_state(request):
+    if request.method == "POST":
+        o_id = request.POST['id']
+        state = request.POST['state']
+        con_order = Order.objects.filter(order_id=o_id).first()
+        con_order.order_status = state
+        try:
+            con_order.save()
+            res = HttpResponse(1)
+        except Exception as e:
+            print(e)
+            return HttpResponse(0)
+    return res
+
+def get_content_book_detail(request):
+    if request.method == "GET":
+        b_id = request.GET['id']
+        con_book = Book.objects.filter(book_id=b_id).first()
+        content = {
+            "bookname":con_book.book_name,
+            "author":con_book.book_auth_name,
+            }
+        print(content)
+    return HttpResponse(json.dumps(content))
+
+def post_user_comment(request):
+    if request.method == "POST":
+        print(request.POST)
+        b_id = request.POST['bookId']
+        u_id = request.POST['userId']
+        content = request.POST['content']
+        mbook = Book.objects.filter(book_id=b_id).first()
+        muser = User.objects.filter(user_id=u_id).first()
+        com = Comment(
+            comment_content = content,
+            comment_book = mbook,
+            comment_user = muser
+        )
+        try:
+            com.save()
+            res = HttpResponse(1)
+        except Exception as e:
+            print(e)
+            return HttpResponse(0)
+    return res
+
+def OrderDetail(request):
+    name = request.COOKIES.get('name')
+    context = {
+        "name":name,
+    }
+    return render(request, 'ebookstore/OrderDetail.html', context)
+def deleteBook(request):
+    if request.method == 'POST':
+        id = request.POST['id']
+        book = Book.objects.filter(book_id=id).first()
+        try:
+            book.delete()
+            return HttpResponse(1)
+        except Exception as err:
+            return HttpResponse(0)
+def searchBook(request):
+    key = request.GET['key']
+    book = Book.objects.filter(book_name=key).first()
+    data = {}
+    data['url'] = book.book_photo
+    data['name'] = book.book_name
+    data['id'] = book.book_id
+    data = [data]
+    print(data)
+    return HttpResponse(json.dumps(data))

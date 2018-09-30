@@ -64,17 +64,6 @@
 						},
 						success: function(data) {
 							switch(Number(data)) {
-								case 1:
-								    /*
-									if(rememberElement.value == true) {
-										document.cookie =
-											`name=${encodeURIComponent(name)};expires=${new Date(Date.now()+30*86400*1000)}`;
-										document.cookie =
-											`password=${encodeURIComponent(password)};expires=${new Date(Date.now()+30*86400*1000)}`;
-									}
-									*/
-									location.href = "/ebookstore/index";
-									break;
 								case 0:
 									alert("用户名或密码不正确！");
 									nameElement.value = "";
@@ -84,6 +73,11 @@
 								case -1:
 									alert("你的帐户已被冻结！");
 									break;
+								default:
+									localStorage.setItem("id", Number(data));
+									localStorage.setItem("name", name);
+									localStorage.setItem("password", password);
+									location.href = "./index";
 							}
 						}
 					});

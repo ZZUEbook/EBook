@@ -1,0 +1,138 @@
+{% extends "ebookstore/base.html" %}
+{% block title %}订单详情{% endblock %}
+{% block third %}
+{% endblock %}
+{% block body %}
+		<div class="row-fluid" style=" width:70%; margin: 0 auto;">
+			<!-- block -->
+			<div class="block">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">订单详情</div>
+				</div>
+				<div class="block-content collapse in">
+					<div class="span12">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th style="width: 15%;">ISBN</th>
+									<th style="width: 20%;">书名</th>
+									<th style="width: 25%;">出版社</th>
+									<th style="width: 15%;">单价</th>
+									<th style="width: 15%;">数量</th>
+									<th id="comment" style="width: 15%;">评价</th>
+								</tr>
+							</thead>
+							<tbody id="showOrderDetail">
+							</tbody>
+						</table>
+
+						<!--
+                        	作者：offline
+                        	时间：2018-09-07
+                        	描述：未支付订单显示
+                        -->
+						<div class="row" style="width: 100%;margin: 0 auto;">
+							<div class="col-xs-6 col-md-4">
+								<h4 id="total">合计：</h4>
+							</div>
+
+							<!--<div class="control-group" style="float: right;">
+								<div class="controls">
+									<select id="select01" class="chzn-select">
+										<option>支付方式:</option>
+										<option>支付宝</option>
+										<option>银联</option>
+									</select>
+									<button type="button" class="btn btn-success ">支付</button>
+									<button type="button" class="btn btn-danger">取消订单</button>
+									<a type="button" class="btn" href="UserOrder.html">返回</a>
+								</div>
+							</div>-->
+						</div>
+
+						<!--
+                        	作者：offline
+                        	时间：2018-09-07
+                        	描述：已完成和已关闭 订单显示
+                        	<div class="row" style="width: 100%;margin: 0 auto;">
+							<div class="col-xs-6 col-md-4">
+								<h4>合计：</h4></div>
+
+							<div class="control-group" style="float: right;">
+								<div class="controls">
+									<a type="button" class="btn" href="UserOrder.html">返回</a>
+								</div>
+							</div>
+						</div>
+                        -->
+						<!--
+                        	作者：offline
+                        	时间：2018-09-07
+                        	描述：已发货订单显示
+                        	<div class="row" style="width: 100%;margin: 0 auto;">
+							<div class="col-xs-6 col-md-4">
+								<h4>合计：</h4></div>
+
+							<div class="control-group" style="float: right;">
+								<div class="controls">
+									<button type="button" class="btn btn-success " >确认收货</button>
+									<a type="button" class="btn" href="UserOrder.html">返回</a>
+								</div>
+							</div>
+						</div>
+                        -->
+
+					</div>
+				</div>
+				<!-- /block -->
+
+			</div>
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+				var showOrderDetail = document.querySelector("#showOrderDetail");
+				var total = document.querySelector("#total");
+
+				$.ajax({
+					url: "/ebookstore/getOrderDetail" + location.search,
+					method: "get",
+					error: function() {
+						alert('数据出错，请刷新');
+					},
+					success: function(data) {
+						var arr = JSON.parse(data),
+							len = arr.length,
+							showOrderDetailHTML = ""; //订单状态1：未支付，2：未发货，3：已发货，4：关闭，5：已完成
+						var sum = 0;
+						if(arr[0] == 5) {
+							for(var i = 1; i < len; i++) { //1未支付，2未发货，3已发货，4关闭,5已完成
+								showOrderDetailHTML += `<tr>
+									<td>${arr[i].isbn}</td>
+									<td>${arr[i].name}</td>
+									<td>${arr[i].press}</td>
+									<td>${arr[i].price}</td>
+									<td>${arr[i].count}</td>
+									<td><a class="btn btn-info" role="button" style="width:100px;height:30px" href="/ebookstore/comment_user?id=${arr[i].id}">评论</a></td>
+								</tr>`;
+								sum += arr[i].price * arr[i].count;
+							}
+						} else {
+							document.querySelector("#comment").remove();
+							for(var i = 1; i < len; i++) { //1未支付，2未发货，3已发货，4关闭,5已完成
+								showOrderDetailHTML += `<tr>
+									<td>${arr[i].isbn}</td>
+									<td>${arr[i].name}</td>
+									<td>${arr[i].press}</td>
+									<td>${arr[i].price}</td>
+									<td>${arr[i].count}</td>
+								</tr>`;
+								sum += arr[i].price * arr[i].count;
+							}
+						}
+						showOrderDetail.innerHTML = showOrderDetailHTML;
+					    total.innerText = "合计：" + sum;
+					}
+
+				});
+			</script>
+{% endblock %}

@@ -23,137 +23,268 @@
 		</style>
 	</head>
 	<body>
-		<nav id="src="/static/ebookstore/assets-example" class="src="/static/ebookstore/assets src="/static/ebookstore/assets-inverse src="/static/ebookstore/assets src="/static/ebookstore/assets-fixed-top src="/static/ebookstore/assets-has-shadow" role="navigation">
+<nav id="navbar-example" class="navbar navbar-inverse navbar navbar-fixed-top navbar-has-shadow" role="navigation">
 			<div class="container-fluid">
-				<div class="src="/static/ebookstore/assets-header">
-					<button type="button" class="src="/static/ebookstore/assets-toggle collapsed " data-toggle="collapse" data-target=".bs-js-src="/static/ebookstore/assets-scrollspy">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-					<a class="src="/static/ebookstore/assets-brand" href="#">My-eBookStore</a>
+					<a class="navbar-brand" href="/ebookstore/index">eBookStore</a>
 				</div>
-				<div class="collapse src="/static/ebookstore/assets-collapse bs-js-src="/static/ebookstore/assets-scrollspy">
-					<ul class="nav src="/static/ebookstore/assets-nav">
-						<li>
-							<a href="#">主页</a>
+				<div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="/ebookstore/index">主页</a>
 						</li>
-						<li class="dropdown">
-							<a href="#" data-toggle="dropdown" class="dropdown-toggle">书籍分类<b class="caret"></b>
+                        {% block nav %}
 
-							</a>
-							<ul class="dropdown-menu" id="menu1">
-
-								<li>
-									<a href="#">计算机类</a>
-								</li>
-								<li>
-									<a href="#">英语类</a>
-								</li>
-
-							</ul>
-						</li>
-						<li>
-							<a href="#">新书上架</a>
-						</li>
+                        {% endblock %}
 					</ul>
+					<!--
+                    	作者：offline
+                    	时间：2018-09-05
+                    	描述：用户已登录
+                    -->
+                    {% if name %}
 
-					<ul class="nav pull-right">
+					<ul class="nav pull-right" id="vip">
 						<li class="dropdown">
 							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-user"></i> 用户 <i class="caret"></i>
+								<i class="icon-user"></i> {{name}} <i class="caret"></i>
 							</a>
 							<ul class="dropdown-menu">
 								<li>
-									<a tabindex="-1" href="MyInoformation.html">我的信息</a>
+									<a tabindex="-1" href="/ebookstore/myinfo" id="myinfo">我的信息</a>
 								</li>
 								<li>
-									<a tabindex="-1" href="#">我的订单</a>
+									<a tabindex="-1" href="/ebookstore/UserOrder/">我的订单</a>
 								</li>
 								<li>
-									<a tabindex="-1" href="cart.html">购物车</a>
+									<a tabindex="-1" href="/ebookstore/cart">购物车</a>
 								</li>
 								<li class="divider"></li>
 								<li>
-									<a tabindex="-1" href="login.html">退出登录</a>
+									<a tabindex="-1" href="/ebookstore/logout">退出登录</a>
 								</li>
 							</ul>
 						</li>
 					</ul>
+                    {% else %}
+                    <!--
+                        时间：2018-09-05
+                    	描述：用户未登陆时代码
+                    -->
+                    <ul class="nav pull-right" id="tourist">
+						<li class="dropdown">
+							<a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="icon-user"></i> 游客 <i class="caret"></i>
+							</a>
+							<ul class="dropdown-menu">
+							    <li>
+									<a tabindex="-1" href="/ebookstore/login">登录</a>
+								</li>
+								<li>
+									<a tabindex="-1" href="/ebookstore/register">注册</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+                    {% endif %}
 				</div>
 			</div>
 		</nav>
 		
-		<div class="row-fluid" style="width: 70%;margin: 0 auto;" >
-            <!-- block -->
-            <div class="block">
-                <div class="src="/static/ebookstore/assets src="/static/ebookstore/assets-inner block-header">
-                    <div class="muted pull-left">订单管理</div>
-                </div>
-                <div class="block-content collapse in">
-                    <div class="span12">
-                    	<div class="table-toolbar">
-								<form action="#" class="pull-left">
-									<div class="form-group has-feedback" >
-										<label for="search" class="sr-only">搜索关键字</label>
-										<input type="search" placeholder="请输入查找的订单" class="form-control">
-										<span class="glyphicon glyphicon-search  form-control-feedback"></span>
-									</div>
-								</form>
-                       	</div>
+        <div class="row-fluid" style="width: 70%;margin: 0 auto;">
+			<!-- block -->
+			<div class="block">
+				<div class="navbar navbar-inner block-header">
+					<div class="muted pull-left">订单管理</div>
+				</div>
+				<div class="block-content collapse in">
+					<div class="span12">
 						<table class="table table-striped" style="margin: auto;">
-			              <thead>
-			                <tr>
-			                  <th style="width: 15%;">订单号</th>
-			                  <th style="width: 15%;">订单金额</th>
-			                  <th style="width: 25%;">下单时间</th>
-			                  <th style="width: 20%;">订单状态</th>
-			                  <th style="width: 25%;">处理</th>
-			                </tr>
-			              </thead>
-			              <tbody>
-			                <tr id="tr1">
-			                  <td><a href="OrderContent.html">123</a></td>
-			                  <td>100</td>
-			                  <td>2018/9/7</td>
-			                  <td>未支付</td>
-			                  <td>
-			                  		<a class="btn btn-info" role="button" style="width:100px;height:30px">去支付</a>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td><a href="OrderContent.html">234</a></td>
-			                  <td>105</td>
-			                  <td>2015/9/2</td>
-			                  <td>已发货</td>
-			                  <td>
-			                  		<a class="btn btn-success" role="button" style="width:100px;height:30px">确认收货</a>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td><a href="OrderContent.html">456</a></td>
-			                  <td>111</td>
-			                  <td>2015/9/2</td>
-			                  <td>已关闭</td>
-			                  <td>
-			                  		<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除订单</a>
-			                  </td>
-			                </tr>
-			                <tr>
-			                  <td><a href="OrderContent.html">4654</a></td>
-			                  <td>126</td>
-			                  <td>2017/9/2</td>
-			                  <td>已完成</td>
-			                  <td>			                  		
-			                  </td>
-			                </tr>			                
-			              </tbody>
-			            </table>
-                    </div>
-                </div>
-            </div>
+							<thead>
+								<tr>
+									<th style="width: 15%;">订单号</th>
+									<th style="width: 15%;">订单金额</th>
+									<th style="width: 25%;">下单时间</th>
+									<th style="width: 20%;">订单状态</th>
+									<th style="width: 25%;">处理</th>
+								</tr>
+							</thead>
+							<tbody id="showUserOrder">
+                            <!--
+								<tr id="tr1">
+									<td>
+										<a href="OrderDetail.html">123</a>
+									</td>
+									<td>100</td>
+									<td>2018/9/7</td>
+									<td>未支付</td>
+									<td>
+										<a class="btn btn-info" role="button" style="width:100px;height:30px">去支付</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="OrderDetail.html">234</a>
+									</td>
+									<td>105</td>
+									<td>2015/9/2</td>
+									<td>已发货</td>
+									<td>
+										<a class="btn btn-success" role="button" style="width:100px;height:30px">确认收货</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="OrderDetail.html">456</a>
+									</td>
+									<td>111</td>
+									<td>2015/9/2</td>
+									<td>已关闭</td>
+									<td>
+										<a class="btn btn-danger" role="button" style="width:100px;height:30px">删除订单</a>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<a href="OrderDetail.html">4654</a>
+									</td>
+									<td>126</td>
+									<td>2017/9/2</td>
+									<td>已完成</td>
+									<td>
+									</td>
+								</tr>
+								-->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
             <!-- /block -->
        </div>
+    <script type="text/javascript">
+			var showUserOrder = document.querySelector("#showUserOrder");
+			var orderState = ['删除', "未支付", "未发货", "已发货", "关闭", "已完成"];
+			var arr;
+			$.ajax({
+				url: "/ebookstore/getUserOrder?id=" + localStorage.getItem("id"),
+				method: "get",
+				error: function() {
+					alert('数据出错，请刷新');
+				},
+				success: function(data) {
+					arr = JSON.parse(data),
+						len = arr.length,
+						showUserOrderHTML = ""; //订单状态1：未支付，2：未发货，3：已发货，4：关闭，5：已完成
+					for(var i = 0; i < len; i++) { //1未支付，2未发货，3已发货，4关闭,5已完成
+						switch(Number(arr[i].state)) { //[{id,price,time,state},{},...]
+							case 1:
+								showUserOrderHTML += `<tr>
+									<td>
+										<a href="/ebookstore/OrderDetail?id=${arr[i].id}">${arr[i].id}</a>
+									</td>
+									<td>${arr[i].price}</td>
+									<td>${arr[i].time}</td>
+									<td id="state${i}">${orderState[arr[i].state]}</td>
+									<td><a id="deal${i}" class="btn btn-info" role="button" style="width:100px;height:30px" onclick="pay(${i})">去支付</a></td>
+								</tr>`;
+								break;
+							case 2:
+								showUserOrderHTML += `<tr>
+									<td>
+										<a href="/ebookstore/OrderDetail?id=${arr[i].id}">${arr[i].id}</a>
+									</td>
+									<td>${arr[i].price}</td>
+									<td>${arr[i].time}</td>
+									<td id="state${i}">${orderState[arr[i].state]}</td>
+									<td></td>
+								</tr>`;
+								break;
+							case 3:
+								showUserOrderHTML += `<tr>
+									<td>
+										<a href="/ebookstore/OrderDetail?id=${arr[i].id}">${arr[i].id}</a>
+									</td>
+									<td>${arr[i].price}</td>
+									<td>${arr[i].time}</td>
+									<td id="state${i}">${orderState[arr[i].state]}</td>
+									<td><a id="deal${i}" class="btn btn-info" role="button" style="width:100px;height:30px" onclick="getGoods(${i})">确认收货</a></td>
+								</tr>`;
+								break;
+							case 5:
+								showUserOrderHTML += `<tr>
+									<td>
+										<a href="/ebookstore/OrderDetail?id=${arr[i].id}">${arr[i].id}</a>
+									</td>
+									<td>${arr[i].price}</td>
+									<td>${arr[i].time}</td>
+									<td id="state${i}">${orderState[arr[i].state]}</td>
+									<td></td>
+								</tr>`;
+								break;
+
+						}
+
+					}
+					showUserOrder.innerHTML = showUserOrderHTML;
+				}
+			});
+
+			function pay(i) {
+				$.ajax({
+					url: "/ebookstore/changeUserOrderState",
+					method: "post",
+					data: {
+						id: arr[i].id,
+						state: 2
+					},
+					error: function() {
+						alert('状态改变失败');
+					},
+					success: function(data) {
+						switch(Number(data)) {
+							case 1:
+								document.querySelector("#state" + i).innerHTML = "未发货";
+								document.querySelector("#deal" + i).remove();
+								break;
+							case 0:
+								alert('状态改变失败');
+								break;
+						}
+					}
+				});
+			}
+
+			function getGoods(i) {
+				$.ajax({
+					url: "/ebookstore/changeUserOrderState",
+					method: "post",
+					data: {
+						id: arr[i].id,
+						state: 5
+					},
+					error: function() {
+						alert('状态改变失败');
+					},
+					success: function(data) {
+						switch(Number(data)) {
+							case 1:
+								document.querySelector("#state" + i).innerHTML = "已完成";
+								document.querySelector("#deal" + i).remove();
+								break;
+							case 0:
+								alert('状态改变失败');
+								break;
+						}
+					}
+				});
+			}
+		</script>
 	</body>
 </html>

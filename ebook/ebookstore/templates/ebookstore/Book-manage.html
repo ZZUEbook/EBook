@@ -78,8 +78,8 @@
 									<td>${arr[i].count}</td>
 									<td>
 										<div class="btn-group" role="group">
-											<a class="btn btn-info" style="width:100px;height:30px" href="/ebookstore/modifyBook/?id=${arr[i].id}">修改</a>
-											<a class="btn btn-danger" role="button" style="width:100px;height:30px" data-id="${arr[i].id}" onclick="deleteBook(e)">删除</a>
+											<a class="btn btn-info" style="width:100px;height:30px" href="/ebookstore/modifyBook?id=${arr[i].id}">修改</a>
+											<a class="btn btn-danger" role="button" style="width:100px;height:30px" data-id="${arr[i].id}" onclick="deleteBook(event)">删除</a>
 										</div>
 									</td>
 								</tr>`;
@@ -143,7 +143,7 @@
 									<td>${arr[i].count}</td>
 									<td>
 										<div class="btn-group" role="group">
-											<a class="btn btn-info" style="width:100px;height:30px" href="/ebookstore/modifyBook/?id=${arr[i].id}">修改</a>
+											<a class="btn btn-info" style="width:100px;height:30px" href="/ebookstore/modifyBook?id=${arr[i].id}">修改</a>
 											<a class="btn btn-danger" role="button" style="width:100px;height:30px" data-id="${arr[i].id}" onclick="deleteBook(e)">删除</a>
 										</div>
 									</td>
